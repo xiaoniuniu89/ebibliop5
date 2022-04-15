@@ -17,8 +17,11 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
     SITE_ID = 1
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     SITE_ID = 2
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -173,7 +176,7 @@ AWS_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storags.backends.s3boto3.S3Boto3Storage'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -183,6 +186,12 @@ ACCOUNT_USERNAME_MIN_LENGTH = 2
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
 SOCIALACCOUNT_PROVIDERS = {
