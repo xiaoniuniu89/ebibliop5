@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'crispy_forms',
     'storages',
     'store',
 ]
@@ -205,3 +206,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+
+
+RISPY_TEMPLATE_PACK = 'bootstrap4'
