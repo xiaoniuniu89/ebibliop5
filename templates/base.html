@@ -38,6 +38,17 @@
                             
                         </li>
                     </ul>
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+
+                    {% if not user.is_authenticated %}
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-dark me-2">Login</button>
+                            <button type="button" class="btn btn-warning me-2">Sign-up</button>
+                        </div>
+                    {% endif %}
+
                     <a type="button" role="button" href=""
                         class="btn btn-outline-secondary">
 
