@@ -178,7 +178,7 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storags.backends.s3boto3.S3Boto3Storage'
 
 
-
+# all auth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
