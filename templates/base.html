@@ -20,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="">E-biblio</a>
+                <a class="navbar-brand" href="/">E-biblio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,12 @@
                                 Browse Selection
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                               
+                                <li><a class="dropdown-item" href="{% url "store:landing" %}">All</a></li>
+                                {% for cat in categories_list %}
+                                <li {% if category.slug == cat.slug %}class="selected" {% endif %}>
+                                    <a class="dropdown-item" href="{{ cat.get_absolute_url }}">{{ cat.name|title }}</a>
+                                </li>
+                                {% endfor %}
                             </ul>
                             
                         </li>
