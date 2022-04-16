@@ -45,7 +45,7 @@ class Product(models.Model):
         upload_to='images/',
         default='images/default.png'
     )
-    pdf = models.FileField(upload_to='pdf/')
+    pdf = models.FileField(upload_to='pdf/', blank=False)
     slug = models.SlugField(max_length=255)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     in_stock = models.BooleanField(default=True)
