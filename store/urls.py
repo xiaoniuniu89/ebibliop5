@@ -9,6 +9,6 @@ app_name = 'store'
 
 urlpatterns = [
     path('', landing, name='landing'),
-    path('<slug:slug>/', product_detail, name='product_detail'),
-    path('shop/<slug:category_slug>/', category_list, name='category_list'),
+    path('shop/<slug:slug>/', product_detail, name='product_detail'),
+    path('browse/<slug:category_slug>/', category_list, name='category_list'),
 ]
