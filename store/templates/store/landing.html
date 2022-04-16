@@ -2,6 +2,50 @@
 {% load static %}
 {% block title %}E-biblio{% endblock %}
 {% block content %}
-<h1>Landing Page</h1>
-{{user.username}}
-{% endblock%}
+<main>
+
+  <section class="py-3 text-center container">
+    <div class="row py-lg-3">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="h1 fw-bold">Search, Read, Buy, Review</h1>
+        <p class="lead text-muted">Pellentesque maximus eros sit amet fringilla sodales. Pellentesque dolor ipsum, posuere et tortor id, 
+            malesuada venenatis erat. egestas vulputate nisi. Integer aliquam at mauris at cursus. Donec a iaculis nulla.</p>
+        <p>
+          <a href="#" class="btn btn-primary my-2">carousel here</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="pb-3 h5">All Books</div>
+      
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+        {% for product in products %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+            <div class="card-body">
+              <p class="card-text">
+                <a class="text-dark text-decoration-none" href="">{{ product.title }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+{% endblock %}
+
+
+
