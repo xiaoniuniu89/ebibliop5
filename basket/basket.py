@@ -21,6 +21,15 @@ class Basket():
             self.basket[product_id] = {'price': str(product.price)}
         self.save()
 
+    def delete(self, product):
+        """
+        Delete item from session data
+        """
+        product_id = str(product)
+        if product_id in self.basket:
+            del self.basket[product_id]
+            self.save()
+
     def __len__(self):
         """
         Get the basket data and count the qty of items
