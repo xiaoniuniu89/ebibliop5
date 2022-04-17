@@ -27,18 +27,26 @@ card.on('change', ({error}) => {
   }
 });
 
-
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
   ev.preventDefault();
-  // If the client secret was rendered server-side as a data-secret attribute
-  // on the <form> element, you can retrieve it here by calling `form.dataset.secret`
+
+var fName = document.getElementById("firstName").value;
+var lName = document.getElementById("lastName").value;
+var email = document.getElementById("email").value;
+var addOne = document.getElementById("address").value;
+var addTwo = document.getElementById("address2").value;
+var country = document.getElementById("country").value;
+var state = document.getElementById("state").value;
+var postCode = document.getElementById("postCode").value;
+
+
   stripe.confirmCardPayment(clientSecret, {
     payment_method: {
       card: card,
       billing_details: {
-        name: 'Jenny Rosen'
+        name: `${fName} ${lName}`
       }
     }
   }).then(function(result) {
