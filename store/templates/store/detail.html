@@ -17,7 +17,7 @@
                         <div class="row p-3">
                             <div class="col-6"><span class="h4 fw-bold">£{{ product.price }}</span></div>
                             <div class="col-6 text-end">
-                                <button type="button" id='add-button' value={{product.id}} class="btn btn-secondary btn-sm">Add to
+                                <button type="button" id='add-btn' value={{product.id}} class="btn btn-secondary btn-sm">Add to
                                     basket
                                 </button>
                             </div>
@@ -30,4 +30,28 @@
 
 </div>
 
+<script>
+    $(document).on('click', '#add-btn', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "basket:basket_add" %}',
+            data: {
+                productId: $('#add-btn').val(),
+                productQty: ($('#select option:selected').text()),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function(json){
+                // document.getElementById('basket-qty').innerHTML = json.qty
+                console.log(json.qty)
+            },
+            error: function(xhr, errmsg, err){}
+        })
+    })
+    
+</script>
+
 {% endblock %}
+
+
