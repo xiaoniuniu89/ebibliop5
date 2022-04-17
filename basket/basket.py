@@ -1,3 +1,5 @@
+from decimal import Decimal
+from store.models import Product
 
 
 class Basket():
@@ -26,6 +28,26 @@ class Basket():
         print(self.basket)
         print(len(self.basket))
         return len(self.basket)
+
+
+    def __iter__(self):
+        """
+        Collect the product_id in the session data to query the database
+        and return products
+        """
+        product_ids = self.basket.keys()
+        products = Product.products.filter(id__in=product_ids)
+        basket = self.basket.copy()
+
+        for product in products:
+            basket[str(product.id)]['product'] = product
+
+        for item in basket.values():
+            item['price'] = Decimal(item['price'])
+            yield item
+
+    def get_total_price(self):
+        return sum(Decimal(item['price']) for item in self.basket.values())
 
     def save(self):
         self.session.modified = True
