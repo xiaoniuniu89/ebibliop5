@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_js_head %}
+    
+{% endblock %}
 {% block content %}
 
    <div class="container py-5">
@@ -44,7 +47,7 @@
         </div>
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Billing address</h4>
-          <form class="needs-validation" novalidate>
+          <form id='payment-form' class="needs-validation" novalidate>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
@@ -122,15 +125,23 @@
               <label class="custom-control-label" for="save-info">Save this information for next time</label>
             </div>
             <hr class="mb-4">
-
             <h4 class="mb-3">Payment</h4>
-
-            
+                <label for="card-element">Credit or debit card</label>
+                <div id="card-element" class="form-control form-control-payment">
+                  <!-- Payment elements will appear here -->
+                </div>
+                 <!-- We'll put the error messages in this element -->
+                <div id="card-errors" role="alert"></div>
+                <hr class="my-4">
+                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{client_secret}}">Pay</button>
           </form>
         </div>
       </div>
-
-     
     </div>
+    <script>
+        let CSRF_TOKEN = '{{csrf_token}}'
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'checkout/js/checkout.js' %}"></script>
 
 {% endblock %}
