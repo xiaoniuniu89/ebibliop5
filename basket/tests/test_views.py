@@ -20,6 +20,14 @@ class TestBasketViews(TestCase):
             price='9.99',
             image='test'
         )
+        Product.objects.create(
+            category_id=1,
+            title='test book two',
+            created_by_id=1,
+            slug='test-book-two',
+            price='9.99',
+            image='test'
+        )
         self.client.post(
             reverse('basket:basket_add'),
             {
@@ -34,7 +42,7 @@ class TestBasketViews(TestCase):
         response = self.client.get(reverse('basket:basket_summary'))
         self.assertEqual(response.status_code, 200)
 
-    def test_basket_add(self):
+    def test_basket_add_duplicate(self):
         """ test adding items to basket - 1 from setup and 1 sent here"""
         response = self.client.post(
             reverse('basket:basket_add'),
@@ -44,7 +52,20 @@ class TestBasketViews(TestCase):
             },
             xhr=True
         )
-        # one from setup and one from test = qty 2 
+        # product id already in bag
+        self.assertEqual(response.json(), {'qty': 1})
+
+    def test_basket_add_new(self):
+        """ test adding items to basket - 1 from setup and 1 sent here"""
+        response = self.client.post(
+            reverse('basket:basket_add'),
+            {
+                'productId': 2,
+                'action': 'post'
+            },
+            xhr=True
+        )
+        # 1 from set up and 1 just added
         self.assertEqual(response.json(), {'qty': 2})
 
     def test_basket_delete(self):
