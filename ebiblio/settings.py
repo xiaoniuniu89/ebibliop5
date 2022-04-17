@@ -24,11 +24,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 if 'DEVELOPMENT' in os.environ:
     SITE_ID = 1
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEBUG = True
 else:
     SITE_ID = 2
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
+    
+DEBUG = True
 
 
 # Quick-start development settings - unsuitable for production
@@ -101,16 +101,16 @@ WSGI_APPLICATION = 'ebiblio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+}
 
 
 # Password validation
