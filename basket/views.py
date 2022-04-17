@@ -7,8 +7,9 @@ from store.models import Product
 # Create your views here.
 
 def basket_summary(request):
+    basket = Basket(request)
     """ returns a summary of items in users basket"""
-    return render(request, 'basket/basket_summary.html')
+    return render(request, 'basket/basket_summary.html', {'basket': basket})
 
 def basket_add(request):
     """ ajax request to add items to basket """
