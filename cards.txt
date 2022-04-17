@@ -1,0 +1,5 @@
+Succeeds and immediately processes the payment: 4242424242424242
+
+Always fails with a decline code of insufficient_funds: 4000000000009995
+
+Requires authentication, which in this integration will fail with a decline code of authentication_not_handled: 4000002500003155
