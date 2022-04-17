@@ -37,7 +37,9 @@
       {% endwith %}
       {% endfor %}
       <div class="col-12 text-end">
+        
         <div class="h6 fw-bold">Sub Total: $<div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div></div>
+        <a class='btn btn-info' href="{% url 'checkout:checkout' %}">Proceed to Checkout</a>
       </div>
     </div> 
   </main>

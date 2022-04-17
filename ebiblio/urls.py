@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls', namespace='store')),
     path('basket/', include('basket.urls', namespace='basket')),
+    path('checkout/', include('checkout.urls', namespace='checkout')),
     path('accounts/', include('allauth.urls')),
 ]
