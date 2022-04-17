@@ -16,9 +16,14 @@ class Basket():
 
     def add(self, product):
         """Adding and updating product to basket"""
-        product_id = product.id
-        if product_id not in self.basket:
+        product_id = str(product.id)
+
+        # getting strange bug when using if product_id not in ....
+        if product_id in self.basket:
+            pass
+        else:
             self.basket[product_id] = {'price': str(product.price)}
+
         self.save()
 
     def delete(self, product):
@@ -34,8 +39,6 @@ class Basket():
         """
         Get the basket data and count the qty of items
         """
-        print(self.basket)
-        print(len(self.basket))
         return len(self.basket)
 
 

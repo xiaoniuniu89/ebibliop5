@@ -43,7 +43,7 @@
                 action: 'post'
             },
             success: function(json){
-                // document.getElementById('basket-qty').innerHTML = json.qty
+                document.getElementById('basket-qty').innerHTML = json.qty
                 console.log(json.qty)
             },
             error: function(xhr, errmsg, err){}
