@@ -8,10 +8,11 @@ from basket.basket import Basket
 
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+if os.path.isfile('env.py'):
+    import env
 
 # stripe.api_key = os.environ.get('STRIPE_PKEY')
-stripe.api_key = 'sk_test_51KpZBDIaE0NFUuueXdekO83hHiKuRNt9WudV41X80buAyLzz0jT9JSsT1WYzZyxrldbnivqx9K6XK4ZxZyF9J8JG00IghjLq7C'
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 @login_required
 def checkout(request):
@@ -28,3 +29,8 @@ def checkout(request):
             metadata={'userid': request.user.id}
         )
     return render(request, 'checkout/checkout.html', {'client_secret': intent.client_secret})
+
+
+def checkout_complete(request):
+    """ redirect page after successful order """
+    return render(request, 'checkout/checkout_complete.html')

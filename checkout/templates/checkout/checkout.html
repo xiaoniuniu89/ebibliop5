@@ -62,7 +62,7 @@
 
             <div class="mb-3">
               <label for="email">Email <span class="text-muted">(required)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
             </div>
 
             <div class="mb-3">
@@ -97,7 +97,7 @@
                     </div>
                   </div>
                   <div class="col-md-3">
-                    <label for="postcode" class="form-label">Postcode</label>
+                    <label for="postcode" class="form-label">Zip/Postcode</label>
                     <input type="text" class="form-control" id="postCode" placeholder="" required>
                     <div class="invalid-feedback">
                       Zip code required.
@@ -118,13 +118,17 @@
                  <!-- We'll put the error messages in this element -->
                 <div id="card-errors" role="alert"></div>
                 <hr class="my-4">
-                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{client_secret}}">Pay</button>
+                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{client_secret}}">
+                  <div class="spinner hidden" id="spinner"></div>
+                  <span id="button-text">Pay now</span>
+                  </button>
           </form>
         </div>
       </div>
     </div>
     <script>
         let CSRF_TOKEN = '{{csrf_token}}'
+        let checkoutCompleteUrl = "{% url 'checkout:checkout_complete' %}"
     </script>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{% static 'checkout/js/checkout.js' %}"></script>

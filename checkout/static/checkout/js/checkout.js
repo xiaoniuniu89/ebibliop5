@@ -14,7 +14,7 @@ base: {
 }
 };
 
-var card = elements.create("card", { style: style });
+var card = elements.create("card", { hidePostalCode: true, style: style });
 card.mount("#card-element");
 
 
@@ -46,7 +46,15 @@ var postCode = document.getElementById("postCode").value;
     payment_method: {
       card: card,
       billing_details: {
-        name: `${fName} ${lName}`
+        name: `${fName} ${lName}`,
+        email: email,
+        address: {
+          // country: country,
+          line1: addOne,
+          line2: addTwo,
+          state: state,
+          postal_code: postCode
+        }
       }
     }
   }).then(function(result) {
@@ -56,6 +64,8 @@ var postCode = document.getElementById("postCode").value;
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
+        console.log('payment processed')
+        window.location.replace(checkoutCompleteUrl)
         // Show a success message to your customer
         // There's a risk of the customer closing the window before callback
         // execution. Set up a webhook or plugin to listen for the
@@ -65,3 +75,4 @@ var postCode = document.getElementById("postCode").value;
     }
   });
 });
+
