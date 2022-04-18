@@ -128,6 +128,7 @@
     </div>
     <script>
         let CSRF_TOKEN = '{{csrf_token}}'
+        let addOrderUrl = "{% url 'orders:add_order' %}"
         let checkoutCompleteUrl = "{% url 'checkout:checkout_complete' %}"
     </script>
     <script src="https://js.stripe.com/v3/"></script>

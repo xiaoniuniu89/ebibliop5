@@ -41,6 +41,16 @@ var country = document.getElementById("country").value;
 var state = document.getElementById("state").value;
 var postCode = document.getElementById("postCode").value;
 
+$.ajax({
+    type: "POST",
+    url: addOrderUrl,
+    data: {
+      order_key: clientSecret,
+      csrfmiddlewaretoken: CSRF_TOKEN,
+      action: "post",
+    },
+    success: function (json) {
+      console.log(json.success)
 
   stripe.confirmCardPayment(clientSecret, {
     payment_method: {
@@ -74,5 +84,8 @@ var postCode = document.getElementById("postCode").value;
       }
     }
   });
+    },
+    error: function (xhr, errmsg, err) {},
+});
 });
 
