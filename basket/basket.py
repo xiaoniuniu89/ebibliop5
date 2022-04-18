@@ -35,6 +35,12 @@ class Basket():
             del self.basket[product_id]
             self.save()
 
+
+    def clear(self):
+        # delete all contents in basket - remove from session
+        del self.session['session_key']
+        self.save()
+
     def __len__(self):
         """
         Get the basket data and count the qty of items
