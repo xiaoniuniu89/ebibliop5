@@ -19,7 +19,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls', namespace='store')),
+    path('dashboard/', include('dashboard.urls', namespace='dashboard')),
     path('basket/', include('basket.urls', namespace='basket')),
     path('checkout/', include('checkout.urls', namespace='checkout')),
+    # path('orders/', include('orders.urls', namespace='orders')),
     path('accounts/', include('allauth.urls')),
 ]
