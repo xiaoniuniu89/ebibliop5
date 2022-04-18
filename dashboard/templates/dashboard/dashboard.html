@@ -10,7 +10,16 @@
       <div class="starter-template">
         <h1>User Dashboard</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        {% if purchases %}
+      {% for item in purchases  %}
+      <a href="{{item.product.pdf.url}}" target='_blank'>Download</a>
+      {% endfor %}
+      {% else %}
+      nothing
+      {% endif %}
       </div>
+
+      
 
     </main><!-- /.container -->
 

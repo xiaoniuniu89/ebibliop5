@@ -39,6 +39,11 @@ class OrderItem(models.Model):
         related_name='order_items'
     )
     price = models.DecimalField(max_digits=5, decimal_places=2)
+    customer = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        related_name='order_item_user',
+        null=True
+    )
 
     def __str__(self):
         return str(self.id)

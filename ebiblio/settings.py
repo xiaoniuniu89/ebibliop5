@@ -93,6 +93,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'store.context_processors.all_categories',
                 'basket.context_processors.basket',
+                'dashboard.context_processors.purchases',
             ],
         },
     },

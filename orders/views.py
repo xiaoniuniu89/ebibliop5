@@ -30,7 +30,8 @@ def add_order(request):
                 OrderItem.objects.create(
                     order_id=order_id,
                     product=item['product'],
-                    price=item['price']
+                    price=item['price'],
+                    customer=request.user
                 )
         response = JsonResponse({'success': 'Return Something'})
         return response
