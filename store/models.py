@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .utils import image_resize
-
+from .utils import image_resize, unique_slugify
+from django.utils.text import slugify
 
 class ProductManager(models.Manager):
     """ manager to replace objects manager """
@@ -44,7 +44,6 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/',
-        default='images/default.png'
     )
     pdf = models.FileField(upload_to='pdf/', blank=False)
     slug = models.SlugField(max_length=255)
@@ -71,4 +70,6 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         image_resize(self.image, 512, 512)
+        if Product.objects.filter(slug=self.slug).exists():
+            self.slug = unique_slugify(self, slugify(self.title))
         super().save(*args, **kwargs)

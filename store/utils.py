@@ -1,8 +1,19 @@
-# this solution for resizing images uploaded to amazon s3 was taken from https://blog.soards.me/posts/resize-image-on-save-in-django-before-sending-to-amazon-s3/
 from django.core.files import File
 from pathlib import Path
 from PIL import Image
 from io import BytesIO
+import string
+from django.utils.crypto import get_random_string
+
+
+# the solution for creating unique slugs was found in this stack overflow thread https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django
+def unique_slugify(instance, slug):
+    """ checks if a product has unique slug, if not will add random 4 character string to the slug"""
+    model = instance.__class__
+    unique_slug = slug
+    while model.objects.filter(slug=unique_slug).exists():
+        unique_slug = slug + get_random_string(length=4)
+    return unique_slug
 
 image_types = {
     "jpg": "JPEG",
@@ -13,7 +24,7 @@ image_types = {
     "tiff": "TIFF",
 }
 
-
+# this solution for resizing images uploaded to amazon s3 was taken from https://blog.soards.me/posts/resize-image-on-save-in-django-before-sending-to-amazon-s3/
 def image_resize(image, width, height):
     """ takes an image uploaded to the site and resizes if too big"""
     # Open the image using Pillow
