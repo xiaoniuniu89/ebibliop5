@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from .utils import image_resize
 
 
 class ProductManager(models.Manager):
@@ -67,3 +68,7 @@ class Product(models.Model):
     
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        image_resize(self.image, 512, 512)
+        super().save(*args, **kwargs)
