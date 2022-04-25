@@ -12,7 +12,7 @@
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
         {% if purchases %}
       {% for item in purchases  %}
-      <a href="{{ item.product.pdf.url }}" target="_blank">click here to read</a>
+      <a href="{{ item.product.pdf.url }}" target="_blank">{{item.product.title}}</a>
       {% endfor %}
       {% else %}
       nothing

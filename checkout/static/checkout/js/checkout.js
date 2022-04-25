@@ -39,7 +39,7 @@ var email = document.getElementById("email").value;
 var addOne = document.getElementById("address").value;
 var addTwo = document.getElementById("address2").value;
 var country = document.getElementById("country").value;
-var state = document.getElementById("state").value;
+var city = document.getElementById("state").value;
 var postCode = document.getElementById("postCode").value;
 
 $.ajax({
@@ -49,6 +49,14 @@ $.ajax({
       order_key: clientSecret,
       csrfmiddlewaretoken: CSRF_TOKEN,
       action: "post",
+      name: `${fName} ${lName}`,
+      email: email,
+      address1: addOne,
+      address2: addTwo,
+      city: city,
+      postcode: postCode,
+      country: country
+       
     },
     success: function (json) {
       console.log(json.success)

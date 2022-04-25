@@ -40,7 +40,6 @@ def checkout_complete(request):
     """ redirect page after successful order """
     basket = Basket(request)
     basket.clear()
-    stripe_webhook(request)
     return render(request, 'checkout/checkout_complete.html')
 
 
@@ -55,13 +54,15 @@ def stripe_webhook(request):
         )
     except ValueError as e:
         print(e)
+        print('here')
         return HttpResponse(status=400)
 
     # Handle the event
     if event.type == 'payment_intent.succeeded':
+        print('hello from event')
         payment_confirmation(event.data.object.client_secret)
 
     else:
-        print('Unhandled event type {}'.format(event.type))
+        print(f'Unhandled event type {event.type}')
 
     return HttpResponse(status=200)
