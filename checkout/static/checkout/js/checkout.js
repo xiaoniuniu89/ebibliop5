@@ -1,8 +1,9 @@
 // Set your publishable key: remember to change this to your live publishable key in production
 // See your keys here: https://dashboard.stripe.com/apikeys
 var stripe = Stripe('pk_test_51KpZBDIaE0NFUuueBYiW9whBxPp9gNq5VDqAJztk6gqjwAIvhGp6SoAJJqbNTThnOqJ0nn0ggEQnjnOcNTbCBkpk00M0XbQDYX');
-var elem = document.getElementById('submit');
+const elem = document.getElementById('submit');
 let clientSecret = elem.getAttribute('data-secret');
+
 
 // Set up Stripe.js and Elements to use in checkout form
 var elements = stripe.elements();

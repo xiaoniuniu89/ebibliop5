@@ -1,4 +1,6 @@
 import os
+import json
+from django.http.response import HttpResponse
 if os.path.isfile('env.py'):
     import env
 
@@ -13,8 +15,8 @@ from django.contrib.auth.decorators import login_required
 if os.path.isfile('env.py'):
     import env
 
-# stripe.api_key = os.environ.get('STRIPE_PKEY')
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+
 
 @login_required
 def checkout(request):
@@ -25,6 +27,7 @@ def checkout(request):
     intent = stripe.PaymentIntent.create(
             amount=total,
             currency='eur',
+            # payment_method_types=["card"],
             automatic_payment_methods={
                 'enabled': True,
             },
@@ -37,6 +40,7 @@ def checkout_complete(request):
     """ redirect page after successful order """
     basket = Basket(request)
     basket.clear()
+    stripe_webhook(request)
     return render(request, 'checkout/checkout_complete.html')
 
 
