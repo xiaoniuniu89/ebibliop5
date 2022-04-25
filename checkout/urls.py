@@ -2,7 +2,8 @@ from django.urls import path
 
 from .views import (
     checkout,
-    checkout_complete
+    checkout_complete,
+    stripe_webhook
 )
 
 app_name = 'checkout'
@@ -10,4 +11,5 @@ app_name = 'checkout'
 urlpatterns = [
     path('', checkout, name='checkout'),
     path('checkout-complete/', checkout_complete, name='checkout_complete'),
+    path('webhook/', stripe_webhook, name='webhook'),
 ]
