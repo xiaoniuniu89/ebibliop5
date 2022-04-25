@@ -5,5 +5,5 @@ def purchases(request):
         c_purchases = OrderItem.objects.all().filter(
             customer=request.user).distinct('product')
     else:
-        purchases = None
+        c_purchases = None
     return ({'purchases': c_purchases})
