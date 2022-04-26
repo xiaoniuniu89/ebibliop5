@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'checkout',
     'orders',
     'dashboard',
+    'promotions',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +95,7 @@ TEMPLATES = [
                 'store.context_processors.all_categories',
                 'basket.context_processors.basket',
                 'dashboard.context_processors.purchases',
+                'promotions.context_processors.promo_codes',
             ],
         },
     },
