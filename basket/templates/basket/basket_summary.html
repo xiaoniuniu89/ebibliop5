@@ -36,9 +36,17 @@
       </div>
       {% endwith %}
       {% endfor %}
+      <form class="card p-2">
+            <div class="input-group">
+              <input type="text" id='promo-code-input' class="form-control" placeholder="Promo code">
+              <div class="input-group-append">
+                <button type="submit" id='promo-btn' class="btn btn-secondary" required>Redeem</button>
+              </div>
+            </div>
+          </form>
       <div class="col-12 text-end">
         
-        <div class="h6 fw-bold">Sub Total: $<div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div></div>
+        <div class="h6 fw-bold">Sub Total: $<div id="subtotal" class="d-inline-flex">{{basket.get_total_price_after_discount}}</div></div>
         <a class='btn btn-info' href="{% url 'checkout:checkout' %}">Proceed to Checkout</a>
       </div>
     </div> 
@@ -63,6 +71,24 @@
         },
         error: function (xhr, errmsg, err) {}
       });
+    })
+
+
+    $(document).on('click', '#promo-btn', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "promotions:add_promo" %}',
+            data: {
+                promo_code: $('#promo-code-input').val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function(json){
+            document.getElementById("subtotal").innerHTML = json.total
+            },
+            error: function(xhr, errmsg, err){}
+        })
     })
 
     </script>
