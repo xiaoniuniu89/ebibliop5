@@ -56,11 +56,11 @@ $.ajax({
       city: city,
       postcode: postCode,
       country: country
-       
     },
     success: function (json) {
       console.log(json.success)
 
+  
   stripe.confirmCardPayment(clientSecret, {
     payment_method: {
       card: card,
@@ -98,3 +98,12 @@ $.ajax({
 });
 });
 
+// const promoBtn = document.querySelector('#promo-btn')
+// const promoCodeInput = document.querySelector('#promo-code-input')
+// const promoTextArea = document.querySelector('#promo-text-area')
+
+// promoBtn.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   code = promoCodeInput.value
+//   promoTextArea.innerHTML = code
+// })

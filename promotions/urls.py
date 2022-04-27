@@ -6,5 +6,5 @@ from .views import (
 app_name = 'promotions'
 
 urlpatterns = [
-    path('', promo, name='promotions'),
+    path('', promo, name='add_promo'),
 ]
