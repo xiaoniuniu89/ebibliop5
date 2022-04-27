@@ -1,6 +1,6 @@
 from decimal import Decimal
 from store.models import Product
-
+from promotions.models import Promo
 
 class Basket():
     """
@@ -10,9 +10,13 @@ class Basket():
     def __init__(self, request):
         self.session = request.session
         basket = self.session.get('session_key')
+        promo = self.session.get('promo_key')
         if 'session_key' not in request.session:
             basket = self.session['session_key'] = {}
+        if 'promo_key' not in request.session:
+            promo = self.session['promo_key'] = 0
         self.basket = basket
+        self.promo = promo
 
     def add(self, product):
         """Adding and updating product to basket"""
@@ -25,6 +29,13 @@ class Basket():
             self.basket[product_id] = {'price': str(product.price)}
 
         self.save()
+
+    def add_promo(self, promo):
+        print(self.promo)
+        self.promo = self.session['promo_key'] = promo
+        self.save()
+        print(self.promo)
+
 
     def delete(self, product):
         """
@@ -39,6 +50,7 @@ class Basket():
     def clear(self):
         # delete all contents in basket - remove from session
         del self.session['session_key']
+        del self.session['promo_key']
         self.save()
 
     def __len__(self):
@@ -67,5 +79,14 @@ class Basket():
     def get_total_price(self):
         return sum(Decimal(item['price']) for item in self.basket.values())
 
+    def get_discount(self):
+        if self.promo:
+            return round((self.promo / Decimal(100)) * self.get_total_price(), 2)
+        return Decimal(0)
+
+    def get_total_price_after_discount(self):
+        return self.get_total_price() - self.get_discount()
+
     def save(self):
         self.session.modified = True
+
