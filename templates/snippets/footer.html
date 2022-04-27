@@ -36,16 +36,43 @@
             <div class="col-md-5">
                 <form>
                     <fieldset class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <input type="email" class="form-control" id="email-input" placeholder="Enter email"/>
                     </fieldset>
                     <fieldset class="form-group">
-                        <textarea class="form-control" id="exampleMessage" placeholder="Message"></textarea>
+                        <textarea class="form-control" id="message-input" placeholder="Message"></textarea>
                     </fieldset>
                     <fieldset class="form-group text-xs-right">
-                        <button type="button" class="btn btn-secondary-outline btn-lg">Send</button>
+                        <button type="button" id='msg-btn' class="btn btn-secondary-outline btn-lg">Send</button>
                     </fieldset>
                 </form>
             </div>
         </div>
     </div>
 </footer>
+
+<script>
+    const emailInput = document.querySelector('#email-input')
+    emailInput.addEventListener('click', () => {
+        emailInput.value = '{{request.user.email}}'
+    })
+
+    $(document).on('click', '#msg-btn', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "dashboard:send_message" %}',
+            data: {
+                email: $('#email-input').val(),
+                content: $('#message-input').val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function(json){
+            alert(json.msg)
+            $('#email-input').val('')
+            $('#message-input').val('')
+            },
+            error: function(xhr, errmsg, err){}
+        })
+    })
+</script>

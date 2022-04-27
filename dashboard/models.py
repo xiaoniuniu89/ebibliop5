@@ -27,4 +27,20 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user}\'s profile'
 
+class Message(models.Model):
+    """
+    A class to handle user submissions 
+    of the contact us form in the footer
+    """
 
+    email = models.EmailField()
+    content = models.TextField(max_length=1000)
+    date_posted = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """ Meta data for messages """
+        verbose_name_plural = 'Messages'
+        ordering = ('-date_posted',)
+    
+    def __str__(self):
+        return f'Message from {self.email}'
