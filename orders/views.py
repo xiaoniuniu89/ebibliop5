@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-
+import os
 from basket.basket import Basket
 from .models import Order, OrderItem
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 def add_order(request):
@@ -47,6 +48,13 @@ def add_order(request):
 
 def payment_confirmation(data):
     Order.objects.filter(order_key=data).update(billing_status=True)
+    send_mail(
+        subject='Subject here',
+        message='Here is the message.',
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=['dan_cal89@hotmail.com', ],
+        fail_silently=False,
+    )
 
 
 def user_orders(request):
