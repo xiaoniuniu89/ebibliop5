@@ -1,3 +1,4 @@
+{% load static %}
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -50,29 +51,32 @@
     </div>
 </footer>
 
-<script>
-    const emailInput = document.querySelector('#email-input')
-    emailInput.addEventListener('click', () => {
-        emailInput.value = '{{request.user.email}}'
-    })
+{% block extra_js_body %}
+    <script src="{% static 'footer.js' %}"></script>
 
-    $(document).on('click', '#msg-btn', function(e){
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '{% url "dashboard:send_message" %}',
-            data: {
-                email: $('#email-input').val(),
-                content: $('#message-input').val(),
-                csrfmiddlewaretoken: "{{csrf_token}}",
-                action: 'post'
-            },
-            success: function(json){
-            alert(json.msg)
-            $('#email-input').val('')
-            $('#message-input').val('')
-            },
-            error: function(xhr, errmsg, err){}
+    <script>
+
+        let userEmail = '{{request.user.email}}'
+
+        $(document).on('click', '#msg-btn', function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "dashboard:send_message" %}',
+                data: {
+                    email: $('#email-input').val(),
+                    content: $('#message-input').val(),
+                    csrfmiddlewaretoken: "{{csrf_token}}",
+                    action: 'post'
+                },
+                success: function(json){
+                alert(json.msg)
+                $('#email-input').val('')
+                $('#message-input').val('')
+                },
+                error: function(xhr, errmsg, err){}
+            })
         })
-    })
-</script>
+    </script>
+{% endblock %}
+
