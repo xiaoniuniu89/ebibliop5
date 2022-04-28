@@ -1,19 +1,53 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 
-body {
-    font-family: 'Alegreya Sans', sans-serif;
+:root {
+    --orange: rgb(227, 178, 60);
+    --white: white;
+    --grey: rgb(124, 132, 131);
+    --blue: rgb(45, 49, 66);
+    --rose: rgb(155, 106, 108);
 }
 
-/* Sticky footer position and size
--------------------------------------------------- */
+body {
+    font-family: 'Alegreya Sans', sans-serif;
+    margin-bottom: 300px;
+    
+}
+
 html {
   position: relative;
   min-height: 100%;
 }
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 300px;
+
+/* navbar  */
+
+nav {
+    background-color: var(--blue)!important;
 }
+
+nav a {
+    color: var(--white);
+}
+
+nav a:hover {
+    color: var(--white);
+}
+
+.navbar-brand:hover {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 1px solid var(--white);
+}
+
+.nav-pad:hover {
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 0;
+
+}
+
+/* end navbar  */
+
+/* footer  */
 .footer {
   position: absolute;
   bottom: 0;
@@ -36,19 +70,19 @@ body {
 -------------------------------------------------- */
 footer {
   padding-top: 30px;
-  background-color: #292c2f;
-  color: #bbb;
+  background-color: var(--rose);
+  color: var(--white);
 }
 
 footer a {
-  color: #999;
+  color: var(--white);
   text-decoration:none;
 }
 
 footer a:hover, footer a:focus {
-  color: #aaa;
+  color: var(--grey);
   text-decoration:none;
-  border-bottom:1px dotted #999;
+  border-bottom:1px dotted var(--grey);
 }
 
 footer .form-control {
@@ -59,3 +93,4 @@ footer .form-control {
     color: #d1d2d2;
     padding: 0.7em 1em;
 }
+/* end footer  */
