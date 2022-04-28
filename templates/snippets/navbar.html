@@ -1,6 +1,6 @@
 
 {% block navbar %}
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="{% url 'store:landing' %}">E-biblio</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -40,11 +40,11 @@
         <form method='POST' action="{% url 'store:search' %}" class="form-inline my-2 my-lg-0">
             {% csrf_token %}
             <input class="form-control mr-sm-2" type="search" placeholder="Search books" name='term' required aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-success my-2 my-sm-0 d-none d-md-block" type="submit">Search</button>
         </form>
 
         <a type="button" role="button" href="{% url "basket:basket_summary" %}"
-            class="btn btn-primary ml-2">
+            class="btn btn-primary ml-lg-2">
 
             {% with total_qty=basket|length %}
                 <div id="basket-qty" class="d-inline-flex">

@@ -29,6 +29,10 @@ nav a {
     color: var(--white);
 }
 
+.navbar-toggler-icon {
+    color: var(--white)!important;
+}
+
 nav a:hover {
     color: var(--white);
 }
