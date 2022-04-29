@@ -1,4 +1,6 @@
 from orders.models import OrderItem
+from .models import Profile
+from django.contrib.auth.models import User
 
 def purchases(request):
     if request.user.is_authenticated:
@@ -7,3 +9,9 @@ def purchases(request):
     else:
         c_purchases = None
     return ({'purchases': c_purchases})
+
+def billing_info(request):
+    profile = Profile.objects.get(user=request.user)
+    return ({'user': profile})
+
+

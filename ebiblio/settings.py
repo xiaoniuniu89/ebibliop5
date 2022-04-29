@@ -95,6 +95,7 @@ TEMPLATES = [
                 'store.context_processors.all_categories',
                 'basket.context_processors.basket',
                 'dashboard.context_processors.purchases',
+                'dashboard.context_processors.billing_info',
                 'promotions.context_processors.promo',
             ],
         },
