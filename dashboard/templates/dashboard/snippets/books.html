@@ -1,0 +1,21 @@
+{% block books %}
+<div class="row wrap-land clearfix">
+            
+    {% if purchases %}
+    {% for item in purchases  %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 py-5">
+        <a href="{{item.product.pdf.url}}" target="_blank">
+            <div class="card product_item">
+                <div class="body">
+                    <div class="cp_img">
+                        <img src="{{item.product.image.url}}"  alt="{{item.product.title}} book cover" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </a>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}
