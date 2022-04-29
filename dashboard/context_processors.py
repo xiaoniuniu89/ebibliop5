@@ -12,6 +12,6 @@ def purchases(request):
 
 def billing_info(request):
     profile = Profile.objects.get(user=request.user)
-    return ({'user': profile})
+    return ({'billing': profile})
 
 

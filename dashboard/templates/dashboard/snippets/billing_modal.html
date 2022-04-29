@@ -16,16 +16,16 @@
     <div class="row">
         <div class="col-md-6 mb-3">
         <label for="firstName">First name</label>
-        {% if user.user.first_name %}
-            <input type="text" class="form-control" id="firstName" value={{user.user.first_name}} required>
+        {% if billing.user.first_name %}
+            <input type="text" class="form-control" id="firstName" value={{billing.user.first_name}} required>
         {% else %}
             <input type="text" class="form-control" id="firstName" placeholder="John" required>
         {% endif %}
         </div>
         <div class="col-md-6 mb-3">
         <label for="lastName">Last name</label>
-        {% if user.user.last_name %}
-            <input type="text" class="form-control" id="firstName" value={{user.user.last_name}} required>
+        {% if billing.user.last_name %}
+            <input type="text" class="form-control" id="firstName" value={{billing.user.last_name}} required>
         {% else %}
             <input type="text" class="form-control" id="firstName" placeholder="Doe" required>
         {% endif %}
@@ -34,8 +34,8 @@
 
     <div class="mb-3">
         <label for="email">Email <span class="text-muted">(required)</span></label>
-        {% if user.user.email %}
-            <input type="email" class="form-control" value={{user.user.email}} id="email" required>
+        {% if billing.user.email %}
+            <input type="email" class="form-control" value={{billing.user.email}} id="email" required>
         {% else %}
             <input type="email" class="form-control"  id="email" placeholder="you@example.com" required>
         {% endif %}
@@ -45,8 +45,8 @@
 
     <div class="mb-3">
         <label for="address">Address</label>
-        {% if user.address_line_one %}
-            <input type="text" class="form-control" id="address" value="{{user.address_line_one}}" required>
+        {% if billing.address_line_one %}
+            <input type="text" class="form-control" id="address" value="{{billing.address_line_one}}" required>
         {% else %}
             <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
         {% endif %}
@@ -55,8 +55,8 @@
 
     <div class="mb-3">
         <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-        {% if user.address_line_two %}
-            <input type="text" class="form-control" id="address" value="{{user.address_line_two}}" required>
+        {% if billing.address_line_two %}
+            <input type="text" class="form-control" id="address" value="{{billing.address_line_two}}" required>
         {% else %}
             <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
         {% endif %}
@@ -67,8 +67,8 @@
         <div class="col-md-5">
             <label for="country" class="form-label">Country</label>
             <select class="form-select" id="country" required>
-            {% if user.country %}
-                <option value="">{{user.country}}</option>
+            {% if billing.country %}
+                <option value="">{{billing.country}}</option>
             {% else %}
                 <option value="">Choose...</option>
             {% endif %}
@@ -81,8 +81,8 @@
             <div class="col-md-4">
             <label for="state" class="form-label">State</label>
             <select class="form-select" id="state" required>
-                {% if user.city %}
-                <option value="">{{user.city}}</option>
+                {% if billing.city %}
+                <option value="">{{billing.city}}</option>
                 {% else %}
                 <option value="">Choose...</option>
                 {% endif %}
@@ -94,8 +94,8 @@
             </div>
             <div class="col-md-3 pb-2">
             <label for="postcode" class="form-label">Zip/Postcode</label>
-            {% if user.postcode %}
-                <input type="text" class="form-control" id="postCode" value="{{user.postcode}}" required>
+            {% if billing.postcode %}
+                <input type="text" class="form-control" id="postCode" value="{{billing.postcode}}" required>
             {% else %}
                 <input type="text" class="form-control" id="postCode" placeholder="" required>
             {% endif %}
