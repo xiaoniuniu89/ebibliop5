@@ -11,7 +11,8 @@ def purchases(request):
     return ({'purchases': c_purchases})
 
 def billing_info(request):
-    profile = Profile.objects.get(user=request.user)
-    return ({'billing': profile})
-
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user=request.user)
+        return ({'billing': profile})
+    return ({'billing': None})
 
