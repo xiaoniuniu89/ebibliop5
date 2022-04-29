@@ -105,6 +105,14 @@ a:hover {
 	border-color: var(--orange) !important;
 }
 
+.product_item, .card {
+    border-radius: 6px
+}
+.cp_img img {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
 
 
 @media screen and (max-width: 765px) {

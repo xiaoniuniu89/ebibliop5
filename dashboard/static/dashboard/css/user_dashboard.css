@@ -1,0 +1,26 @@
+.badge {
+	line-height: 14px;
+}
+
+.badge-danger {
+	background: var(--orange);
+}
+
+.btn-danger, .btn-dash-shop {
+	background-color: var(--orange) !important;
+	border-color: var(--orange) !important;
+}
+
+.product_item, .cp_img img, .card {
+    border-radius: 6px;
+}
+
+.btn-dash-shop {
+    color: var(--white);
+}
+
+.btn-dash-shop:hover {
+    text-decoration: none;
+    background-color: var(--orange-hover)!important;
+    color: var(--white);
+}
