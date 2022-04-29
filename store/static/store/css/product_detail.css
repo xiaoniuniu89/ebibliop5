@@ -1,0 +1,8 @@
+.badge {
+	line-height: 14px;
+}
+
+.badge-danger {
+	background: var(--orange)!important;
+}
+

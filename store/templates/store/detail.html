@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+    <link rel='stylesheet' href="{% static 'store/css/product_detail.css' %}" />
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <main class="pt-5">
         <div class="row g-3">
-            <div class="col-md-5 col-lg-5 order-md-first bg-light">
+            <div class="col-md-5 col-lg-5 order-md-first ">
                 <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{ product.image.url }}">
             </div>
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
-                <h1 class="mb-0 h4">{{ product.title }}</h1>
-                <p><span class="lead">{{ product.author }}</span> (Author)</p>
+            <span class="badge badge-danger badge-danger-2  rounded-pill px-3 py-2 mb-2 font-weight-light">{{product.title}}</span>
+
+                <p><span class="lead font-weight-bold">{{ product.author }}</span> (Author)</p>
                 
                 <p>{{ product.description|slice:":355" }}...</p>
                 <div class="border">
                     <div class="col border-bottom">
                         <div class="row p-3">
-                            <div class="col-6"><span class="h4 fw-bold">£{{ product.price }}</span></div>
+                            <div class="col-6"><span class="h4 fw-bold">€{{ product.price }}</span></div>
                             <div class="col-6 text-end">
-                                <button type="button" id='add-btn' value={{product.id}} class="btn btn-secondary btn-sm">Add to
+                                <button type="button" id='add-btn' value={{product.id}} class="btn btn-info btn-sm">Add to
                                     basket
+                                </button>
+                                <button type="button" class="btn btn-success btn-sm">Add to
+                                    wishlist
                                 </button>
                             </div>
                         </div>
@@ -29,6 +37,11 @@
     </main>
 
 </div>
+
+{% include 'store/snippets/comments.html'%}
+{% block comments %}
+{% endblock %}
+
 
 <script>
     $(document).on('click', '#add-btn', function(e){
@@ -45,6 +58,7 @@
             success: function(json){
                 document.getElementById('basket-qty').innerHTML = json.qty
                 console.log(json.qty)
+                alert('Added to basket')
             },
             error: function(xhr, errmsg, err){}
         })
