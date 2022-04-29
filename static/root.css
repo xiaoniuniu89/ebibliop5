@@ -8,15 +8,18 @@
     --rose: rgb(155, 106, 108);
 }
 
+
 body {
     font-family: 'Alegreya Sans', sans-serif;
     margin-bottom: 300px;
-    
+    font-family: "Montserrat", sans-serif;
+	  color: var(--grey);
 }
 
 html {
   position: relative;
   min-height: 100%;
+  scroll-behavior: smooth!important;
 }
 
 /* navbar  */

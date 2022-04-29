@@ -1,39 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}E-biblio{% endblock %}
+
+{% block extra_css %}
+    <link rel='stylesheet' href="{% static 'store/css/landing.css' %}" />
+{% endblock %}
+
 {% block content %}
-<style>
- 
-</style>
-<main>
-<div class="jumbotron text-center">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-</div>
-<div class="card-deck">
- 
-</div>
 
-</main>
+{% include 'store/snippets/cta.html' %}
+{% block cta %}
 
-<div class="row row-cols-3 row-cols-md-4 mx-3">
-  {% for product in products %}
-  <div class=" col-3 mb-4">
-    <a href="{{product.get_absolute_url}}">
-      <div class="card h-100">
-        <img src="{{product.image.url}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{product.title}}</h5>
-          <p class="card-text text-muted">{{product.author}}</p>
-        </div>
-      </div>
-    </a>
-  </div>
-  {% endfor %}
-</div>
+{% endblock %}
+
+{% include 'store/snippets/books.html' %}
+{% block books %}
+
+{% endblock %}
+
+
 
 
 {% endblock %}

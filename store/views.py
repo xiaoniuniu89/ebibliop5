@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Category, Product
 
+
 def landing(request):
     """ render stoe landing page """
     products = Product.products.all()

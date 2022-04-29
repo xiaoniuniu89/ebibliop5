@@ -1,0 +1,245 @@
+@import url(//fonts.googleapis.com/css?family=Montserrat:300,500);
+.cta {
+  
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+.cta h1, .cta h2, .cta h3, .cta h4, .cta h5, .cta h6 {
+  color: #3e4555;
+}
+
+.cta .badge {
+	line-height: 14px;
+}
+
+.cta .badge-danger {
+	background: var(--orange);
+}
+
+.cta .btn-danger {
+	background-color: var(--orange) !important;
+	border-color: var(--orange) !important;
+}
+
+.cta .wrap-land .sign-up-btn {
+  position: relative;
+}
+
+.cta .wrap-land .sign-up-btn span.display-1 {
+  font-weight: 500;
+  opacity: 0.15;
+}
+
+.cta .wrap-land .sign-up-btn a {
+  position: absolute;
+  left: 40px;
+  top: 20px;
+  color: #263238;
+  font-weight: 500;
+}
+
+.cta .wrap-land .sign-up-btn a span {
+  -webkit-box-shadow: 2px 8px 20px rgba(255, 77, 126, 0.5);
+  box-shadow: 2px 8px 20px rgba(255, 77, 126, 0.5);
+}
+
+.cta .wrap-land .sign-up-btn a:hover {
+  color: var(--orange);
+}
+
+.cta a {
+	text-decoration: none;
+}
+
+.cta .btn-md {
+    padding: 18px 0px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.cta img {
+  object-fit: contain;
+  width: 100%;
+  max-height: 600px;
+}
+
+
+
+a {
+    color: var(--grey);
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--orange);
+}
+
+.book-wrapper img {
+    object-fit: contain;
+    width: 100%;
+    max-height: 550px;
+}
+
+.book-wrapper {
+    max-width: 300px;
+}
+
+.books-wrapper {
+    width: 90%!important;
+    max-width: 1400px!important;
+    margin: 1em auto!important;
+}
+
+.badge {
+	line-height: 14px;
+}
+
+.badge-danger {
+	background: var(--orange);
+}
+
+.btn-danger {
+	background-color: var(--orange) !important;
+	border-color: var(--orange) !important;
+}
+
+
+
+@media screen and (max-width: 765px) {
+  .cta {
+    min-height: none;
+  }
+}
+
+
+@media screen and (max-width: 575px) {
+  .card {
+    max-width: 300px;
+    margin-inline: auto;
+  }
+
+  .badge-danger-2 {
+    margin-left: 4em!important;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .display-1 {
+    display: none;
+  }
+  .badge-danger-2 {
+    margin-left: 0!important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+.product_item:hover .cp_img {
+    top: -100px
+}
+
+.product_item:hover .cp_img img {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)
+}
+
+.product_item:hover .cp_img .hover {
+    display: block
+}
+
+.product_item .cp_img {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    -khtml-transform: translate(-50%);
+    width: 100%;
+    padding: 15px;
+    transition: all 0.2s ease-in-out
+}
+
+.product_item .cp_img img {
+    transition: all 0.2s ease-in-out;
+    border-radius: 6px
+}
+
+.product_item .cp_img .hover {
+    display: none;
+    text-align: center;
+    margin-top: 10px
+}
+
+.product_item .product_details {
+    padding-top: 110%;
+    text-align: center
+}
+
+.product_item .product_details h5 {
+    margin-bottom: 5px
+}
+
+.product_item .product_details h5 a {
+    font-size: 16px;
+    color: #444
+}
+
+.product_item .product_details h5 a:hover {
+    text-decoration: none
+}
+
+.product_item .product_details .product_price {
+    margin: 0
+}
+
+.product_item .product_details .product_price li {
+    display: inline-block;
+    padding: 0 10px
+}
+
+.product_item_list table tr td {
+    vertical-align: middle
+}
+
+.product_item_list table tr td h5 {
+    font-size: 15px;
+    margin: 0
+}
+
+.product_item_list table tr td .btn {
+    box-shadow: none !important
+}
+
+.product-order-list table tr th:last-child {
+    width: 145px
+}
+
+@-webkit-keyframes opacity {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(3);
+        transform: scale(3)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(3);
+        transform: scale(3)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+}
