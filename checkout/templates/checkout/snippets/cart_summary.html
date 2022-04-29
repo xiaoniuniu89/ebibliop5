@@ -28,14 +28,9 @@
     </li>
     </ul>
 
-    <form class="card p-2">
-    <div class="input-group">
-        <input type="text" id='promo-code-input' class="form-control" placeholder="Promo code">
-        <div class="input-group-append">
-        <button type="submit" id='promo-btn' class="btn btn-secondary" required>Redeem</button>
-        </div>
-    </div>
-    </form>
+
+    <a type="button" role="button" href="{% url "basket:basket_summary" %}" class="btn btn-primary ml-lg-2">Edit Basket</a>
+
     
 </div>
 
