@@ -11,7 +11,11 @@
     </div>
     
     <div class="col-6 mt-2 ">
+    {% if user_review %}
+        <button type="button" disabled id="add-review-modal-btn" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
+    {% else %}
         <button type="button" id="add-review-modal-btn" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
+    {% endif %}
     </div>
     
 
@@ -20,18 +24,20 @@
     {% endblock %}
 
 </div>
+
     <hr class="mb-4">
     <div class="temp-review-wrapper"></div>
-    {% for review in user_review %}
+    {% if user_review %}
     <div class="media row text-muted pt-3">
         <p class="media-body pb-3 mb-0 small lh-125 ">
-        <strong class="d-block text-gray-dark">@{{review.user.username}} - {{review.rating}}</strong>
+        <strong class="d-block text-gray-dark">@{{user_review.user.username}} - {{user_review.rating}}</strong>
         </p>
     </div>
     <div class="row border-bottom pb-3 mb-0 border-gray">
-        {{review.review|linebreaksbr}}
+        {{user_review.review|linebreaksbr}}
     </div>
-    {% endfor %}
+    {% endif %}
+
     {% for review in reviews %}
     <div class="media row text-muted pt-3">
         <p class="media-body pb-3 mb-0 small lh-125 ">
