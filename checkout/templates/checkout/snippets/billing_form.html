@@ -14,9 +14,9 @@
         <div class="col-md-6 mb-3">
         <label for="lastName">Last name</label>
         {% if billing.user.last_name %}
-            <input type="text" class="form-control" id="firstName" value={{billing.user.last_name}} required>
+            <input type="text" class="form-control" id="lastName" value={{billing.user.last_name}} required>
         {% else %}
-            <input type="text" class="form-control" id="firstName" placeholder="Doe" required>
+            <input type="text" class="form-control" id="lastName" placeholder="Doe" required>
         {% endif %}
         </div>
     </div>
@@ -45,7 +45,7 @@
     <div class="mb-3">
         <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
         {% if billing.address_line_two %}
-            <input type="text" class="form-control" id="address" value="{{billing.address_line_two}}" required>
+            <input type="text" class="form-control" id="address2" value="{{billing.address_line_two}}" required>
         {% else %}
             <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
         {% endif %}
