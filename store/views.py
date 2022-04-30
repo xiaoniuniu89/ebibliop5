@@ -13,7 +13,10 @@ def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     reviews = Review.objects.filter(product=product).exclude(user=request.user)
-    user_review = get_object_or_404(Review, user=request.user, product=product)
+    try:
+        user_review = Review.objects.filter(user=request.user, product=product)[0]
+    except IndexError:
+        user_review = None
     return render(
         request,
         'store/detail.html',
