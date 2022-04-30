@@ -1,4 +1,4 @@
-.comment-area textarea {
+.review-content textarea {
     resize: none;
     border: 1px solid var(--grey)
 }
@@ -44,4 +44,8 @@
 
 .rating:hover>input:checked~label:before {
     opacity: 0.4
+}
+
+textarea {
+    resize: none !important;;
 }

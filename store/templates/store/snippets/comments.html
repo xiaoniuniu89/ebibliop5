@@ -11,7 +11,7 @@
     </div>
     
     <div class="col-6 mt-2 ">
-        <button type="button" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
+        <button type="button" id="add-review-modal-btn" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
     </div>
     
 
@@ -21,12 +21,25 @@
 
 </div>
     <hr class="mb-4">
-    {% for review in reviews %}
-    <div class="media text-muted pt-3">
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+    <div class="temp-review-wrapper"></div>
+    {% for review in user_review %}
+    <div class="media row text-muted pt-3">
+        <p class="media-body pb-3 mb-0 small lh-125 ">
         <strong class="d-block text-gray-dark">@{{review.user.username}} - {{review.rating}}</strong>
-        {{review.review}}
         </p>
+    </div>
+    <div class="row border-bottom pb-3 mb-0 border-gray">
+        {{review.review|linebreaksbr}}
+    </div>
+    {% endfor %}
+    {% for review in reviews %}
+    <div class="media row text-muted pt-3">
+        <p class="media-body pb-3 mb-0 small lh-125 ">
+        <strong class="d-block text-gray-dark">@{{review.user.username}} - {{review.rating}}</strong>
+        </p>
+    </div>
+    <div class="row border-bottom pb-3 mb-0 border-gray">
+        {{review.review|linebreaksbr}}
     </div>
     {% endfor %}
 
