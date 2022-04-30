@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from .models import Category, Product
+from .models import Category, Product, Review
 
 
 def landing(request):
@@ -11,7 +11,8 @@ def landing(request):
 def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
-    return render(request, 'store/detail.html', {'product': product})
+    reviews = Review.objects.filter(product=product)
+    return render(request, 'store/detail.html', {'product': product, 'reviews': reviews})
 
 def category_list(request, category_slug):
     """ render list of books in a category """

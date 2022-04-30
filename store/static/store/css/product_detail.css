@@ -6,3 +6,6 @@
 	background: var(--orange)!important;
 }
 
+img {
+	border-radius: 6px;
+}

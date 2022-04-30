@@ -11,17 +11,24 @@
     </div>
     
     <div class="col-6 mt-2 ">
-        <button type="button" class="btn add-review-btn btn-info btn-sm">Add review</button>
+        <button type="button" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
     </div>
+    
+
+    {% include 'store/snippets/review.html' %}
+    {% block review_modal %}
+    {% endblock %}
+
 </div>
     <hr class="mb-4">
-
+    {% for review in reviews %}
     <div class="media text-muted pt-3">
         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">@username</strong>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+        <strong class="d-block text-gray-dark">@{{review.user.username}} - {{review.rating}}</strong>
+        {{review.review}}
         </p>
     </div>
+    {% endfor %}
 
 </div>
 
