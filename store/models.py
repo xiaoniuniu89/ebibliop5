@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from .utils import image_resize, unique_slugify
 from django.utils.text import slugify
+from dashboard.models import Profile
 
 class ProductManager(models.Manager):
     """ manager to replace objects manager """
@@ -73,3 +74,21 @@ class Product(models.Model):
         if Product.objects.filter(slug=self.slug).exists():
             self.slug = unique_slugify(self, slugify(self.title))
         super().save(*args, **kwargs)
+
+
+class Review(models.Model):
+    """ model to create reviews and ratings on individual products"""
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.FloatField()
+    review = models.TextField(max_length=800, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-updated_on', '-created_on', )
+
+    def __str__(self):
+        return f'review for {self.product} by {self.user}'
+    
+    
