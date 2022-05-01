@@ -2,6 +2,7 @@
 {% block extra_css %}
     <link rel='stylesheet' href="{% static 'store/css/reviews.css' %}" />
 {% endblock %}
+
 {% block comments %}
 
 <div class="container col-8 py-5" >
@@ -17,26 +18,24 @@
         <button type="button" id="add-review-modal-btn" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
     {% endif %}
     </div>
-    
-
-    
-
 </div>
 
     <hr class="mb-4">
     <div class="temp-review-wrapper"></div>
     {% if user_review %}
-    <div id="user-review-wrapper" class="media row text-muted py-3 col-9">
-        <strong class="d-block text-gray-dark">@{{user_review.user.username}} - </strong>
-        <i class="fas fa-star mx-1 "><p class="c-rate">{{user_review.rating}}</p></i>
-        <div class="edit-delete-comment">
-            <i id="edit-review-btn" class="fas px-2 fa-edit"></i>
-            <i data-toggle="modal" data-target="#delete_review_modal" id="delete-review-btn" class="fas fa-trash-alt"></i>
-        </div>  
-    </div>
-    
-    <div class="row border-bottom pb-3 mb-0 border-gray">
-        {{user_review.review|linebreaksbr}}
+    <div id="user-review-info-wrapper">
+        <div class="media row text-muted py-3 col-9">
+            <strong class="d-block text-gray-dark">@{{user_review.user.username}} - </strong>
+            <i class="fas fa-star mx-1 "><p class="c-rate">{{user_review.rating}}</p></i>
+            <div class="edit-delete-comment">
+                <i data-toggle="modal" data-target="#update-review-modal" id="update-review-btn" class="fas px-2 fa-edit"></i>
+                <i data-toggle="modal" data-target="#delete-review-modal" id="delete-review-btn" class="fas fa-trash-alt"></i>
+            </div>
+        </div>
+        
+        <div id="user-review-body-wrapper" class="row border-bottom pb-3 mb-0 border-gray">
+            {{user_review.review|linebreaksbr}}
+        </div>
     </div>
     {% endif %}
 
@@ -54,7 +53,7 @@
 </div>
 
 {% include 'store/snippets/modals.html' %}
-    {% block review_modal %}
-{% endblock %}
+
+
 
 {% endblock %}

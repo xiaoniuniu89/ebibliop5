@@ -5,6 +5,7 @@
 {% block extra_head_js %}
 {% endblock %}
 
+{% block 'modals' %}
 {% include 'store/snippets/modals/create_review.html' %}
 
 {% block create_modal %}{% endblock %}
@@ -16,3 +17,5 @@
 {% include 'store/snippets/modals/delete_review.html' %}
 
 {% block delete_modal %}{% endblock %}
+
+{% endblock %}

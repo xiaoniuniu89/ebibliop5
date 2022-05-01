@@ -17,11 +17,7 @@ const updateReview = (user, review, rating) => {
     if(document.getElementById('user-review-info-wrapper')){
 
         if(! document.getElementById('user-review-info-wrapper').innerHTML == ''){
-
             document.getElementById('user-review-info-wrapper').innerHTML = ''
-            document.getElementById('user-review-body-wrapper').innerHTML = ''
-            document.getElementById('user-review-body-wrapper').style.border = 'none'
-            document.getElementById('temp-review').style.border = 'none'
         }
     }
     document.querySelector('.temp-review-wrapper').innerHTML = `
@@ -29,7 +25,7 @@ const updateReview = (user, review, rating) => {
     <strong class="d-block text-gray-dark">@${user} - </strong>
     <i class="fas fa-star mx-1 "><p class="c-rate">${rating}</p></i>
     <div class="edit-delete-comment">
-        <i data-toggle="modal" data-target="#delete-review-modal" id="edit-review-btn" class="fas px-2 fa-edit"></i>
+        <i data-toggle="modal" data-target="#update-review-modal" id="edit-review-btn" class="fas px-2 fa-edit"></i>
         <i data-toggle="modal" data-target="#delete-review-modal" id="delete-review-btn" class="fas fa-trash-alt"></i>
     </div>  
 </div>

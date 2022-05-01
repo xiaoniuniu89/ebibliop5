@@ -38,6 +38,20 @@ def add_review(request):
         )
         response = JsonResponse({'rating': rating, 'review': review})
         return response
+    
+    if request.POST.get('action') == 'update':
+        product_id = request.POST.get('product_id')
+        print(product_id)
+        product = Product.objects.get(pk=product_id)
+        user = User.objects.get(id=request.user.id)
+        rating = request.POST.get('rating')
+        review = request.POST.get('review')
+        instance = Review.objects.filter(user=user, product=product)[0]
+        instance.rating=rating
+        instance.review=review
+        instance.save()
+        response = JsonResponse({'rating': rating, 'review': review})
+        return response
 
 def delete_review(request):
     if request.POST.get('action') == 'post':

@@ -53,6 +53,8 @@
                 action: 'post'
             },
             success: function(json){
+                $("input[type='radio'][name='rating']:checked")[0].checked = false
+                $('#review-content').val('')
                 let user = '{{request.user.username}}'
                 let review = json.review
                 let rating = json.rating
