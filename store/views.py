@@ -39,6 +39,20 @@ def add_review(request):
         response = JsonResponse({'rating': rating, 'review': review})
         return response
 
+def delete_review(request):
+    if request.POST.get('action') == 'post':
+        product_id = request.POST.get('product_id')
+        product = get_object_or_404(Product, id=product_id)
+        user = User.objects.get(id=request.user.id)
+        review = get_object_or_404(Review, product=product, user=user)
+        review.delete()
+        response = JsonResponse({'msg': 'Deleted Succesfully'})
+        return response
+
+
+
+
+
 def category_list(request, category_slug):
     """ render list of books in a category """
     category = get_object_or_404(Category, slug=category_slug)

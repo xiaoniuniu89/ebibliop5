@@ -61,7 +61,7 @@ nav a:hover {
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   /* Set the fixed height of the footer here */
   height: 300px;
 }
