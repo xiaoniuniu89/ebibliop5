@@ -19,21 +19,19 @@
     {% endif %}
     </div>
 </div>
-
-    <hr class="mb-4">
     <div class="temp-review-wrapper"></div>
     {% if user_review %}
     <div id="user-review-info-wrapper">
-        <div class="media row text-muted py-3 col-9">
+        <div class="media row text-muted py-3 col-12 border-top bg-light">
             <strong class="d-block text-gray-dark">@{{user_review.user.username}} - </strong>
-            <i class="fas fa-star mx-1 "><p class="c-rate">{{user_review.rating}}</p></i>
+            <i class="fas fa-star mx-1"><p class="c-rate">{{user_review.rating}}</p></i>
             <div class="edit-delete-comment">
                 <i data-toggle="modal" data-target="#update-review-modal" id="update-review-btn" class="fas px-2 fa-edit"></i>
                 <i data-toggle="modal" data-target="#delete-review-modal" id="delete-review-btn" class="fas fa-trash-alt"></i>
             </div>
         </div>
         
-        <div id="user-review-body-wrapper" class="row border-bottom pb-3 mb-0 border-gray">
+        <div id="user-review-body-wrapper" class="row bg-light border-bottom pb-3 mb-0 border-gray col-12">
             {{user_review.review|linebreaksbr}}
         </div>
     </div>
@@ -41,9 +39,8 @@
 
     {% for review in reviews %}
     <div class="media row text-muted pt-3">
-        <p class="media-body pb-3 mb-0 small lh-125 ">
-        <strong class="d-block text-gray-dark">@{{review.user.username}} - {{review.rating}}</strong>
-        </p>
+        <strong class="d-block text-gray-dark">@{{review.user.username}} - </strong>
+        <i class="fas fa-star mx-1 "><p class="c-rate">{{review.rating}}</p></i>
     </div>
     <div class="row border-bottom pb-3 mb-0 border-gray">
         {{review.review|linebreaksbr}}
