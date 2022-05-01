@@ -28,10 +28,15 @@
     <hr class="mb-4">
     <div class="temp-review-wrapper"></div>
     {% if user_review %}
-    <div class="media row text-muted pt-3">
+    <div class="media row text-muted py-3 col-9">
         <strong class="d-block text-gray-dark">@{{user_review.user.username}} - </strong>
         <i class="fas fa-star mx-1 "><p class="c-rate">{{user_review.rating}}</p></i>
+        <div class="edit-delete-comment">
+            <i class="fas px-2 fa-edit"></i>
+            <i class="fas fa-trash-alt"></i>
+        </div>  
     </div>
+    
     <div class="row border-bottom pb-3 mb-0 border-gray">
         {{user_review.review|linebreaksbr}}
     </div>

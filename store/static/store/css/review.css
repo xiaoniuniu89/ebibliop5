@@ -67,3 +67,8 @@ textarea {
     font-size: .8rem;
 }
 
+.edit-delete-comment {
+    position: absolute;
+    right: 0;
+}
+
