@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .utils import image_resize, unique_slugify
@@ -80,7 +81,8 @@ class Review(models.Model):
     """ model to create reviews and ratings on individual products"""
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.FloatField()
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
     review = models.TextField(max_length=800, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

@@ -49,3 +49,21 @@
 textarea {
     resize: none !important;;
 }
+
+.fa-star {
+    color: var(--orange);
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 3px;}
+
+.c-rate {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0; bottom: 0;
+    right: 0; top: 6.5px;
+    text-align: center;
+    color: var(--grey);
+    font-size: .8rem;
+}
+

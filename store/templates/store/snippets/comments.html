@@ -29,9 +29,8 @@
     <div class="temp-review-wrapper"></div>
     {% if user_review %}
     <div class="media row text-muted pt-3">
-        <p class="media-body pb-3 mb-0 small lh-125 ">
-        <strong class="d-block text-gray-dark">@{{user_review.user.username}} - {{user_review.rating}}</strong>
-        </p>
+        <strong class="d-block text-gray-dark">@{{user_review.user.username}} - </strong>
+        <i class="fas fa-star mx-1 "><p class="c-rate">{{user_review.rating}}</p></i>
     </div>
     <div class="row border-bottom pb-3 mb-0 border-gray">
         {{user_review.review|linebreaksbr}}
