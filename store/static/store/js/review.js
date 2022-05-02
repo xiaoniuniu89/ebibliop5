@@ -1,11 +1,17 @@
 const addReview = (user, review, rating) => {
+    
     document.querySelector('#add-review-modal-btn').disabled = true
+    if(document.getElementById('user-review-info-wrapper')){
+        if(! document.getElementById('user-review-info-wrapper').innerHTML == ''){
+            document.getElementById('user-review-info-wrapper').innerHTML = ''
+        }
+    }
     document.querySelector('.temp-review-wrapper').innerHTML = `
 <div class="media row  text-muted py-3 col-12 bg-light border-top">
     <strong class="d-block text-gray-dark">@${user} - </strong>
     <i class="fas fa-star mx-1 "><p class="c-rate">${rating}</p></i>
     <div class="edit-delete-comment">
-        <i data-toggle="modal" data-target="#update-review-modal" id="edit-review-btn" class="fas px-2 fa-edit"></i>
+        <i data-toggle="modal" data-target="#review-modal" id="edit-review-btn" class="fas px-2 fa-edit"></i>
         <i data-toggle="modal" data-target="#delete-review-modal" id="delete-review-btn" class="fas fa-trash-alt"></i>
     </div>  
 </div>
@@ -48,4 +54,8 @@ const deleteReview = () => {
         document.querySelector('#add-review-modal-btn').disabled = false
     }
     document.querySelector('#add-review-modal-btn').disabled = false
+    elem.setAttribute('data-action', 'post')
+    let action = elem.getAttribute('data-action');
+
+
 }

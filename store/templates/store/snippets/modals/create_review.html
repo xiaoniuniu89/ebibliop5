@@ -27,7 +27,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="save-review-btn" class="btn btn-primary">Save changes</button>
+        {% if user_review %}
+          <button type="button" id="save-review-btn" data-action='update' class="btn btn-primary">Save changes</button>
+        {% else %}
+          <button type="button" id="save-review-btn" data-action='post' class="btn btn-primary">Save changes</button>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -35,12 +39,14 @@
     
 
 <script>
-
+      const elem = document.getElementById('save-review-btn');
     $(document).on('click', '#save-review-btn', function(e){
         if(!$("input[type='radio'][name='rating']:checked").val()){
           $('#val-stars').removeClass('d-none')
           document.querySelector("#one").checked = true
         } else {
+            let action = elem.getAttribute('data-action');
+
             $('#review-modal').modal('hide');
             $.ajax({
             type: 'POST',
@@ -50,11 +56,15 @@
                 rating: $("input[type='radio'][name='rating']:checked").val(),
                 review: $('#review-content').val(),
                 csrfmiddlewaretoken: "{{csrf_token}}",
-                action: 'post'
+                action: action
             },
             success: function(json){
-                $("input[type='radio'][name='rating']:checked")[0].checked = false
-                $('#review-content').val('')
+                let action = elem.getAttribute('data-action');
+                
+                if(action == 'post'){
+                  elem.setAttribute('data-action', 'update')
+                }
+                action = elem.getAttribute('data-action');
                 let user = '{{request.user.username}}'
                 let review = json.review
                 let rating = json.rating

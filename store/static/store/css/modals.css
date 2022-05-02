@@ -1,22 +1,22 @@
 .review-content textarea {
     resize: none;
-    border: 1px solid var(--grey)
+    border: 1px solid var(--grey);
 }
 
 .form-control:focus {
     color: var(--grey);
     outline: 0;
-    box-shadow: 0 0 0 1px var(--grey) !important
+    box-shadow: 0 0 0 1px var(--grey) !important;
 }
 
 .rating {
     display: inline-flex;
     margin-top: -10px;
-    flex-direction: row-reverse
+    flex-direction: row-reverse;
 }
 
 .rating>input {
-    display: none
+    display: none;
 }
 
 .rating>label {
@@ -24,28 +24,28 @@
     width: 28px;
     font-size: 35px;
     color: var(--orange);
-    cursor: pointer
+    cursor: pointer;
 }
 
 .rating>label::before {
     content: "\2605";
     position: absolute;
-    opacity: 0
+    opacity: 0;
 }
 
 .rating>label:hover:before,
 .rating>label:hover~label:before {
-    opacity: 1 !important
+    opacity: 1 !important;
 }
 
 .rating>input:checked~label:before {
-    opacity: 1
+    opacity: 1;
 }
 
 .rating:hover>input:checked~label:before {
-    opacity: 0.4
+    opacity: 0.4;
 }
 
 textarea {
-    resize: none !important;;
+    resize: none !important;
 }

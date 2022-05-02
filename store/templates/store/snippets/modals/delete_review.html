@@ -22,6 +22,7 @@
 </div>
 <script>
 
+
     $(document).on('click', '#confirm-delete-btn', function(e){
         $.ajax({
         type: 'POST',
@@ -33,6 +34,11 @@
         },
         success: function(json){
             deleteReview()
+            if($("input[type='radio'][name='rating']:checked").length == 1)
+              {
+                $("input[type='radio'][name='rating']:checked")[0].checked = false
+              }
+            $('#review-content').val('')
         },
         error: function(xhr, errmsg, err){}
     })
