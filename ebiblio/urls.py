@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from store.admin import store_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('store-admin/', store_site.urls, name='store_site'),
     path('', include('store.urls', namespace='store')),
     path('dashboard/', include('dashboard.urls', namespace='dashboard')),
     path('basket/', include('basket.urls', namespace='basket')),
@@ -26,3 +28,9 @@ urlpatterns = [
     path('promotions/', include('promotions.urls', namespace='promotions')),
     path('accounts/', include('allauth.urls')),
 ]
+
+admin.site.index_title = "E-biblio"
+admin.site.site_header = "E-biblio Admin"
+admin.site.site_title = "Admin"
+
+
