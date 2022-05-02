@@ -12,10 +12,15 @@ def landing(request):
 def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
-    reviews = Review.objects.filter(product=product).exclude(user=request.user)
+    try:
+        reviews = Review.objects.filter(product=product).exclude(user=request.user)
+    except TypeError:
+        reviews = Review.objects.all()
     try:
         user_review = Review.objects.filter(user=request.user, product=product)[0]
     except IndexError:
+        user_review = None
+    except TypeError:
         user_review = None
     return render(
         request,
