@@ -47,15 +47,12 @@ def add_order(request):
 
 
 def payment_confirmation(data):
-    order = Order.objects.filter(order_key=data)
-    order.billing_status = True
-    order_items = OrderItem.objects.filter(order=order)
-    order_items_url = [item.product.pdf.url for item in order_items]
+    Order.objects.filter(order_key=data).update(billing_status=True)
     send_mail(
-        subject='Your E-biblio books',
-        message=f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items_url)} Enjoy 20% off your next purchase with the discount code EBIBLIO20.' ,
+        subject='Subject here',
+        message='Here is the message.',
         from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[order.user.email, ],
+        recipient_list=['dan_cal89@hotmail.com', ],
         fail_silently=False,
     )
 
