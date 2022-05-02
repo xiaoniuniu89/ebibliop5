@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from .utils import image_resize, unique_slugify
 from django.utils.text import slugify
 from dashboard.models import Profile
+from django.urls import reverse
+
 
 class ProductManager(models.Manager):
     """ manager to replace objects manager """
@@ -36,13 +38,8 @@ class Product(models.Model):
         Category, related_name='product',
         on_delete=models.CASCADE
     )
-    created_by = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='product_creator'
-    )
-    title = models.CharField(max_length=255, default='admin')
-    author = models.CharField(max_length=255, default='admin')
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/',
@@ -53,6 +50,9 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    rating_score = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    rating_count = models.IntegerField()
     objects = models.Manager()
     products = ProductManager()
     
@@ -61,11 +61,9 @@ class Product(models.Model):
         verbose_name_plural = 'Products'
         ordering = ('-created',)
         
-        
     def get_absolute_url(self):
         """ returns url for product detail page """
         return reverse("store:product_detail", args=[self.slug])
-    
     
     def __str__(self):
         return self.title
