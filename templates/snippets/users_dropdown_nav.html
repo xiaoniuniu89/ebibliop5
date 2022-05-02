@@ -1,21 +1,19 @@
 {% block users_dropdown_nav %}
 <li><a class="dropdown-item dropdown-toggle" href="#">Users</a>
     <ul class="dropdown-menu">
-
-        <li><a class="dropdown-item" href="#">All</a></li>
-        <li><a class="dropdown-item" href="#">Add user</a></li>
-        <li><a class="dropdown-item" href="#">Edit user</a></li>
-        <li><a class="dropdown-item" href="#">Social accounts</a></li>
+        <li><a class="dropdown-item" href="{% url 'admin:auth_user_add' %}">Add user</a></li>
+        <li><a class="dropdown-item" href="{% url 'admin:auth_user_changelist' %}">Edit user</a></li>
+        <li><a class="dropdown-item" href="{% url 'admin:socialaccount_socialaccount_changelist' %}">Social accounts</a></li>
         <li><a class="dropdown-item dropdown-toggle" href="#">Email addresses</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Add email</a></li>
-                <li><a class="dropdown-item" href="#">Edit email</a></li>
+                <li><a class="dropdown-item" href="{% url 'admin:account_emailaddress_add' %}">Add email</a></li>
+                <li><a class="dropdown-item" href="{% url 'admin:account_emailaddress_changelist' %}">Edit email</a></li>
             </ul>
         </li>
         <li><a class="dropdown-item dropdown-toggle" href="#">Profiles</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">User profiles</a></li>
-                <li><a class="dropdown-item" href="#">Wishlists</a></li>
+                <li><a class="dropdown-item" href="{% url 'admin:dashboard_profile_changelist' %}">User profiles</a></li>
+                <li><a class="dropdown-item" href="{% url 'admin:dashboard_wishlist_changelist' %}">Wishlists</a></li>
             </ul>
         </li>
     </ul>

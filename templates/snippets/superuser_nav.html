@@ -4,7 +4,7 @@
     Admin
 </a>
 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    <li><a class="dropdown-item" href="#">Dashboard</a></li>            
+    <li><a class="dropdown-item" href="{% url 'admin:index' %}">Dashboard</a></li>            
     {% include 'snippets/users_dropdown_nav.html' %}
     {% include 'snippets/products_dropdown_nav.html' %}
     {% include 'snippets/orders_dropdown_nav.html' %}
