@@ -9,7 +9,7 @@ def dashboard(request):
     if request.user.is_superuser:
         return redirect('admin:index')
     elif request.user.is_staff:
-        return redirect("store_admin:index")
+        return redirect("admin:index")
     return render(request, 'dashboard/dashboard.html')
 
 

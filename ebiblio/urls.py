@@ -15,11 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from store.admin import store_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('store-admin/', store_site.urls, name='store_site'),
     path('', include('store.urls', namespace='store')),
     path('dashboard/', include('dashboard.urls', namespace='dashboard')),
     path('basket/', include('basket.urls', namespace='basket')),
