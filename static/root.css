@@ -55,6 +55,10 @@ nav a:hover {
 
 }
 
+.dropdown-toggle.active-dropdown::after {
+    transform: rotate(-90deg)!important;
+}
+
 /* end navbar  */
 
 /* footer  */

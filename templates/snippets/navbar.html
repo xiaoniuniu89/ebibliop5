@@ -33,42 +33,25 @@
             </li>
         {% else %}
             {% if request.user.is_staff%}
+
                 {% if request.user.is_superuser%}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url "admin:index" %}">Dashboard</a>
-                        <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                      
-                    </div>
-                </li>
-                {% else %}
+                
+                        
+                    {% include 'snippets/superuser_nav.html' %}
+                        
             
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url "store_admin:index" %}">Dashboard</a>
-                        {% for cat in categories_list %} 
-                            <a class="dropdown-item" href="{{ cat.get_absolute_url }}">{{ cat.name|title }}</a>
-                        {% endfor %}
-                    </div>
-                </li>
-            {% endif %}
+                {% else %}
+
+
+                    {% include 'snippets/staff_nav.html' %}
+                
+                {% endif %}
 
             </div>
            
             {% else %}
 
-            <li class="nav-item">
-                <a class="nav-link nav-pad" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-pad" href="{% url 'account_logout' %}">Logout</a>
-            </li>
+                {% include 'snippets/user_nav.html' %}
 
              {% endif %}
             {% endif %}
@@ -102,5 +85,7 @@
 
     </div>
 </nav>
+<script src="{% static 'navbar.js'%}"> </script>
 
 {% endblock %}
+

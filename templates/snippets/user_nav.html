@@ -1,0 +1,8 @@
+{% block user_nav %}
+<li class="nav-item">
+    <a class="nav-link nav-pad" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link nav-pad" href="{% url 'account_logout' %}">Logout</a>
+</li>
+{% endblock %}
