@@ -57,7 +57,7 @@
             $('#review-modal').modal('hide');
             $.ajax({
             type: 'POST',
-            url: '{% url "store:add_review" %}',
+            url: '{% url "store:handle_review" %}',
             data: {
                 product_id: $("#add-btn").val(),
                 rating: $("input[type='radio'][name='rating']:checked").val(),

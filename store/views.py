@@ -13,11 +13,13 @@ def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     try:
-        reviews = Review.objects.filter(product=product).exclude(user=request.user)
+        reviews = Review.objects.filter(
+            product=product).exclude(user=request.user)
     except TypeError:
         reviews = Review.objects.all()
     try:
-        user_review = Review.objects.filter(user=request.user, product=product)[0]
+        user_review = Review.objects.filter(
+            user=request.user, product=product)[0]
     except IndexError:
         user_review = None
     except TypeError:
@@ -27,7 +29,8 @@ def product_detail(request, slug):
         'store/detail.html',
         {'product': product, 'reviews': reviews, 'user_review': user_review})
 
-def add_review(request):
+def handle_review(request):
+    """ Ajax call to handle creating and updating a review """
     if request.POST.get('action') == 'post':
         product_id = request.POST.get('product_id')
         print(product_id)
@@ -52,13 +55,14 @@ def add_review(request):
         rating = request.POST.get('rating')
         review = request.POST.get('review')
         instance = Review.objects.filter(user=user, product=product)[0]
-        instance.rating=rating
-        instance.review=review
+        instance.rating = rating
+        instance.review = review
         instance.save()
         response = JsonResponse({'rating': rating, 'review': review})
         return response
 
 def delete_review(request):
+    """ Ajax Call to delete users review """
     if request.POST.get('action') == 'post':
         product_id = request.POST.get('product_id')
         product = get_object_or_404(Product, id=product_id)
@@ -69,9 +73,6 @@ def delete_review(request):
         return response
 
 
-
-
-
 def category_list(request, category_slug):
     """ render list of books in a category """
     category = get_object_or_404(Category, slug=category_slug)
@@ -80,6 +81,7 @@ def category_list(request, category_slug):
         request,
         'store/category.html',
         {'category': category, 'products': products})
+
 
 def search(request):
     """ returns search results for a book from search bar in nav"""
