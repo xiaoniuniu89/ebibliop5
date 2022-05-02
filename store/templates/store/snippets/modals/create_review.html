@@ -13,7 +13,7 @@
         <div class=" text-center ">
 
           <h2>What is your rating?</h2>
-            <div class="rating pt-">
+            <div class="rating">
               
                 <input type="radio" name="rating" value="5" id="5" required><label for="5">☆</label>
                 <input type="radio" name="rating" value="4" id="4" required><label for="4">☆</label>
@@ -36,6 +36,13 @@
     </div>
   </div>
 </div>
+{% if user_review %}
+<script>
+    $("input[type='radio'][name='rating'][id='{{user_review.rating}}']").attr('checked', true)
+    $('#review-content').val('{{user_review.review}}')
+
+</script>
+{% endif %}
     
 
 <script>
