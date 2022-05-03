@@ -6,7 +6,7 @@ from .utils import image_resize, unique_slugify
 from django.utils.text import slugify
 from dashboard.models import Profile
 from django.urls import reverse
-
+import uuid
 
 class ProductManager(models.Manager):
     """ manager to replace objects manager """
@@ -46,12 +46,12 @@ class Product(models.Model):
     )
     pdf = models.FileField(upload_to='pdf/', blank=False)
     slug = models.SlugField(max_length=255)
+    slug_end = models.UUIDField(default=uuid.uuid4)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     in_stock = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    rating_score = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    rating_score = models.IntegerField()
     rating_count = models.IntegerField()
     objects = models.Manager()
     products = ProductManager()
@@ -70,9 +70,19 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         image_resize(self.image, 512, 512)
-        if Product.objects.filter(slug=self.slug).exists():
-            self.slug = unique_slugify(self, slugify(self.title))
+        # if Product.objects.filter(slug=self.slug).exists():
+        #     self.slug = unique_slugify(self, slugify(self.title))
         super().save(*args, **kwargs)
+
+
+    
+
+    def get_rating(self):
+        """ get average rating of a product """
+        try:
+            return (self.rating_score / self.rating_count)
+        except ZeroDivisionError:
+            return 0
 
 
 class Review(models.Model):

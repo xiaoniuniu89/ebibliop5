@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Category, Product, Review
 from promotions.models import Promo
 from orders.models import Order
+import uuid
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -10,11 +11,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title', 'author', 'slug', 'price',
+    list_display = ['title', 'author', 'slug', 'slug_end', 'price',
                     'in_stock', 'created', 'updated']
     list_filters = ['in_stock']
     list_editable = ['price', 'in_stock']
-    prepopulated_fields = {'slug': ('title',)}
+    prepopulated_fields = {'slug': ('title', 'slug_end')}
 
 
 admin.site.register(Review)

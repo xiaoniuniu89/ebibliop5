@@ -33,7 +33,6 @@ def handle_review(request):
     """ Ajax call to handle creating and updating a review """
     if request.POST.get('action') == 'post':
         product_id = request.POST.get('product_id')
-        print(product_id)
         product = Product.objects.get(pk=product_id)
         user = User.objects.get(id=request.user.id)
         rating = request.POST.get('rating')
@@ -44,6 +43,9 @@ def handle_review(request):
             rating=rating,
             review=review
         )
+        product.rating_score += int(rating)
+        product.rating_count += 1
+        product.save()
         response = JsonResponse({'rating': rating, 'review': review})
         return response
     
