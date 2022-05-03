@@ -1,4 +1,11 @@
+{% load countries %}
+{% get_countries as countries %}
 {% block billing_modal %}
+
+<style>
+
+
+</style>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -17,17 +24,17 @@
         <div class="col-md-6 mb-3">
         <label for="firstName">First name</label>
         {% if billing.user.first_name %}
-            <input type="text" class="form-control" id="firstName" value={{billing.user.first_name}} required>
+            <input type="text" class="form-control" id="first-name" value={{billing.user.first_name}} required>
         {% else %}
-            <input type="text" class="form-control" id="firstName" placeholder="John" required>
+            <input type="text" class="form-control" id="first-name" placeholder="John" required>
         {% endif %}
         </div>
         <div class="col-md-6 mb-3">
         <label for="lastName">Last name</label>
         {% if billing.user.last_name %}
-            <input type="text" class="form-control" id="firstName" value={{billing.user.last_name}} required>
+            <input type="text" class="form-control" id="last-name" value={{billing.user.last_name}} required>
         {% else %}
-            <input type="text" class="form-control" id="firstName" placeholder="Doe" required>
+            <input type="text" class="form-control" id="last-name" placeholder="Doe" required>
         {% endif %}
         </div>
     </div>
@@ -35,7 +42,7 @@
     <div class="mb-3">
         <label for="email">Email <span class="text-muted">(required)</span></label>
         {% if billing.user.email %}
-            <input type="email" class="form-control" value={{billing.user.email}} id="email" required>
+            <input type="email" class="form-control" id="email" value={{billing.user.email}} id="email" required>
         {% else %}
             <input type="email" class="form-control"  id="email" placeholder="you@example.com" required>
         {% endif %}
@@ -46,9 +53,9 @@
     <div class="mb-3">
         <label for="address">Address</label>
         {% if billing.address_line_one %}
-            <input type="text" class="form-control" id="address" value="{{billing.address_line_one}}" required>
+            <input type="text" class="form-control" id="address1" value="{{billing.address_line_one}}" required>
         {% else %}
-            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+            <input type="text" class="form-control" id="address1" placeholder="1234 Main St" required>
         {% endif %}
 
     </div>
@@ -56,48 +63,56 @@
     <div class="mb-3">
         <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
         {% if billing.address_line_two %}
-            <input type="text" class="form-control" id="address" value="{{billing.address_line_two}}" required>
+            <input type="text" class="form-control" id="address2" value="{{billing.address_line_two}}" required>
         {% else %}
             <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
         {% endif %}
 
     </div>
 
-    <div class="row">
-        <div class="col-md-5">
+    <div class="row pb-3">
+        <div class="col-md-12">
             <label for="country" class="form-label">Country</label>
-            <select class="form-select" id="country" required>
+            <select class="form-control django-countries-select" id="country" required>
+            
             {% if billing.country %}
-                <option value="">{{billing.country}}</option>
+                <option value="{{billing.country.code}}">{{billing.country.name}}</option>
+            {% for country in countries %}
+                <option value="{{ country.code }}">{{ country.name }}</option>
+            {% endfor %}
             {% else %}
                 <option value="">Choose...</option>
+                {% for country in countries %}
+                    <option value="{{ country.code }}">{{ country.name }}</option>
+                {% endfor %}
             {% endif %}
-                <option>United States</option>
             </select>
             <div class="invalid-feedback">
                 Please select a valid country.
             </div>
-            </div>
-            <div class="col-md-4">
-            <label for="state" class="form-label">State</label>
-            <select class="form-select" id="state" required>
+        </div>
+    
+      </div>
+      <div class="row ">
+            <div class="col-md-6">
+                <label for="state"  class="form-label">State</label>
+
                 {% if billing.city %}
-                <option value="">{{billing.city}}</option>
+                    <input type="text" id="state" class="form-control " value="{{billing.city}}" required>
                 {% else %}
-                <option value="">Choose...</option>
+                    <input type="text" class="form-control " id="state" placeholder="city or country" required>
                 {% endif %}
-                <option>California</option>
             </select>
             <div class="invalid-feedback">
                 Please provide a valid state.
             </div>
             </div>
-            <div class="col-md-3 pb-2">
+            <div class="col-md-6 pb-2">
             <label for="postcode" class="form-label">Zip/Postcode</label>
             {% if billing.postcode %}
-                <input type="text" class="form-control" id="postCode" value="{{billing.postcode}}" required>
+                <input type="text" class="form-control" id="post-code" value="{{billing.postcode}}" required>
             {% else %}
-                <input type="text" class="form-control" id="postCode" placeholder="" required>
+                <input type="text" class="form-control" id="post-code" placeholder="" required>
             {% endif %}
             <div class="invalid-feedback">
                 Zip code required.
@@ -107,9 +122,35 @@
     
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        <button type="button" id="update-billing-info-btn" class="btn btn-primary" data-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+<script>
+    $(document).on('click', '#update-billing-info-btn', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "dashboard:update_billing_info" %}',
+            data: {
+                userName: '{{user.username}}',
+                firstName: $('#first-name').val(),
+                lastName: $('#last-name').val(),
+                address1: $('#address1').val(),
+                address2: $('#address2').val(),
+                country: $('#country option:selected').val(),
+                city: $('#state').val(),
+                postCode: $('#post-code').val(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function(json){
+                alert(json.msg)
+            },
+            error: function(xhr, errmsg, err){}
+        })
+    })
+    
+</script>
 {% endblock %}

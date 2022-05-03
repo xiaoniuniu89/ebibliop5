@@ -4,7 +4,7 @@
     <link rel='stylesheet' href="{% static 'dashboard/css/user_dashboard.css' %}" />
 {% endblock %}
 {% block extra_js_head %}
-    
+    <script src="{% static 'dashboard/js/update_billing.js'%}"></script>
 {% endblock %}
 {% block content %}
 
@@ -31,14 +31,11 @@
     </button></div>
 
     {% include 'dashboard/snippets/books.html'%}
-    {% block books %}
-    {% endblock %}
 
     
   </div>
 </div>
 {% include 'dashboard/snippets/billing_modal.html'%}
-    {% block billing_modal %}
-    {% endblock %}
+
 
 {% endblock %}

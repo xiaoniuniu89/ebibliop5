@@ -40,7 +40,7 @@ var addOne = document.getElementById("address").value;
 var addTwo = document.getElementById("address2").value;
 var country = document.getElementById("country").value;
 var city = document.getElementById("state").value;
-var postCode = document.getElementById("postCode").value;
+var postCode = document.getElementById("post-code").value;
 
 $.ajax({
     type: "POST",

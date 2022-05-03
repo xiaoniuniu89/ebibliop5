@@ -24,3 +24,13 @@
     background-color: var(--orange-hover)!important;
     color: var(--white);
 }
+
+.django-countries-select {
+    padding: 1em !important;
+    padding: 1px solid #eeeeee;
+}
+
+select.form-control{
+    height: auto !important;
+    padding: .6rem .8rem calc(.6rem + 1px) .8rem !important;
+}
