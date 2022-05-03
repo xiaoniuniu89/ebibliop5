@@ -101,7 +101,7 @@ def test_email(request):
     })
     message = EmailMultiAlternatives(subject, text_message, from_email, [to])
     message.attach_alternative(html_message, "text/html")
-    message.send()
+    # message.send()
     # send_mail(
     #     subject='Your E-biblio books',
     #     message=message,
