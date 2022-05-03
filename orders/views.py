@@ -67,20 +67,6 @@ def payment_confirmation(data):
     message = EmailMultiAlternatives(subject, text_message, from_email, [to])
     message.attach_alternative(html_message, "text/html")
     message.send()
-    # message = get_template("email.html").render({
-    #     'order': order,
-    #     'order_items': order_items
-    # })
-    
-    # order_items_url = [item.product.pdf.url for item in order_items]
-    # print(order_items_url)
-    # send_mail(
-    #     subject='Your E-biblio order',
-    #     message=message,
-    #     from_email=settings.EMAIL_HOST_USER,
-    #     recipient_list=[order.user.email, ],
-    #     fail_silently=False,
-    # )
 
 
 def user_orders(request):
@@ -101,36 +87,4 @@ def test_email(request):
     })
     message = EmailMultiAlternatives(subject, text_message, from_email, [to])
     message.attach_alternative(html_message, "text/html")
-    # message.send()
-    # send_mail(
-    #     subject='Your E-biblio books',
-    #     message=message,
-    #     from_email=settings.EMAIL_HOST_USER,
-    #     recipient_list=[order.user.email, ],
-    #     fail_silently=False,
-    # )
     return render(request, 'email.html', {'order': order, 'order_items': order_items})
-
-# order = Order.objects.get(order_key='pi_3Kv79OIaE0NFUuue2Z9wWc3Q_secret_fSK59mjCyS5Z0xOTWioG82HjG')
-# order_items = OrderItem.objects.filter(order=order)
-# order_items = [item.product for item in order_items]
-# def return_items(x):
-#     new_list = []
-#     for book in x:
-#         book = f'<a href="{book.pdf.url}" target="_blank">{book.title}</a>'
-#         new_list.append(book)
-#     return new_list
-# order_items = return_items(order_items)
-# message = f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items)} Enjoy 20% off your next purchase with the discount code EBIBLIO20.'
-# text = f'''
-# <html>
-#     <body>
-#         <h1>Testing</h1>
-#         <p>{message}</p>
-#     </body>
-# </html>
-# '''
-
-# file = open("sample.html","w")
-# file.write(text)
-# file.close()
