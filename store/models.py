@@ -80,9 +80,9 @@ class Product(models.Model):
     def get_rating(self):
         """ get average rating of a product """
         try:
-            return (self.rating_score / self.rating_count)
+            return (divmod(self.rating_score, self.rating_count))
         except ZeroDivisionError:
-            return 0
+            return None
 
 
 class Review(models.Model):

@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content %}
-{{product.get_rating}}
+
+
+
 <div class="container">
     <main class="pt-5">
         <div class="row g-3">
@@ -17,6 +19,18 @@
             {% if user.is_staff%}
             <a class="btn btn-info mx-5 badge px-sm-4 py-2 font-weight-light" href="{% url 'admin:store_product_change' product.id%}">Edit Book</a>
             {% endif %}
+            <div class="book-rating-wrapper row p-2">
+                {% for star in full_star %}
+                    <i class="fas fa-star mx-1"></i>
+                {% endfor %}
+                {% if half_star %}
+                    <i class="fas fa-star-half-alt"></i>
+                {% endif %}
+                
+                    
+            </div>
+            <div></div>
+            
 
 
                 <p><span class="lead font-weight-bold">{{ product.author }}</span> (Author)</p>

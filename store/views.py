@@ -12,6 +12,15 @@ def landing(request):
 def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
+    if product.get_rating():
+        rating = product.get_rating()
+        full_star, half_star = rating
+        full_star = [x for x in range(full_star)]
+
+    else:
+        full_star = None
+        half_star = None
+
     try:
         reviews = Review.objects.filter(
             product=product).exclude(user=request.user)
@@ -27,7 +36,7 @@ def product_detail(request, slug):
     return render(
         request,
         'store/detail.html',
-        {'product': product, 'reviews': reviews, 'user_review': user_review})
+        {'product': product, 'reviews': reviews, 'user_review': user_review, 'full_star': full_star, 'half_star': half_star})
 
 def handle_review(request):
     """ Ajax call to handle creating and updating a review """

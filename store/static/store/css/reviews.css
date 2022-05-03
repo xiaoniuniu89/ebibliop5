@@ -2,7 +2,7 @@
     margin-top: .2em!important;
 }
 
-.fa-star {
+.fa-star, .fa-star-half-alt {
     color: var(--orange);
     font-size: 1.5rem;
     position: relative;
@@ -33,3 +33,6 @@
 }
 
 
+.book-rating-wrapper .fa-star, .fa-star-half-alt {
+    font-size: 1rem !important;
+}
