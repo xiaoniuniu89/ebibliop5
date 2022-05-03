@@ -7,6 +7,9 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.template import Context
 from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 # Create your views here.
 def add_order(request):
@@ -54,19 +57,30 @@ def payment_confirmation(data):
     order = Order.objects.get(order_key=data)
     order.billing_status = True
     order_items = OrderItem.objects.filter(order=order)
-    message = get_template("email.html").render({
+    order_items_url = [item.product.pdf.url for item in order_items]
+    subject, from_email, to = 'Your E-biblio books', settings.EMAIL_HOST_USER, order.user.email
+    text_message = f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items_url)} Enjoy 20% off your next purchase with the discount code EBIBLIO20.'
+    html_message = get_template(("email.html")).render({
         'order': order,
         'order_items': order_items
     })
+    message = EmailMultiAlternatives(subject, text_message, from_email, [to])
+    message.attach_alternative(html_message, "text/html")
+    message.send()
+    # message = get_template("email.html").render({
+    #     'order': order,
+    #     'order_items': order_items
+    # })
+    
     # order_items_url = [item.product.pdf.url for item in order_items]
     # print(order_items_url)
-    send_mail(
-        subject='Your E-biblio order',
-        message=message,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[order.user.email, ],
-        fail_silently=False,
-    )
+    # send_mail(
+    #     subject='Your E-biblio order',
+    #     message=message,
+    #     from_email=settings.EMAIL_HOST_USER,
+    #     recipient_list=[order.user.email, ],
+    #     fail_silently=False,
+    # )
 
 
 def user_orders(request):
@@ -78,19 +92,23 @@ def test_email(request):
     order = Order.objects.get(order_key='pi_3Kv79OIaE0NFUuue2Z9wWc3Q_secret_fSK59mjCyS5Z0xOTWioG82HjG')
     # order.billing_status = True
     order_items = OrderItem.objects.filter(order=order)
-    # order_items_url = [item.product.pdf.url for item in order_items]
-    # print(order_items_url)
-    message = get_template("email.html").render({
+    order_items_url = [item.product.pdf.url for item in order_items]
+    subject, from_email, to = 'Your E-biblio books', settings.EMAIL_HOST_USER, order.user.email
+    text_message = f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items_url)} Enjoy 20% off your next purchase with the discount code EBIBLIO20.'
+    html_message = get_template(("email.html")).render({
         'order': order,
         'order_items': order_items
     })
-    send_mail(
-        subject='Your E-biblio books',
-        message=message,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[order.user.email, ],
-        fail_silently=False,
-    )
+    message = EmailMultiAlternatives(subject, text_message, from_email, [to])
+    message.attach_alternative(html_message, "text/html")
+    message.send()
+    # send_mail(
+    #     subject='Your E-biblio books',
+    #     message=message,
+    #     from_email=settings.EMAIL_HOST_USER,
+    #     recipient_list=[order.user.email, ],
+    #     fail_silently=False,
+    # )
     return render(request, 'email.html', {'order': order, 'order_items': order_items})
 
 # order = Order.objects.get(order_key='pi_3Kv79OIaE0NFUuue2Z9wWc3Q_secret_fSK59mjCyS5Z0xOTWioG82HjG')
