@@ -1,9 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import (
     MinValueValidator,
     MaxValueValidator
 )
-
 
 class Promo(models.Model):
     code = models.CharField(
@@ -22,3 +22,15 @@ class Promo(models.Model):
 
     def __str__(self):
         return self.code
+
+
+class NewsLetter(models.Model):
+    user = models.ForeignKey(
+        User,
+        default='admin',
+        on_delete=models.CASCADE)
+    message = models.TextField(max_length=2000)
+    date_created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f'newsletter from {self.user} on {self.date_created}'
