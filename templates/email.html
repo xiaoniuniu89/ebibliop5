@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <br>
+
+        <h2>Thank you for your order {{ order.full_name }}</h2>
+        <h3>Your Order ID: {{ order.pk }}</h3>
+
+
+        <h3>Billing Details:</h3>
+
+        {{ order.full_name }} </br>
+        {{ order.address1 }} <br/>
+        {{ order.address2 }} <br/>
+        {{ order.country }} <br/>
+        {{ order.city }} <br/>
+        {{ order.post_code }}
+
+        
+
+        <h2>Order Details:</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in order_items %}
+                    <tr>
+                        <td>{{ item.product.title }}</td>
+                        <td>{{ item.product.price }}</td>
+                        <td><a href="{{ item.product.pdf.url }}" target="_blank">Download</a></td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>Order total</td>
+                    <th>{{order.total_price}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
+

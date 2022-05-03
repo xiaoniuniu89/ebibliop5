@@ -16,6 +16,7 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50)
     address1 = models.CharField(max_length=300)
     address2 = models.CharField(max_length=300)
+    country = models.CharField(max_length=50, default='Ireland')
     city = models.CharField(max_length=50)
     post_code = models.CharField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
