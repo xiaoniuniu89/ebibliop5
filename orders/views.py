@@ -54,8 +54,8 @@ def add_order(request):
 
 def payment_confirmation(data):
     """ post webhook payment confirmation view """
+    Order.objects.filter(order_key=data).update(billing_status=True)
     order = Order.objects.get(order_key=data)
-    order.update(billing_status=True)
     order_items = OrderItem.objects.filter(order=order)
     order_items_url = [item.product.pdf.url for item in order_items]
     subject, from_email, to = 'Your E-biblio books', settings.EMAIL_HOST_USER, order.user.email

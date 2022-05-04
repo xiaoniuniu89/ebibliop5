@@ -58,7 +58,7 @@ def stripe_webhook(request):
         print(e)
         print('here')
         return HttpResponse(status=400)
-
+    
     # Handle the event
     if event.type == 'payment_intent.succeeded':
         print('hello from event')
