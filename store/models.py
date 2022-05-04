@@ -51,8 +51,8 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    rating_score = models.IntegerField()
-    rating_count = models.IntegerField()
+    rating_score = models.IntegerField(null=True)
+    rating_count = models.IntegerField(null=True)
     objects = models.Manager()
     products = ProductManager()
     

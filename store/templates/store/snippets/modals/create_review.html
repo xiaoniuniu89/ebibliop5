@@ -19,7 +19,7 @@
                 <input type="radio" name="rating" value="4" id="4" required><label for="4">☆</label>
                 <input type="radio" name="rating" value="3" id="3" required><label for="3">☆</label>
                 <input type="radio" name="rating" value="2" id="2" required><label for="2">☆</label>
-                <input type="radio" name="rating" value="1" id="one" required><label for="1">☆</label>
+                <input type="radio" name="rating" class="rat-one" value="1" id="1" required><label for="1">☆</label>
             </div>
             <div class='d-none mb-2' id='val-stars'><small class='text-danger' >Please leave at least 1 star!</small></div>
             <div class="review-content"> <textarea class="form-control" id="review-content" placeholder="what is your review?" rows="20"></textarea> </div>
@@ -50,7 +50,7 @@
     $(document).on('click', '#save-review-btn', function(e){
         if(!$("input[type='radio'][name='rating']:checked").val()){
           $('#val-stars').removeClass('d-none')
-          document.querySelector("#one").checked = true
+          document.querySelector(".rat-one").checked = true
         } else {
             let action = elem.getAttribute('data-action');
 

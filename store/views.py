@@ -45,7 +45,7 @@ def handle_review(request):
         product = Product.objects.get(pk=product_id)
         user = User.objects.get(id=request.user.id)
         rating = request.POST.get('rating')
-        review = request.POST.get('review')
+        review = request.POST.get('review').strip()
         Review.objects.create(
             product=product,
             user=user,
@@ -64,7 +64,7 @@ def handle_review(request):
         product = Product.objects.get(pk=product_id)
         user = User.objects.get(id=request.user.id)
         rating = request.POST.get('rating')
-        review = request.POST.get('review')
+        review = request.POST.get('review').strip()
         instance = Review.objects.filter(user=user, product=product)[0]
         instance.rating = rating
         instance.review = review
