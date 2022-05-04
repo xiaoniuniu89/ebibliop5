@@ -72,6 +72,7 @@ $.ajax({
           line1: addOne,
           line2: addTwo,
           state: state,
+          country: country,
           postal_code: postCode
         }
       }

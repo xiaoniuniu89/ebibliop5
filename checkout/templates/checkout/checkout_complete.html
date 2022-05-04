@@ -12,7 +12,9 @@
                             <div class="p-4">
                                 <h3 class="mb-4">Order has been placed</h3>
                                 <p>Check your email for confirmation</p>
+                                {% if request.user.is_authenticated %}
                                 <a href="{% url "dashboard:dashboard" %}">See orders</a>
+                                {% endif %}
                             </div>       
                         </div>
                     </div>

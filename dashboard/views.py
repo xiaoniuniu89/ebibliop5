@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Message, Profile
 
 
-
+@login_required
 def dashboard(request):
     """ Depending on user status will render to a different part of the site"""
     if request.user.is_superuser:

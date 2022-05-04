@@ -10,18 +10,23 @@ from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 def add_order(request):
     basket = Basket(request)
     if request.POST.get('action') == 'post':
-        user_id = request.user.id
+        if request.user.is_authenticated:
+            user_id = request.user.id
+        else:
+            user_id = User.objects.get(username="guest_checkout").id
         order_key = request.POST.get('order_key')
         name = request.POST.get('name')
         address1 = request.POST.get('address1')
         address2 = request.POST.get('address2')
         city = request.POST.get('city')
-        # country = request.POST.get('country')
+        country = request.POST.get('country')
         postcode = request.POST.get('postcode')
         basket_total = basket.get_total_price()
 
@@ -34,7 +39,7 @@ def add_order(request):
                 full_name=name,
                 address1=address1,
                 address2=address2,
-                country='none',
+                country=country,
                 city=city,
                 post_code=postcode,
                 total_price=basket_total,
@@ -46,7 +51,7 @@ def add_order(request):
                     order_id=order_id,
                     product=item['product'],
                     price=item['price'],
-                    customer=request.user
+                    customer=order.user
                 )
         response = JsonResponse({'success': 'Return Something'})
         return response

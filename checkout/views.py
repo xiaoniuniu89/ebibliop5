@@ -9,23 +9,27 @@ import stripe
 from basket.basket import Basket
 from orders.views import payment_confirmation
 from promotions.forms import PromoForm
-
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
+
 if os.path.isfile('env.py'):
     import env
 
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 
-@login_required
+# @login_required
 def checkout(request):
     """ view to create a checkout intent on stripe """
     basket = Basket(request)
     promo_form = PromoForm()
     total = str(basket.get_total_price_after_discount()).replace('.', '')
     total = int(total)
+    if request.user.is_authenticated:
+        user_id = request.user.id
+    else:
+        user_id = User.objects.get(username="guest_checkout").id
     intent = stripe.PaymentIntent.create(
             amount=total,
             currency='eur',
@@ -33,9 +37,16 @@ def checkout(request):
             automatic_payment_methods={
                 'enabled': True,
             },
-            metadata={'userid': request.user.id}
+            metadata={'userid': user_id}
         )
-    return render(request, 'checkout/checkout.html', {'client_secret': intent.client_secret, 'promo_form': promo_form, 'intent': intent})
+    return render(
+        request,
+        'checkout/checkout.html',
+        {
+            'client_secret': intent.client_secret,
+            'promo_form': promo_form,
+            'intent': intent
+        })
 
 
 def checkout_complete(request):
