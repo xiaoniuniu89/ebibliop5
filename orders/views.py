@@ -21,7 +21,7 @@ def add_order(request):
         address1 = request.POST.get('address1')
         address2 = request.POST.get('address2')
         city = request.POST.get('city')
-        country = request.POST.get('country')
+        # country = request.POST.get('country')
         postcode = request.POST.get('postcode')
         basket_total = basket.get_total_price()
 
@@ -34,7 +34,7 @@ def add_order(request):
                 full_name=name,
                 address1=address1,
                 address2=address2,
-                country=country,
+                country='none',
                 city=city,
                 post_code=postcode,
                 total_price=basket_total,
