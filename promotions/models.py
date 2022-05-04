@@ -6,6 +6,7 @@ from django.core.validators import (
 )
 
 class Promo(models.Model):
+    """ Class for making promotional coupon codes """
     code = models.CharField(
         max_length=50,
         unique=True
@@ -25,11 +26,12 @@ class Promo(models.Model):
 
 
 class NewsLetter(models.Model):
+    """ Class for making newsletter to send to users of the site """
     user = models.ForeignKey(
         User,
-        default='admin',
+        default=1,
         on_delete=models.CASCADE)
-    message = models.TextField(max_length=2000)
+    message = models.TextField(max_length=3000)
     date_created = models.DateField(auto_now_add=True)
 
     def __str__(self):

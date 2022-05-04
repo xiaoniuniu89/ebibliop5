@@ -4,11 +4,12 @@
     Admin
 </a>
 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    <li><a class="dropdown-item" href="{% url 'admin:index' %}">Dashboard</a></li>            
+    <li><a class="dropdown-item" href="{% url 'admin:index' %}">Dashboard</a></li>
     {% include 'snippets/users_dropdown_nav.html' %}
     {% include 'snippets/products_dropdown_nav.html' %}
     {% include 'snippets/orders_dropdown_nav.html' %}
     {% include 'snippets/promotions_dropdown_nav.html' %}
+    <li><a class="dropdown-item" href="{% url 'admin:promotions_newsletter_add' %}">Newsletter</a></li>
     <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
 
 

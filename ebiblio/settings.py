@@ -42,7 +42,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = ['e-biblio.herokuapp.com', 'localhost']
 
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Application definition
 
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'django_countries',
+    'django_summernote',
     'crispy_forms',
     'storages',
     'store',
