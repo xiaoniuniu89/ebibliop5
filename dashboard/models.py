@@ -44,6 +44,3 @@ class Message(models.Model):
     
     def __str__(self):
         return f'Message from {self.email}'
-
-class Wishlist(models.Model):
-    placeholder = models.CharField(blank=True, null=True, max_length=50)

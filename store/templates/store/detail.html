@@ -16,9 +16,6 @@
             </div>
             <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
             <span class="badge badge-danger badge-danger-2  rounded-pill px-3 py-2 mb-2 font-weight-light">{{product.title}}</span>
-            {% if user.is_staff%}
-            <a class="btn btn-info mx-5 badge px-sm-4 py-2 font-weight-light" href="{% url 'admin:store_product_change' product.id%}">Edit Book</a>
-            {% endif %}
             <div class="book-rating-wrapper row p-2">
                 {% for star in full_star %}
                     <i class="fas fa-star mx-1"></i>
@@ -44,9 +41,9 @@
                                 <button type="button" id='add-btn' value={{product.id}} class="btn btn-info btn-sm">Add to
                                     basket
                                 </button>
-                                <button type="button" class="btn btn-success btn-sm">Add to
-                                    wishlist
-                                </button>
+                                {% if user.is_staff%}
+                                    <a class="btn btn-success badge px-sm-4 py-2 font-weight-light" href="{% url 'admin:store_product_change' product.id%}">Edit Book</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
