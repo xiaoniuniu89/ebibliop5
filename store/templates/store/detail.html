@@ -35,7 +35,7 @@
 
                 <p><span class="lead font-weight-bold">{{ product.author }}</span> (Author)</p>
                 
-                <p>{{ product.description|slice:":355" }}...</p>
+                <p>{{ product.description|linebreaks }}</p>
                 <div class="border">
                     <div class="col border-bottom">
                         <div class="row p-3">

@@ -43,6 +43,7 @@ def handle_review(request):
     if request.POST.get('action') == 'post':
         product_id = request.POST.get('product_id')
         product = Product.objects.get(pk=product_id)
+        
         user = User.objects.get(id=request.user.id)
         rating = request.POST.get('rating')
         review = request.POST.get('review').strip()
@@ -52,8 +53,14 @@ def handle_review(request):
             rating=rating,
             review=review
         )
-        product.rating_score += int(rating)
-        product.rating_count += 1
+        if product.get_rating():
+            product_rating = product.get_rating()
+            product.rating_score += int(rating)
+            product.rating_count += 1
+
+        else:
+            product.rating_count = 1
+            product.rating_score = int(rating)
         product.save()
         response = JsonResponse({'rating': rating, 'review': review})
         return response
@@ -66,9 +73,13 @@ def handle_review(request):
         rating = request.POST.get('rating')
         review = request.POST.get('review').strip()
         instance = Review.objects.filter(user=user, product=product)[0]
+        product.rating_score -= int(instance.rating)
         instance.rating = rating
+        product.rating_score += int(instance.rating)
+        product.save()
         instance.review = review
         instance.save()
+
         response = JsonResponse({'rating': rating, 'review': review})
         return response
 
@@ -79,6 +90,9 @@ def delete_review(request):
         product = get_object_or_404(Product, id=product_id)
         user = User.objects.get(id=request.user.id)
         review = get_object_or_404(Review, product=product, user=user)
+        product.rating_score -= int(review.rating)
+        product.rating_count -= 1
+        product.save()
         review.delete()
         response = JsonResponse({'msg': 'Deleted Succesfully'})
         return response

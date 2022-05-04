@@ -40,7 +40,7 @@ class Product(models.Model):
     )
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, max_length=500)
     image = models.ImageField(
         upload_to='images/',
     )
