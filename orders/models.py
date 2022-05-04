@@ -14,6 +14,7 @@ class Order(models.Model):
         related_name='order_user'
     )
     full_name = models.CharField(max_length=50)
+    email = models.EmailField(default='')
     address1 = models.CharField(max_length=300)
     address2 = models.CharField(max_length=300)
     country = models.CharField(max_length=50, default='Ireland')

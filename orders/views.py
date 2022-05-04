@@ -23,6 +23,7 @@ def add_order(request):
             user_id = User.objects.get(username="guest_checkout").id
         order_key = request.POST.get('order_key')
         name = request.POST.get('name')
+        email = request.POST.get('email')
         address1 = request.POST.get('address1')
         address2 = request.POST.get('address2')
         city = request.POST.get('city')
@@ -37,6 +38,7 @@ def add_order(request):
             order = Order.objects.create(
                 user_id=user_id,
                 full_name=name,
+                email=email,
                 address1=address1,
                 address2=address2,
                 country=country,
@@ -63,7 +65,7 @@ def payment_confirmation(data):
     order = Order.objects.get(order_key=data)
     order_items = OrderItem.objects.filter(order=order)
     order_items_url = [item.product.pdf.url for item in order_items]
-    subject, from_email, to = 'Your E-biblio books', settings.EMAIL_HOST_USER, order.user.email
+    subject, from_email, to = 'Your E-biblio books', settings.EMAIL_HOST_USER, order.email
     text_message = f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items_url)} Enjoy 20% off your next purchase with the discount code EBIBLIO20.'
     html_message = get_template(("email.html")).render({
         'order': order,
