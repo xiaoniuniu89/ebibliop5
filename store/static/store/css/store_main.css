@@ -65,6 +65,9 @@
   max-height: 600px;
 }
 
+nav {
+  transition:  400ms ease-in-out;
+}
 
 
 a {
