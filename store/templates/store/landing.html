@@ -17,8 +17,21 @@
 
 {% endblock %}
 
-
-
+<script src="{% static 'store/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'store/js/infinite.min.js' %}"></script>
+<script>
+var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+       onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+   
+    
+</script>
 
 {% endblock %}
 

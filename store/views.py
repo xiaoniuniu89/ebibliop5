@@ -3,11 +3,24 @@ from django.db.models import Q
 from .models import Category, Product, Review
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from django.views.generic import ListView
 
-def landing(request):
-    """ render stoe landing page """
-    products = Product.products.all()
-    return render(request, 'store/landing.html', {'products': products})
+
+class Landing(ListView):
+    """
+    renders store landing page with waypoints helping
+    to lisst all books in infinite scroll
+    """
+    queryset = Product.products.all()
+    context_object_name = 'products'
+    paginate_by = 4
+    template_name = ('store/landing.html')
+    
+
+# def landing(request):
+#     """ render store landing page """
+#     products = Product.products.all()
+#     return render(request, 'store/landing.html', {'products': products})
 
 def product_detail(request, slug):
     """ render product detail page """

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    landing,
+    Landing,
     product_detail,
     category_list,
     search,
@@ -11,7 +11,7 @@ from .views import (
 app_name = 'store'
 
 urlpatterns = [
-    path('', landing, name='landing'),
+    path('', Landing.as_view(), name='landing'),
     path('shop/<slug:slug>/', product_detail, name='product_detail'),
     path('shop/review/create-update/', handle_review, name='handle_review'),
     path('shop/review/delete/', delete_review, name='delete_review'),
