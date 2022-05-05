@@ -134,9 +134,9 @@
             type: 'POST',
             url: '{% url "dashboard:update_billing_info" %}',
             data: {
-                userName: '{{user.username}}',
                 firstName: $('#first-name').val(),
                 lastName: $('#last-name').val(),
+                email: $('#email').val(),
                 address1: $('#address1').val(),
                 address2: $('#address2').val(),
                 country: $('#country option:selected').val(),

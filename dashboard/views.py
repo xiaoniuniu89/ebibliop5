@@ -17,11 +17,11 @@ def dashboard(request):
 def update_billing(request):
     """ view to handle updatig billing info in dashboard """
     if request.POST.get('action') == 'post':
-        username = request.POST.get('userName')
-        user = User.objects.get(username=username)
+        user = User.objects.get(id=request.user.id)
         profile = Profile.objects.get(user=user)
         first_name = request.POST.get('firstName')
         last_name = request.POST.get('lastName')
+        email = request.POST.get('email')
         address1 = request.POST.get('address1')
         address2 = request.POST.get('address2')
         country = request.POST.get('country')
@@ -29,6 +29,7 @@ def update_billing(request):
         post_code = request.POST.get('postCode')
         user.first_name = first_name
         user.last_name = last_name
+        user.email = email
         profile.address_line_one = address1
         profile.address_line_two = address2
         profile.country = country
@@ -36,7 +37,7 @@ def update_billing(request):
         profile.postcode = post_code
         user.save()
         profile.save()
-        response = JsonResponse({'msg': 'updated succesfullys'})
+        response = JsonResponse({'msg': 'updated succesfully'})
         return response
 
 

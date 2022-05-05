@@ -10,6 +10,6 @@ app_name = 'dashboard'
 
 urlpatterns = [
     path('', dashboard, name='dashboard'),
-    path('contact-us', update_billing, name='update_billing_info'),
+    path('update-billing', update_billing, name='update_billing_info'),
     path('contact-us', send_message, name='send_message'),
 ]
