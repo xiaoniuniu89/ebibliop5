@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Message, Profile
+from orders.models import Order
+from store.models import Review
 
 
 @login_required
@@ -12,7 +14,9 @@ def dashboard(request):
         return redirect('admin:index')
     elif request.user.is_staff:
         return redirect("admin:index")
-    return render(request, 'dashboard/dashboard.html')
+    orders = Order.objects.filter(user=request.user)
+    reviews = Review.objects.filter(user=request.user)
+    return render(request, 'dashboard/dashboard.html', {'orders': orders, 'reviews': reviews})
 
 def update_billing(request):
     """ view to handle updatig billing info in dashboard """

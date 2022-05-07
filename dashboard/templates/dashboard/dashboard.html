@@ -31,13 +31,13 @@
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <span class="nav-link active" href="#">Library</span>
+      <span class="nav-link active">Library</span>
     </li>
     <li class="nav-item">
-      <span class="nav-link" href="#">My orders</span>
+      <span class="nav-link" >My orders</span>
     </li>
     <li class="nav-item">
-      <span class="nav-link">Comments </span>
+      <span class="nav-link">My reviews </span>
     </li>
   </ul>
 
@@ -49,6 +49,8 @@
     </div>
 
     {% include 'dashboard/snippets/books.html'%}
+    {% include 'dashboard/snippets/my-orders.html'%}
+    {% include 'dashboard/snippets/reviews.html'%}
 
     
   </div>
