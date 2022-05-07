@@ -108,3 +108,37 @@ footer .form-control {
     padding: 0.7em 1em;
 }
 /* end footer  */
+
+
+/* badge  */
+
+/* .all-auth-container a {
+    color: var(--grey);
+} */
+
+/* .all-auth-container a:hover {
+    text-decoration: none;
+    color: var(--orange);
+} */
+
+/* .all-auth-container .badge {
+	line-height: 14px;
+}
+
+.all-auth-container .badge-danger {
+	background: var(--orange);
+} */
+
+.all-auth-container .btn-danger {
+	background-color: var(--orange) !important;
+	border-color: var(--orange) !important;
+  color: white;
+}
+
+.all-auth-container .btn-danger:hover {
+  color: var(--grey);
+}
+
+.all-auth-container li {
+  list-style-type: none;
+}

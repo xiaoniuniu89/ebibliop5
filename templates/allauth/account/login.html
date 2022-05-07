@@ -8,14 +8,16 @@
 
 {% block content %}
 
+<div class="container col-12 col-md-6 py-5 all-auth-container">
+
+
 <h1>{% trans "Sign In" %}</h1>
 
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+<p>Please sign in with your google account. Or, <a href="{{ signup_url }}">sign up</a>
+for an E-biblio account and sign in below:</p>
 
 <div class="socialaccount_ballot">
 
@@ -23,7 +25,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
   </ul>
 
-  <div class="login-or">{% trans 'or' %}</div>
+  <div class="login-or pb-2">{% trans 'or' %}</div>
 
 </div>
 
@@ -40,8 +42,11 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+  
+  <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+  <a class="button secondaryAction btn btn-success" style="color: white;" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+
 </form>
+</div>
 
 {% endblock %}

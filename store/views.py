@@ -18,7 +18,7 @@ class Landing(ListView):
     
 
 # def landing(request):
-#     """ render store landing page """
+#     """ render stoe landing page """
 #     products = Product.products.all()
 #     return render(request, 'store/landing.html', {'products': products})
 
