@@ -11,24 +11,42 @@
 <main role="main" class="container">
 
   <div class="pt-5">
-    <h1>Welcome {{user.username|title}}</h1>
+    <div class="row mb-2">
+      <h1>Welcome {{user.username|title}}</h1>
+      <button type="button" class="btn btn-primary mx-4 badge px-sm-2 font-weight-light d-inline" data-toggle="modal" data-target="#exampleModal">
+        Update Billing Info
+      </button>
+    </div>
+    <div class="row">
     <p class="lead">You can access your purchases and ammend you account info here.</p>
+
+    </div>
   </div>
 
 </main>
+
+
   
 <div id="books" class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <span class="nav-link active" href="#">Library</span>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link" href="#">My orders</span>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link">Comments </span>
+    </li>
+  </ul>
+
   <div class=" align-self-center ">
-    {% if purchases %}
-      <span class="badge badge-danger badge-danger-2  rounded-pill px-3 py-2 font-weight-light">My Books</span>
-    {% else %}
+    {% if not purchases %}
       <span ><a class="badge btn btn-dash-shop badge-danger-2  rounded-pill px-3 py-2 font-weight-light" href="{% url 'store:landing' %}#books">Shop Books</span></a>
     {% endif %}
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary mx-5 badge px-sm-4 py-2 font-weight-light" data-toggle="modal" data-target="#exampleModal">
-      Update Billing Info
-    </button></div>
+    </div>
 
     {% include 'dashboard/snippets/books.html'%}
 

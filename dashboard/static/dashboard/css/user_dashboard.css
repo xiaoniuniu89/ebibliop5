@@ -34,3 +34,13 @@ select.form-control{
     height: auto !important;
     padding: .6rem .8rem calc(.6rem + 1px) .8rem !important;
 }
+
+
+#books .active {
+    background-color: var(--orange) !important;
+    color: white !important;
+}
+
+#books .nav-item {
+    cursor: pointer;
+}
