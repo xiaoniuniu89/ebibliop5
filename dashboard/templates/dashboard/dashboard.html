@@ -4,7 +4,7 @@
     <link rel='stylesheet' href="{% static 'dashboard/css/user_dashboard.css' %}" />
 {% endblock %}
 {% block extra_js_head %}
-    <script src="{% static 'dashboard/js/update_billing.js'%}"></script>
+    {% comment %} <script src="{% static 'dashboard/js/update_billing.js'%}"></script> {% endcomment %}
 {% endblock %}
 {% block content %}
 
@@ -27,17 +27,17 @@
 
 
   
-<div id="books" class="container">
+<div class="container dash-wrapper">
 
-  <ul class="nav nav-tabs">
+  <ul  class="nav nav-tabs">
     <li class="nav-item">
-      <span class="nav-link active">Library</span>
+      <span id="library" class="nav-link active">Library</span>
     </li>
     <li class="nav-item">
-      <span class="nav-link" >My orders</span>
+      <span class="nav-link" id="orders">My orders</span>
     </li>
     <li class="nav-item">
-      <span class="nav-link">My reviews </span>
+      <span class="nav-link" id="reviews">My reviews </span>
     </li>
   </ul>
 
@@ -48,14 +48,18 @@
 
     </div>
 
-    {% include 'dashboard/snippets/books.html'%}
-    {% include 'dashboard/snippets/my-orders.html'%}
-    {% include 'dashboard/snippets/reviews.html'%}
+    <div class="dash-tab-content-wrapper">
+      {% include 'dashboard/snippets/books.html'%}
+      {% include 'dashboard/snippets/my-orders.html'%}
+      {% include 'dashboard/snippets/reviews.html'%}
+    </div>
 
     
   </div>
 </div>
 {% include 'dashboard/snippets/billing_modal.html'%}
 
+<script src="{% static 'dashboard/js/user_dashboard.js' %}"></script>
 
 {% endblock %}
+

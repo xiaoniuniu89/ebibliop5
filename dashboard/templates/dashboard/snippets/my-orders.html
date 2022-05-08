@@ -1,23 +1,25 @@
 {% block orders %}
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Order #</th>
-      <th scope="col">Date</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for order in orders %}
-    <tr>
-      <th scope="row">{{order.id}}</th>
-      <td>{{order.created}}</td>
-      {% if order.billing_status %}
-      <td>Paid</td>
-      {% endif %}
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="orders-wrapper hide content-div " id='orders-div'>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Order #</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <th scope="row">{{order.id}}</th>
+        <td>{{order.created}}</td>
+        {% if order.billing_status %}
+        <td>Paid</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}

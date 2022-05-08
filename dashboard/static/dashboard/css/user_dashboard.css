@@ -36,11 +36,24 @@ select.form-control{
 }
 
 
-#books .active {
+.active {
     background-color: var(--orange) !important;
     color: white !important;
 }
 
-#books .nav-item {
+.dash-wrapper .nav-item {
     cursor: pointer;
+}
+
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+.dash-wrapper {
+    min-height: 60vh;
 }
