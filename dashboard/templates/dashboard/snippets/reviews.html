@@ -10,11 +10,14 @@
     </thead>
     <tbody>
       {% for review in reviews %}
-      <tr>
-        <th scope="row">{{review.product.title}}</th>
-        <td>{{review.updated_on}}</td>
-        <td>{{review.rating}}</td>
-      </tr>
+        <tr>
+
+          
+          <th scope="row"><a href="{% url 'store:product_detail' review.product.slug %}/#user-review-info-wrapper">{{review.product.title}}</a></th>
+          <td>{{review.updated_on}}</td>
+          <td>{{review.rating}}</td>
+
+        </tr>
       {% endfor %}
     </tbody>
   </table>

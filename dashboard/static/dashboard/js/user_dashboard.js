@@ -3,7 +3,8 @@ const dashContentDiv = document.querySelector('.dash-tab-content-wrapper')
 const contentDivs = document.querySelectorAll('.content-div')
 const dashTabs = document.querySelectorAll('.nav-link')
 
-dash.addEventListener('click', (e) => {
+dashTabs.forEach((tab) => {
+    tab.addEventListener('click', (e) => {
     dashTabs.forEach((tab) => {
         tab.classList.remove('active')
         e.target.classList.add('active')
@@ -14,4 +15,5 @@ dash.addEventListener('click', (e) => {
     })
     
     document.querySelector(`#${e.target.id}-div`).classList.add('show')
+    })
 })
