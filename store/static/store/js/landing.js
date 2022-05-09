@@ -45,3 +45,61 @@ const appearOptions = {
     threshold: 0,
     rootMargin: "0px 0px -200px 0px"
 }
+
+const booksWrapper = document.querySelector('.books-wrapper')
+console.log(booksWrapper)
+const spinnerWrapper = document.querySelector('#spinner-wrapper')
+const loadBtn = document.querySelector('#load-btn')
+const loadWrapper = document.querySelector('.loading-wrapper')
+let visible = 4
+
+const handleGetData = () => {
+    $.ajax({
+        type: 'GET',
+        url: `/books-json/${visible}/`,
+        success: function(response){
+            maxSize = response.max
+            const data = response.data
+            spinnerWrapper.classList.remove('not-visible')
+            setTimeout(()=>{
+                spinnerWrapper.classList.add('not-visible')
+                data.map(book=>{
+                    console.log(book.id)
+                    console.log(book)
+                    booksWrapper.innerHTML += `<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 py-5">
+                                                <a href="shop/${book.slug}/">
+                                                    <div class="card product_item">
+                                                        <div class="body">
+                                                            <div class="cp_img">
+                                                                <img src="${book.image.url}" alt="Product" class="img-fluid">
+                                                            </div>
+                                                            <div class="product_details">
+                                                                <h5 class="card-title">${book.title}</h5>
+                                                                <p class="card-text text-muted">by ${book.author}</p>
+                                                                <ul class="product_price list-unstyled">
+                                                                    <li class="price">€${book.price}</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </a>
+                                                </div>`
+                })
+                if(maxSize){
+                    console.log('done')
+                    loadWrapper.innerHTML = "<h4>No more books to load</h4>"
+                }
+            }, 500)
+        },
+        error: function(error){
+            console.log(error)
+        }
+    })
+}
+
+handleGetData()
+
+loadBtn.addEventListener('click', ()=>{
+    visible += 4
+    handleGetData()
+})

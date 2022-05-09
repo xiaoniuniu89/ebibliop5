@@ -18,9 +18,9 @@
 {% endblock %}
 
 <script src="{% static 'store/js/landing.js' %}"></script>
-<script src="{% static 'store/js/jquery.waypoints.min.js' %}"></script>
-<script src="{% static 'store/js/infinite.min.js' %}"></script>
-<script>
+{% comment %} <script src="{% static 'store/js/jquery.waypoints.min.js' %}"></script> {% endcomment %}
+{% comment %} <script src="{% static 'store/js/infinite.min.js' %}"></script> {% endcomment %}
+{% comment %} <script>
 var infinite = new Waypoint.Infinite({
       element: $('.infinite-container')[0],
        onBeforePageLoad: function () {
@@ -32,7 +32,7 @@ var infinite = new Waypoint.Infinite({
     });
    
     
-</script>
+</script> {% endcomment %}
 
 {% endblock %}
 

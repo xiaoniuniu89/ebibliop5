@@ -3,8 +3,8 @@ from django.db.models import Q
 from .models import Category, Product, Review
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from django.views.generic import ListView
-
+from django.views.generic import ListView, View
+from django.http import JsonResponse
 
 class Landing(ListView):
     """
@@ -16,6 +16,16 @@ class Landing(ListView):
     paginate_by = 4
     template_name = ('store/landing.html')
     
+class BooksJsonListView(View):
+    def get(self, *args, **kwargs):
+        print(kwargs)
+        upper = kwargs.get('num_books')
+        lower = upper - 4
+        books = list(Product.objects.values()[lower:upper])
+        books_size = len(Product.objects.all())
+        max_size = True if upper >= books_size else False
+        return JsonResponse({'data': books, 'max': max_size}, safe=False)
+
 
 # def landing(request):
 #     """ render stoe landing page """

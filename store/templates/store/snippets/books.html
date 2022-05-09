@@ -1,7 +1,7 @@
 <div id="books" class="container ">
     <div class=" align-self-center "> <span class="badge badge-danger badge-danger-2  rounded-pill px-4 py-2 font-weight-light">All Books</span></div>
 
-    <div class="row wrap-land clearfix infinite-container">
+    <div class="row wrap-land clearfix books-wrapper">
         {% for book in products %}
         
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 py-5 infinite-item">
@@ -24,14 +24,19 @@
         </div>
         {% endfor %}
     </div>
-    
+    <div id="spinner-wrapper" class="not-visible">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <div id="loading-wrapper">
+        <button class="btn btn-primary" id="load-btn">Load more</button>
+    </div>
 </div>
-{% if page_obj.has_next %}
+{% comment %} {% if page_obj.has_next %}
     <a class='infinite-more-link' href="?page={{ page_obj.next_page_number }}"></a>
 {% endif %}
 
 <div class="loading text-center" style="display: none;">
         Loading...
-</div>
+</div> {% endcomment %}
 
 
