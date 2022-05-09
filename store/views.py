@@ -6,31 +6,34 @@ from django.contrib.auth.models import User
 from django.views.generic import ListView, View
 from django.http import JsonResponse
 
-class Landing(ListView):
-    """
-    renders store landing page with waypoints helping
-    to lisst all books in infinite scroll
-    """
-    queryset = Product.products.all()
-    context_object_name = 'products'
-    paginate_by = 4
-    template_name = ('store/landing.html')
+def landing(request):
+    """ render stoe landing page """
+    # products = Product.products.all()
+    return render(request, 'store/landing.html')
+
+
+# class Landing(View):
+#     """
+#     renders store landing page with waypoints helping
+#     to lisst all books in infinite scroll
+#     """
+#     queryset = Product.products.all()
+#     context_object_name = 'products'
+#     # paginate_by = 4
+#     template_name = ('store/landing.html')
     
 class BooksJsonListView(View):
     def get(self, *args, **kwargs):
         print(kwargs)
         upper = kwargs.get('num_books')
-        lower = upper - 4
+        lower = upper - 8
         books = list(Product.objects.values()[lower:upper])
         books_size = len(Product.objects.all())
         max_size = True if upper >= books_size else False
         return JsonResponse({'data': books, 'max': max_size}, safe=False)
 
 
-# def landing(request):
-#     """ render stoe landing page """
-#     products = Product.products.all()
-#     return render(request, 'store/landing.html', {'products': products})
+
 
 def product_detail(request, slug):
     """ render product detail page """

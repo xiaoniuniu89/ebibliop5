@@ -44,6 +44,7 @@ class Product(models.Model):
     image = models.ImageField(
         upload_to='images/',
     )
+    image_url = models.CharField(max_length=1000, blank=True, default='')
     pdf = models.FileField(upload_to='pdf/', blank=False)
     slug = models.SlugField(max_length=255)
     slug_end = models.UUIDField(default=uuid.uuid4)
@@ -73,6 +74,8 @@ class Product(models.Model):
         # if Product.objects.filter(slug=self.slug).exists():
         #     self.slug = unique_slugify(self, slugify(self.title))
         super().save(*args, **kwargs)
+
+
 
 
     
