@@ -11,7 +11,10 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.contrib.auth.models import User
+from django.views.generic import View
+from django.http import HttpResponse
 
+from .utils import render_to_pdf
 
 # Create your views here.
 def add_order(request):
@@ -95,3 +98,20 @@ def test_email(request):
     message = EmailMultiAlternatives(subject, text_message, from_email, [to])
     message.attach_alternative(html_message, "text/html")
     return render(request, 'email.html', {'order': order, 'order_items': order_items})
+
+
+def invoice(request):
+    order = Order.objects.get(pk=21)
+    order_items = OrderItem.objects.filter(order=order)
+    return render(request, 'orders/invoice.html', {'order': order, 'order_items': order_items})
+
+
+class GenerateInvoice(View):
+    def get(self, request, pk, *args, **kwargs):
+        """ view to generate a pdf invoice of customer orders """
+        order = Order.objects.get(pk=pk)
+        order_items = OrderItem.objects.filter(order=order)
+        pdf = render_to_pdf('orders/invoice.html', {'order': order, 'order_items': order_items})
+        return HttpResponse(pdf, content_type='application/pdf')
+
+
