@@ -50,7 +50,7 @@ const booksWrapper = document.querySelector('.books-wrapper')
 console.log(booksWrapper)
 const spinnerWrapper = document.querySelector('#spinner-wrapper')
 const loadBtn = document.querySelector('#load-btn')
-const loadWrapper = document.querySelector('.loading-wrapper')
+const loadWrapper = document.querySelector('#loading-wrapper')
 let visible = 4
 
 const handleGetData = () => {
@@ -71,7 +71,7 @@ const handleGetData = () => {
                                                     <div class="card product_item">
                                                         <div class="body">
                                                             <div class="cp_img">
-                                                                <img src="${book.image.url}" alt="Product" class="img-fluid">
+                                                                <img src="${book.image}" alt="Product" class="img-fluid">
                                                             </div>
                                                             <div class="product_details">
                                                                 <h5 class="card-title">${book.title}</h5>
