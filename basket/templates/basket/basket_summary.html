@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+<style>
+  @media screen and (max-width: 780px) {
+    main {
+        min-height: 80vh!important;
+    }
+}
+</style>
+{% endblock %}
 {% block content %}
 <main class="pt-5">
     <div class="container">
@@ -10,7 +19,7 @@
       {% with product=item.product %}
       <div data-index="{{product.id}}" class="row mb-4 border product-item">
         <div class="col-md-3 col-lg-2 order-md-first bg-light">
-          <img class="img-fluid mx-auto d-block" width="120px" alt="Responsive image" src="{{ product.image.url }}">
+          <img class="img-fluid mx-auto d-none d-md-block" width="120px" alt="Responsive image" src="{{ product.image.url }}">
         </div>
         <div class="col-md-9 col-lg-10 ps-md-3 ps-lg-10">
           <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-reset">

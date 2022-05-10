@@ -59,5 +59,9 @@ select.form-control{
     min-height: 60vh;
 }
 
-
+@media screen and (max-width: 780px) {
+    main {
+        min-height: 80vh!important;
+    }
+}
 
