@@ -66,6 +66,15 @@
                 action: action
             },
             success: function(json){
+              document.querySelector('.msg-wrapper').innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p class="text-center">${json.msg}</p>
+                </div>
+
+                `
+                setTimeout(function () {
+                    $(".alert").alert('close')
+                }, 3000);
                 let action = elem.getAttribute('data-action');
                 
                 if(action == 'post'){

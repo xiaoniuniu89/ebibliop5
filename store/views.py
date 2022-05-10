@@ -76,7 +76,8 @@ def handle_review(request):
             product.rating_count = 1
             product.rating_score = int(rating)
         product.save()
-        response = JsonResponse({'rating': rating, 'review': review})
+        msg = 'Post created'
+        response = JsonResponse({'rating': rating, 'review': review, 'msg': msg})
         return response
     
     if request.POST.get('action') == 'update':
@@ -92,8 +93,9 @@ def handle_review(request):
         product.save()
         instance.review = review
         instance.save()
+        msg = 'Post updated'
 
-        response = JsonResponse({'rating': rating, 'review': review})
+        response = JsonResponse({'rating': rating, 'review': review, 'msg': msg})
         return response
 
 def delete_review(request):
