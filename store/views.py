@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.generic import ListView, View
 from django.http import JsonResponse
+import random
 
 def landing(request):
     """ render stoe landing page """
@@ -27,7 +28,7 @@ class BooksJsonListView(View):
     def get(self, *args, **kwargs):
         print(kwargs)
         upper = kwargs.get('num_books')
-        lower = upper - 4
+        lower = upper - 8
         books = Product.objects.values()[lower:upper]
         update_image_url(books)
         books = list(Product.objects.values()[lower:upper])
@@ -146,10 +147,18 @@ def search(request):
             Q(title__icontains=term) |
             Q(author__icontains=term)
         )
+        result = True
+        if not products:
+            result = False
+            products = random.sample(list(Product.objects.all()), 8)
+        if term.strip() == '':
+            term = ''
+            result = False
+            products = random.sample(list(Product.objects.all()), 8)
         return render(
             request,
             'store/search.html',
-            {'term': term, 'products': products}
+            {'term': term, 'products': products, 'result': result}
 
         )
     else:

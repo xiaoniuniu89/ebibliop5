@@ -50,7 +50,7 @@ const booksWrapper = document.querySelector('.books-wrapper')
 const loader = document.querySelector('.loader')
 const loadBtn = document.querySelector('#load-btn')
 const loadWrapper = document.querySelector('#loading-wrapper')
-let visible = 4
+let visible = 8
 
 const handleGetData = () => {
     $.ajax({
@@ -100,7 +100,6 @@ handleGetData()
 loadBtn.addEventListener('click', ()=>{
     loadBtn.classList.add('d-none')
     loader.classList.remove('d-none')
-    visible += 4
+    visible += 8
     handleGetData()
-
 })

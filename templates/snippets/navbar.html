@@ -60,7 +60,7 @@
         <form method='POST' action="{% url 'store:search' %}" class="form-inline my-2 my-lg-0">
             {% csrf_token %}
             <input class="form-control mr-sm-2" type="search" placeholder="Search books" name='term' required aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0 d-none d-md-block" type="submit">Search</button>
+            <button id='search-btn' class="btn btn-success my-2 my-sm-0 d-none d-md-block" type="submit">Search</button>
         </form>
 
         <a type="button" role="button" href="{% url "basket:basket_summary" %}"
