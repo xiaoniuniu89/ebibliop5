@@ -9,10 +9,10 @@ from django.conf import settings
 from .models import Product
 
 
-@receiver(post_save, sender=Product)
-def add_image_url(sender, instance, **kwargs):
-    """
-    Add image url after upload to aws
-    """
-    Product.objects.filter(id=instance.id).update(image_url=instance.image.url)
+# @receiver(post_save, sender=Product)
+# def add_image_url(sender, instance, **kwargs):
+#     """
+#     Add image url after upload to aws
+#     """
+#     Product.objects.filter(id=instance.id).update(image_url=instance.image.url)
     

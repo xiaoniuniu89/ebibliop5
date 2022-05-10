@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Category, Product, Review
+from .utils import update_image_url
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.generic import ListView, View
@@ -26,7 +27,9 @@ class BooksJsonListView(View):
     def get(self, *args, **kwargs):
         print(kwargs)
         upper = kwargs.get('num_books')
-        lower = upper - 8
+        lower = upper - 4
+        books = Product.objects.values()[lower:upper]
+        update_image_url(books)
         books = list(Product.objects.values()[lower:upper])
         books_size = len(Product.objects.all())
         max_size = True if upper >= books_size else False

@@ -4,6 +4,7 @@ from PIL import Image
 from io import BytesIO
 import string
 from django.utils.crypto import get_random_string
+import store.models
 
 
 # the solution for creating unique slugs was found in this stack overflow thread https://stackoverflow.com/questions/3816307/how-to-create-a-unique-slug-in-django
@@ -48,3 +49,9 @@ def image_resize(image, width, height):
         # Save the new resized file as usual, which will save to S3 using django-storages
         image.save(img_filename, file_object)
 
+def update_image_url(books):
+    """updates image_url which is a url on aws s3 bucket that expires after a time."""
+    for book in books:
+        book = store.models.Product.objects.get(id=book['id'])
+        book.image_url = book.image.url
+        book.save()

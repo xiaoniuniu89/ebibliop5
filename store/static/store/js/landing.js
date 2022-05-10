@@ -51,7 +51,7 @@ console.log(booksWrapper)
 const spinnerWrapper = document.querySelector('#spinner-wrapper')
 const loadBtn = document.querySelector('#load-btn')
 const loadWrapper = document.querySelector('#loading-wrapper')
-let visible = 8
+let visible = 4
 
 const handleGetData = () => {
     $.ajax({
@@ -63,8 +63,6 @@ const handleGetData = () => {
             const data = response.data
             
             data.map(book=>{
-                console.log(book.id)
-                console.log(book)
                 booksWrapper.innerHTML += `<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 py-5">
                                             <a href="shop/${book.slug}/">
                                                 <div class="card product_item">
@@ -99,6 +97,6 @@ const handleGetData = () => {
 handleGetData()
 
 loadBtn.addEventListener('click', ()=>{
-    visible += 8
+    visible += 4
     handleGetData()
 })
