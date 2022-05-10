@@ -10,20 +10,6 @@ import stripe
 import os
 
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
-# @require_POST
-# def promo(request):
-#     now = timezone.now()
-#     form = PromoForm(request.post)
-#     if form.is_valid():
-#         code = form.cleaned_data['code']
-#         try:
-#             promo_code = Promo.objects.get(
-#                 code__iexact=code,
-#             )
-#             request.session['promo_id'] = promo_code.id
-#         except Promo.DoesNotExist:
-#             request.session['promo_id'] = None
-#     return redirect('checkout:checout')
 
 def promo(request):
     basket = Basket(request)

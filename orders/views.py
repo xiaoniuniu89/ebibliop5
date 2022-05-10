@@ -13,7 +13,7 @@ from django.utils.html import strip_tags
 from django.contrib.auth.models import User
 from django.views.generic import View
 from django.http import HttpResponse
-
+from django.contrib.auth.mixins import UserPassesTestMixin
 from .utils import render_to_pdf
 
 # Create your views here.
@@ -78,40 +78,16 @@ def payment_confirmation(data):
     message.attach_alternative(html_message, "text/html")
     message.send()
 
-
-def user_orders(request):
-    user_id = request.user.id
-    orders = Order.objects.filter(user_id=user_id).filter(billing_status=True)
-    return orders
-
-def test_email(request):
-    order = Order.objects.get(order_key='pi_3Kv79OIaE0NFUuue2Z9wWc3Q_secret_fSK59mjCyS5Z0xOTWioG82HjG')
-    # order.billing_status = True
-    order_items = OrderItem.objects.filter(order=order)
-    order_items_url = [item.product.pdf.url for item in order_items]
-    subject, from_email, to = 'Your E-biblio books', settings.EMAIL_HOST_USER, order.user.email
-    text_message = f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items_url)} Enjoy 20% off your next purchase with the discount code EBIBLIO20.'
-    html_message = get_template(("email.html")).render({
-        'order': order,
-        'order_items': order_items
-    })
-    message = EmailMultiAlternatives(subject, text_message, from_email, [to])
-    message.attach_alternative(html_message, "text/html")
-    return render(request, 'email.html', {'order': order, 'order_items': order_items})
-
-
-def invoice(request):
-    order = Order.objects.get(pk=21)
-    order_items = OrderItem.objects.filter(order=order)
-    return render(request, 'orders/invoice.html', {'order': order, 'order_items': order_items})
-
-
-class GenerateInvoice(View):
+class GenerateInvoice(UserPassesTestMixin, View):
     def get(self, request, pk, *args, **kwargs):
         """ view to generate a pdf invoice of customer orders """
         order = Order.objects.get(pk=pk)
         order_items = OrderItem.objects.filter(order=order)
         pdf = render_to_pdf('orders/invoice.html', {'order': order, 'order_items': order_items})
         return HttpResponse(pdf, content_type='application/pdf')
+
+    def test_func(self):
+        pk = self.kwargs['pk']
+        return self.request.user == Order.objects.get(pk=pk).user
 
 
