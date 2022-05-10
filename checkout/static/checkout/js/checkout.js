@@ -32,6 +32,8 @@ var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
   ev.preventDefault();
+  elem.classList.add('d-none')
+  document.querySelector('.loader').classList.remove('d-none')
 
 var fName = document.getElementById("firstName").value;
 var lName = document.getElementById("lastName").value;
@@ -99,12 +101,3 @@ $.ajax({
 });
 });
 
-// const promoBtn = document.querySelector('#promo-btn')
-// const promoCodeInput = document.querySelector('#promo-code-input')
-// const promoTextArea = document.querySelector('#promo-text-area')
-
-// promoBtn.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   code = promoCodeInput.value
-//   promoTextArea.innerHTML = code
-// })

@@ -2,27 +2,7 @@
     <div class=" align-self-center "> <span class="badge badge-danger badge-danger-2  rounded-pill px-4 py-2 font-weight-light">All Books</span></div>
 
     <div class="row wrap-land clearfix books-wrapper">
-        {% comment %} {% for book in products %}
         
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 py-5 infinite-item">
-          <a href="{{book.get_absolute_url}}">
-            <div class="card product_item">
-                <div class="body">
-                    <div class="cp_img">
-                        <img src="{{book.image.url}}" alt="Product" class="img-fluid">
-                    </div>
-                    <div class="product_details">
-                        <h5 class="card-title">{{book.title}}</h5>
-                        <p class="card-text text-muted">by {{book.author}}</p>
-                        <ul class="product_price list-unstyled">
-                            <li class="price">€{{book.price}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </a>
-        </div>
-        {% endfor %} {% endcomment %}
     </div>
     <div class="container d-flex justify-content-center flex-row">
         <div class="loader d-none"></div>
@@ -31,12 +11,6 @@
         </div>
     </div>
 </div>
-{% comment %} {% if page_obj.has_next %}
-    <a class='infinite-more-link' href="?page={{ page_obj.next_page_number }}"></a>
-{% endif %}
 
-<div class="loading text-center" style="display: none;">
-        Loading...
-</div> {% endcomment %}
 
 
