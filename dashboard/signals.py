@@ -23,7 +23,7 @@ def send_mail(sender, instance, **kwargs):
     message = instance
     message = render_to_string("contact_us_notification_email.html", {'message': message})
     mail = EmailMessage(
-        subject=f'Message from {message.email}',
+        subject='New contact us message',
         body=message,
         from_email=settings.EMAIL_HOST_USER,
         to=[settings.EMAIL_HOST_USER, ],
