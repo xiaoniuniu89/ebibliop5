@@ -56,7 +56,7 @@
           {% if basket.get_total_price_after_discount > .50 %}
             <a class='btn btn-info' href="{% url 'checkout:checkout' %}">Proceed to Checkout</a>
           {% else %}
-            <a class='btn btn-info' href="{% url 'store:landing' %}#books">Shop for Books</a>
+            <a class='btn btn-info' href="{% url 'store:all_books' %}">Shop for Books</a>
           {% endif %}
         </div>
 
