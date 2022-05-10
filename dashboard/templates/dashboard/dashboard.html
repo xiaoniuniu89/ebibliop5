@@ -41,12 +41,6 @@
     </li>
   </ul>
 
-  <div class=" align-self-center ">
-    {% if not purchases %}
-      <span ><a class="badge btn btn-dash-shop badge-danger-2  rounded-pill px-3 py-2 font-weight-light" href="{% url 'store:landing' %}#books">Shop Books</span></a>
-    {% endif %}
-
-    </div>
 
     <div class="dash-tab-content-wrapper">
       {% include 'dashboard/snippets/books.html'%}
