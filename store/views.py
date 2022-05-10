@@ -39,7 +39,7 @@ def product_detail(request, slug):
         reviews = Review.objects.filter(
             product=product).exclude(user=request.user)
     except TypeError:
-        reviews = Review.objects.all()
+        reviews = Review.objects.filter(product=product)
     try:
         user_review = Review.objects.filter(
             user=request.user, product=product)[0]

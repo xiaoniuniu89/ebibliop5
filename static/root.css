@@ -32,6 +32,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 .alert-success p, .alert-danger p {
