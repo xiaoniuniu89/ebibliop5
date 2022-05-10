@@ -16,7 +16,7 @@ def dashboard(request):
         return redirect("admin:index")
     orders = Order.objects.filter(user=request.user)
     reviews = Review.objects.filter(user=request.user)
-    return render(request, 'dashboard/dashboard.html', {'orders': orders, 'reviews': reviews})
+    return render(request, 'dashboard/dashboard.html', {'orders': orders, 'reviews': reviews, 'title': 'Dashboard'})
 
 def update_billing(request):
     """ view to handle updatig billing info in dashboard """

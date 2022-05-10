@@ -12,6 +12,9 @@ from promotions.forms import PromoForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+
 
 if os.path.isfile('env.py'):
     import env
@@ -27,7 +30,8 @@ def checkout(request):
     total = str(basket.get_total_price_after_discount()).replace('.', '')
     total = int(total)
     if total < 50:
-        return redirect('basket:basket_summary')
+        messages.warning(request, 'The minimum transaction is .50 cent')
+        return HttpResponseRedirect('/basket/')
     if request.user.is_authenticated:
         user_id = request.user.id
     else:
@@ -35,7 +39,6 @@ def checkout(request):
     intent = stripe.PaymentIntent.create(
             amount=total,
             currency='eur',
-            # payment_method_types=["card"],
             automatic_payment_methods={
                 'enabled': True,
             },
@@ -47,7 +50,8 @@ def checkout(request):
         {
             'client_secret': intent.client_secret,
             'promo_form': promo_form,
-            'intent': intent
+            'intent': intent,
+            'title': 'Checkout'
         })
 
 
@@ -55,7 +59,7 @@ def checkout_complete(request):
     """ redirect page after successful order """
     basket = Basket(request)
     basket.clear()
-    return render(request, 'checkout/checkout_complete.html')
+    return render(request, 'checkout/checkout_complete.html', {'title': 'Checkout Complete'})
 
 
 @csrf_exempt

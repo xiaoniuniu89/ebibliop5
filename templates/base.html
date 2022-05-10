@@ -17,7 +17,7 @@
     {% endblock %}
     {% block extra_js_head %}{% endblock %}
     {% if title %}
-        <title>{{title}}</title>
+        <title>Ebiblio | {{title}}</title>
     {% else %}
         <title>E-biblio</title>
     {%endif%}
@@ -31,7 +31,12 @@
     {% if messages %}
 
         {% for msg in messages %}
-            
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <p class="text-center">{{msg}}</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div> 
         {% endfor %}
     {% endif %}
     

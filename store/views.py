@@ -10,7 +10,7 @@ import random
 def landing(request):
     """ render store landing page """
     products = Product.products.all()[0:8]
-    return render(request, 'store/landing.html', {'products': products})
+    return render(request, 'store/landing.html', {'products': products, 'title': 'Home'})
 
 
 class AllBooks(ListView):
@@ -21,6 +21,11 @@ class AllBooks(ListView):
     context_object_name = 'products'
     paginate_by = 12
     template_name = ('store/category.html')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'All Books'
+        return context
     
     
 def product_detail(request, slug):
@@ -50,7 +55,7 @@ def product_detail(request, slug):
     return render(
         request,
         'store/detail.html',
-        {'product': product, 'reviews': reviews, 'user_review': user_review, 'full_star': full_star, 'half_star': half_star})
+        {'product': product, 'reviews': reviews, 'user_review': user_review, 'full_star': full_star, 'half_star': half_star, 'title': product.title})
 
 def handle_review(request):
     """ Ajax call to handle creating and updating a review """
@@ -120,7 +125,7 @@ def category_list(request, category_slug):
     return render(
         request,
         'store/category.html',
-        {'category': category, 'products': products})
+        {'category': category, 'products': products, 'title': category})
 
 
 def search(request):
@@ -143,7 +148,7 @@ def search(request):
         return render(
             request,
             'store/search.html',
-            {'term': term, 'products': products, 'result': result}
+            {'term': term, 'products': products, 'result': result, 'title': f'search {term}'}
 
         )
     else:
