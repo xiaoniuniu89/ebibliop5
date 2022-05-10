@@ -69,7 +69,7 @@ nav a:hover {
 }
 
 /* Taller footer on small screens */
-@media (max-width: 34em) {
+@media (max-width: 770px) {
     body {
       margin-bottom: 500px!important;
     }
