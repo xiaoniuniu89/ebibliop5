@@ -3,7 +3,8 @@
  * Copyright 2017.
  * Licensed under the GPL license
  */
-
+document.querySelector('nav').classList.add('fixed-top')
+document.querySelector('body').style.paddingTop = '75px'
 
 $( document ).ready( function () {
     $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {

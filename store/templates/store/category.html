@@ -8,8 +8,11 @@
 
 <main class="py-5">
   <div id="books" class="container">
+      {% if category %}
     <div class=" align-self-center "> <span class="badge badge-danger badge-danger-2  rounded-pill px-4 py-2 font-weight-light">{{category|title}}</span></div>
-
+        {% else %}
+    <div class=" align-self-center "> <span class="badge badge-danger badge-danger-2  rounded-pill px-4 py-2 font-weight-light">All Books</span></div>
+        {% endif %}
     <div class="row wrap-land clearfix">
            
 
@@ -35,6 +38,7 @@
         </div>
         {% endfor %}
     </div>
+    {% include 'store/snippets/pagination.html' %}
 </div>
 
 

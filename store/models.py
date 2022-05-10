@@ -2,10 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .utils import image_resize, unique_slugify
-from django.utils.text import slugify
-from dashboard.models import Profile
-from django.urls import reverse
+from .utils import image_resize
 import uuid
 
 class ProductManager(models.Manager):
@@ -44,7 +41,6 @@ class Product(models.Model):
     image = models.ImageField(
         upload_to='images/',
     )
-    image_url = models.CharField(max_length=1000, blank=True, default='')
     pdf = models.FileField(upload_to='pdf/', blank=False)
     slug = models.SlugField(max_length=255)
     slug_end = models.UUIDField(default=uuid.uuid4)
@@ -60,7 +56,7 @@ class Product(models.Model):
     class Meta:
         """ Meta data for product """
         verbose_name_plural = 'Products'
-        ordering = ('-created',)
+        ordering = ('-rating_score', '-created',)
         
     def get_absolute_url(self):
         """ returns url for product detail page """
@@ -71,14 +67,8 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         image_resize(self.image, 512, 512)
-        # if Product.objects.filter(slug=self.slug).exists():
-        #     self.slug = unique_slugify(self, slugify(self.title))
         super().save(*args, **kwargs)
-
-
-
-
-    
+ 
 
     def get_rating(self):
         """ get average rating of a product """

@@ -1,0 +1,1 @@
+document.querySelector('nav').classList.add('fixed-top')

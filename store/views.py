@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Category, Product, Review
-from .utils import update_image_url
+# from .utils import update_image_url
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.generic import ListView, View
@@ -9,36 +9,21 @@ from django.http import JsonResponse
 import random
 
 def landing(request):
-    """ render stoe landing page """
-    # products = Product.products.all()
-    return render(request, 'store/landing.html')
+    """ render store landing page """
+    products = Product.products.all()[0:8]
+    return render(request, 'store/landing.html', {'products': products})
 
 
-# class Landing(View):
-#     """
-#     renders store landing page with waypoints helping
-#     to lisst all books in infinite scroll
-#     """
-#     queryset = Product.products.all()
-#     context_object_name = 'products'
-#     # paginate_by = 4
-#     template_name = ('store/landing.html')
+class AllBooks(ListView):
+    """
+    Render all books 
+    """
+    queryset = Product.products.all()
+    context_object_name = 'products'
+    paginate_by = 12
+    template_name = ('store/category.html')
     
-class BooksJsonListView(View):
-    def get(self, *args, **kwargs):
-        print(kwargs)
-        upper = kwargs.get('num_books')
-        lower = upper - 8
-        books = Product.objects.values()[lower:upper]
-        update_image_url(books)
-        books = list(Product.objects.values()[lower:upper])
-        books_size = len(Product.objects.all())
-        max_size = True if upper >= books_size else False
-        return JsonResponse({'data': books, 'max': max_size}, safe=False)
-
-
-
-
+    
 def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
