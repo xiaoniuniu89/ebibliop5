@@ -24,11 +24,11 @@
         </div>
         {% endfor %} {% endcomment %}
     </div>
-    <div id="spinner-wrapper" class="not-visible">
-        <div class="spinner-border text-primary" role="status"></div>
-    </div>
-    <div id="loading-wrapper">
-        <button class="btn btn-primary" id="load-btn">Load more</button>
+    <div class="container d-flex justify-content-center flex-row">
+        <div class="loader d-none"></div>
+        <div id="loading-wrapper ">
+            <button class="btn btn-primary" id="load-btn">Load more</button>
+        </div>
     </div>
 </div>
 {% comment %} {% if page_obj.has_next %}

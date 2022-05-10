@@ -47,8 +47,7 @@ const appearOptions = {
 }
 
 const booksWrapper = document.querySelector('.books-wrapper')
-console.log(booksWrapper)
-const spinnerWrapper = document.querySelector('#spinner-wrapper')
+const loader = document.querySelector('.loader')
 const loadBtn = document.querySelector('#load-btn')
 const loadWrapper = document.querySelector('#loading-wrapper')
 let visible = 4
@@ -58,8 +57,9 @@ const handleGetData = () => {
         type: 'GET',
         url: `/books-json/${visible}/`,
         success: function(response){
+            loader.classList.add('d-none')
+            loadBtn.classList.remove('d-none')
             maxSize = response.max
-            console.log(response.book_url)
             const data = response.data
             
             data.map(book=>{
@@ -84,7 +84,8 @@ const handleGetData = () => {
             })
             if(maxSize){
                 console.log('done')
-                loadWrapper.innerHTML = "<h4>No more books to load</h4>"
+                loader.classList.add('d-none')
+                loadBtn.classList.add('d-none')
             }
         
         },
@@ -97,6 +98,9 @@ const handleGetData = () => {
 handleGetData()
 
 loadBtn.addEventListener('click', ()=>{
+    loadBtn.classList.add('d-none')
+    loader.classList.remove('d-none')
     visible += 4
     handleGetData()
+
 })
