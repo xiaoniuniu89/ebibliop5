@@ -71,7 +71,7 @@ nav a:hover {
 /* Taller footer on small screens */
 @media (max-width: 34em) {
     body {
-      margin-bottom: 500px;
+      margin-bottom: 500px!important;
     }
     .footer {
       height: 500px;

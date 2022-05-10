@@ -4,8 +4,8 @@
 <main class="pt-5">
     <div class="container">
       <h1 class="h5">Shopping basket</h1>
-      
-      {% if basket.get_total_price_after_discount > 50 %}
+      <div class="min-msg"></div>
+      {% if basket.get_total_price_after_discount > .50 %}
       {% for item in basket %}
       {% with product=item.product %}
       <div data-index="{{product.id}}" class="row mb-4 border product-item">
@@ -52,11 +52,13 @@
       <div class="col-12 text-end">
         
         <div class="h6 fw-bold">Sub Total: $<div id="subtotal" class="d-inline-flex">{{basket.get_total_price_after_discount}}</div></div>
-        {% if basket.get_total_price_after_discount > 50 %}
-          <a class='btn btn-info' href="{% url 'checkout:checkout' %}">Proceed to Checkout</a>
-        {% else %}
-          <a class='btn btn-info' href="{% url 'store:landing' %}#books">Shop for Books</a>
-        {% endif %}
+        <div class="check-shop-btn-wrapper">
+          {% if basket.get_total_price_after_discount > .50 %}
+            <a class='btn btn-info' href="{% url 'checkout:checkout' %}">Proceed to Checkout</a>
+          {% else %}
+            <a class='btn btn-info' href="{% url 'store:landing' %}#books">Shop for Books</a>
+          {% endif %}
+        </div>
 
       </div>
     </div> 
@@ -78,6 +80,14 @@
           $('.product-item[data-index="' + prodid + '"]').remove();
           document.getElementById("subtotal").innerHTML = json.subtotal;
           document.getElementById("basket-qty").innerHTML = json.qty
+          if(document.getElementById("subtotal").innerHTML == '0.00') {
+            document.querySelector(".check-shop-btn-wrapper").innerHTML = `
+            <a class='btn btn-info' href="/#books">Shop for Books</a>
+            `
+            document.querySelector(".min-msg").innerHTML = `
+            The minimum purchase is 50 cent. Start adding items to your basket to continue to checkout!
+            `
+          }
         },
         error: function (xhr, errmsg, err) {}
       });
