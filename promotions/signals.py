@@ -16,7 +16,6 @@ def send_newsletter(sender, instance, **kwargs):
     """
     users = User.objects.exclude(username='admin')
     users = [user.email for user in users]
-    print(users)
     message = instance
     message = render_to_string("newsletter.html", {'message': message})
     mail = EmailMessage(
