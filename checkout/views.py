@@ -10,7 +10,7 @@ from basket.basket import Basket
 from orders.views import payment_confirmation
 from promotions.forms import PromoForm
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 
 if os.path.isfile('env.py'):
@@ -26,6 +26,8 @@ def checkout(request):
     promo_form = PromoForm()
     total = str(basket.get_total_price_after_discount()).replace('.', '')
     total = int(total)
+    if total < 50:
+        return redirect('basket:basket_summary')
     if request.user.is_authenticated:
         user_id = request.user.id
     else:
