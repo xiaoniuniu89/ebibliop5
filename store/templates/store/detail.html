@@ -76,7 +76,15 @@
             success: function(json){
                 document.getElementById('basket-qty').innerHTML = json.qty
                 console.log(json.qty)
-                alert('Added to basket')
+                document.querySelector('.msg-wrapper').innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p class="text-center">Added to basket</p>
+                </div>
+
+                `
+                setTimeout(function () {
+                    $(".alert").alert('close')
+                }, 3000);
             },
             error: function(xhr, errmsg, err){}
         })

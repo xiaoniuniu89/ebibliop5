@@ -106,8 +106,27 @@
             },
             success: function(json){
             document.getElementById("subtotal").innerHTML = json.total
+            document.querySelector('.msg-wrapper').innerHTML = `
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <p class="text-center">Promo code applied</p>
+              </div>
+
+              `
+              setTimeout(function () {
+                  $(".alert").alert('close')
+              }, 3000);
             },
-            error: function(xhr, errmsg, err){}
+            error: function(xhr, errmsg, err){
+              document.querySelector('.msg-wrapper').innerHTML = `
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <p class="text-center">Promo code invalid</p>
+              </div>
+
+              `
+              setTimeout(function () {
+                  $(".alert").alert('close')
+              }, 3000);
+            }
         })
     })
 

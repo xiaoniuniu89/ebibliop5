@@ -1,5 +1,8 @@
 {% load static %}
-<div class='my-5'></div>
+<div class='footer-msg pb-5'>
+
+    
+</div>
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -71,9 +74,18 @@
                     action: 'post'
                 },
                 success: function(json){
-                alert(json.msg)
+                document.querySelector('.msg-wrapper').innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p class="text-center">${json.msg}</p>
+                </div>
+
+                `
                 $('#email-input').val('')
                 $('#message-input').val('')
+                setTimeout(function () {
+                    $(".alert").alert('close')
+                }, 3000);
+
                 },
                 error: function(xhr, errmsg, err){}
             })

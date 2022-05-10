@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Category, Product, Review
-# from .utils import update_image_url
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.generic import ListView, View
@@ -82,7 +81,6 @@ def handle_review(request):
     
     if request.POST.get('action') == 'update':
         product_id = request.POST.get('product_id')
-        print(product_id)
         product = Product.objects.get(pk=product_id)
         user = User.objects.get(id=request.user.id)
         rating = request.POST.get('rating')
