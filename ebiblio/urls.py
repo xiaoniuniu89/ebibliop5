@@ -30,7 +30,9 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('privacy-policy/', TemplateView.as_view(
-        template_name='privacy_policy.html'), name='privacy_policy')
+        template_name='privacy_policy.html'), name='privacy_policy'),
+    path('cookie-policy/', TemplateView.as_view(
+        template_name='cookie_policy.html'), name='cookie_policy')
 
 ]
 
