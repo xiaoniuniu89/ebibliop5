@@ -29,7 +29,7 @@
             <div class="col border-bottom">
               <div class="row p-3">
                 <div class="col-6">Price</div>
-                <div class="col-6 text-end"><span class="h6 fw-bold">${{ product.price }}</span></div>
+                <div class="col-6 text-end"><span class="h6 fw-bold">€{{ product.price }}</span></div>
               </div>
             </div>
             <div class="col">
@@ -60,7 +60,7 @@
           </form>
       <div class="col-12 text-end">
         
-        <div class="h6 fw-bold">Sub Total: $<div id="subtotal" class="d-inline-flex">{{basket.get_total_price_after_discount}}</div></div>
+        <div class="h6 fw-bold">Sub Total: €<div id="subtotal" class="d-inline-flex">{{basket.get_total_price_after_discount}}</div></div>
         <div class="check-shop-btn-wrapper">
           {% if basket.get_total_price_after_discount > .50 %}
             <a class='btn btn-info' href="{% url 'checkout:checkout' %}">Proceed to Checkout</a>
