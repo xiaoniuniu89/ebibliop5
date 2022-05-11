@@ -1,108 +1,153 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# E-biblio 
 
-Welcome Daniel Callaghan,
+## Table of contents
+- <a href="#about">About E-biblio</a> 
+- <a href="#ux">UX Design</a>
+  - <a a href="#user-stories">User Stories</a>
+  - <a href="#typography">Typography</a>
+  - <a href="#color">Color</a>
+  - <a href="#wireframes">Wireframes</a>
+- <a href="#features">Features</a>
+  - <a href="">feature</a>
+  - <a href="">feature</a>
+  - <a href="">feature</a>
+  - <a href="">feature</a>
+  - <a href="">feature</a>
+  - <a href="">feature</a>
+  - <a href="#features-left">Features Left to Impliment</a>
+- <a href="#tech">Technologies Used</a>
+- <a href="#test">Testing</a>
+- <a href="#deployment">Deployment</a>
+- <a href="#credits">Credits</a>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+<section id="about">
 
-## Gitpod Reminders
+# About E-biblio
+  E-biblio is an online e-book store specializing in motivational, self-improvement, business and marketing books.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+  E-biblio is primarily for two groups of people:
 
-`python3 -m http.server`
+  - People interested in self-improvement - According to <a href='https://blog.marketresearch.com/10.4-billion-self-improvement-market-pivots-to-virtual-delivery-during-the-pandemic#:~:text=Self%2DImprovement%20Market%20Size%3A%20Marketdata,to%20%2414.0%20billion%20by%202025.'>marketresearch.com</a>, Self-Improvement Market Size: Marketdata estimates that the U.S. self-improvement market was worth $11.6 billion in 2019, and that it contracted by 10% to $10.5 billion in 2020. Marketdata forecasts a 7.7% rebound in 2021, to $11.3 billion, and forecasts 6.0% average annual growth to $14.0 billion by 2025. Life coaches and public speakers could find a lot of value in the content on E-biblio.
 
-A blue button should appear to click: _Make Public_,
+  - Entrepreneurs - According to <a href='https://www.salesforce.com/blog/small-business-pandemic-entrepreneurs/'>salesforce.com</a>, more than 4.4 million new businesses were created in the U.S. during 2020 — the highest total on record. For reference, that’s a 24.3% increase from 2019 and 51.0% higher than the 2010-19 average. Half a million new businesses were started in January 2021, alone. Data from our most recent B2B survey shares how and why new small business owners took the leap over this past year, and why many may reap the benefits. Ebiblio features many books about marketing and being an entrepreneur. 
 
-Another blue button should appear to click: _Open Browser_.
+  The site is deployed here:
+  - https://e-biblio.herokuapp.com/
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A blue button should appear to click: _Make Public_,
+  <br>
+  <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652297282/p5/Screenshot_from_2022-05-11_20-24-27_t0s3ir.png">
+  <br>
+  <br>
+</section>
 
-Another blue button should appear to click: _Open Browser_.
+<section id="tech">
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+# Technologies Used 
 
-To log into the Heroku toolbelt CLI:
+[Gitpod](https://www.gitpod.io) 
+- IDE (Intigrated Development Environment)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+[Github](https://www.github.com)
+- remote repository hosting platform
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+[HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) | [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) | [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |  [python](https://www.python.org/) 
 
-------
+- Languages Used to make the site
 
-## Release History
+[Jquery](https://jquery.com/) | [django](https://www.djangoproject.com/) | [coverage](https://coverage.readthedocs.io/en/6.3.2/) 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- libraries and framework used to make the site
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+[Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
+- Used to check site responsiveness
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+[HTML Validator](https://validator.w3.org/)
+- Check for HTML errors
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+[Jigsaw](https://jigsaw.w3.org/css-validator/)
+- Check for CSS errors
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+[PEP8](http://pep8online.com/)
+- Check for python errors
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+[jshint](https://jshint.com/)
+- check for JavaScript errors
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+[Font Awesome](https://fontawesome.com/)
+- for Icons
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+[Balsamiq](https://balsamiq.com/)
+- to make wireframes
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+# Deployment <p id="deployment"></p>
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+The site is deployed on [Heroku](https://www.heroku.com/). The link is here:
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Steps to deploy the site on Heroku:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+- in code editor add requirements for Heroku to install by typing the following commands into the terminal:
+  - pip3 freeze > requirements.txt
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+- create a Procfile in the same directory as manage.py and paste in the following:
+  - foo
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- in settings.py add Heroku to allowed hosts
+  
+- commit and push changes
 
-------
+- log in to Heroku or make an account
+- click create a new app in the top right corner
+- name your app and choose the region you live in
+- in the resources tab of your app dashboard add the Postgres database resource
+- in the settings tab click reveal config vars and add the following
+  - aws
+  - DATABASE_URL (added automatically)
+  - EMAIL_PASS - the app uses google, steps to set up app passwords found [here](https://support.google.com/accounts/answer/185833?hl=en)
+  - EMAIL_USER - Email account address
+  - SECRET_KEY - can be anything
 
-## FAQ about the uptime script
+- go to the deploy tab and choose GitHub as deploy method
+- search for the repo and connect
+- click deploy branch
+- if the build fails in the top right corner click the 'more' button and check logs to get an indication of the problem
+- Click the view app button to see the app
 
-**Why have you added this script?**
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+How to fork the repository
+- Go to [github.com](https://www.github.com) and log in.
+- Click 
+- in the top right of the page click the "fork" button
+- you will now have a copy of the repository in your GitHub account.
 
-**How will this affect me?**
+How to clone the repository
+- Go to [github.com](https://www.github.com)
+- Log in to account
+- Click repositories
+- Click 
+- Click the green code button that says Clone or download 
+- to copy from HTTPS copy URL link "HTTPS". 
+- open terminal
+- go to the directory where you want to save the files
+- type git clone and paste the link
+- Press enter and the clone will be created
+- To install the dependencies required to run the app, in the terminal type: pip3 install -r requirements.txt
+- create a .env file in the root directory and in it, import os
+- add the following environment variables in the .env file:
+  - os.environ["SECRET_KEY"] = <'yourrandomsecretkeyhere'>
+  - os.environ["EMAIL_USER"] = <'youremailaddresshere'>
+  - os.environ["EMAIL_PASS"] = <'emaipassword'>
+  - for the database there are two options:
+    - 1) In settings.py use the commented out sql lite database
+    - 2) os.environ["DATABASE_URL"] = <'postgresdatabaseurlhere'>
+  - os.environ["CLOUDINARY_URL"] = <'yourcloudinaryurlhere'>
+- create a superuser in the terminal by typing: python3 manage.py createsuperuser
+- run the server by typing: python3 manage.py runserver
+- use the superuser credentials to log into the site
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+More detailed instructions can be found [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository-to-github-desktop)
 
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
