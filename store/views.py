@@ -140,11 +140,17 @@ def search(request):
         result = True
         if not products:
             result = False
-            products = random.sample(list(Product.objects.all()), 8)
+            try:
+                products = random.sample(list(Product.objects.all()), 8)
+            except ValueError:
+                products = Product.objects.all()
         if term.strip() == '':
             term = ''
             result = False
-            products = random.sample(list(Product.objects.all()), 8)
+            try:
+                products = random.sample(list(Product.objects.all()), 8)
+            except ValueError:
+                products = Product.objects.all()
         return render(
             request,
             'store/search.html',
