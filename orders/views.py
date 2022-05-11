@@ -32,7 +32,8 @@ def add_order(request):
         city = request.POST.get('city')
         country = request.POST.get('country')
         postcode = request.POST.get('postcode')
-        basket_total = basket.get_total_price()
+        promo = basket.get_discount()
+        basket_total = basket.get_total_price_after_discount()
 
         # check order exists already
         if Order.objects.filter(order_key=order_key).exists():
@@ -48,6 +49,7 @@ def add_order(request):
                 city=city,
                 post_code=postcode,
                 total_price=basket_total,
+                promo_total=promo,
                 order_key=order_key
             )
             order_id = order.pk
