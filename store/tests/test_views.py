@@ -1,31 +1,44 @@
 from django.contrib.auth.models import User
 from django.http import HttpRequest
 from django.conf import settings
-from django.test import Client, RequestFactory, TestCase
+from django.test import Client, RequestFactory, TestCase, override_settings
 from django.urls import reverse
-
-from store.models import Category, Product
+from django.core.files.uploadedfile import SimpleUploadedFile
+from store.models import Category, Product, Review
 from store.views import landing
 
 from importlib import import_module
 
+small_gif = (
+    b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
+    b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'
+    b'\x02\x4c\x01\x00\x3b'
+)
 
+
+
+@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
 class TestViewResponses(TestCase):
     """Tests for store views"""
     def setUp(self):
         """ set up test variables"""
         self.client = Client()
         self.factory = RequestFactory()
-        User.objects.create(username='admin')
+        self.user = User.objects.create(username='admin')
+        self.user.set_password('12345')
+        self.user.save()
         Category.objects.create(name='django', slug='django')
-        Product.objects.create(
+        self.client.login(username='admin', password='12345')
+        self.product = Product.objects.create(
             category_id=1,
             title='django beginners',
-            created_by_id=1,
             slug='django-beginners',
             price='9.99',
-            image='django',
-            pdf='django')
+            image=SimpleUploadedFile('small.gif', small_gif, content_type='image/gif'),
+            pdf='django',
+            rating_count=0,
+            rating_score=0
+        )
     
     def test_url_allowed_hosts(self):
         """
@@ -58,18 +71,143 @@ class TestViewResponses(TestCase):
         response = self.client.get(
             reverse('store:product_detail', args=['django-beginners']))
         self.assertEqual(response.status_code, 200)
+        self.product.rating_count = 1
+        self.product.rating_score = 5
+        self.product.save()
+        response = self.client.get(
+            reverse('store:product_detail', args=['django-beginners']))
+        self.assertEqual(response.status_code, 200)
+        self.client.logout()
+        response = self.client.get(
+            reverse('store:product_detail', args=['django-beginners']))
+        self.assertEqual(response.status_code, 200)
 
-    def test_homepage_html(self):
-        """
-        test landing page
-        """
-        request = HttpRequest()
-        engine = import_module((settings.SESSION_ENGINE))
-        request.session = engine.SessionStore()
-        response = landing(request)
-        html = response.content.decode('utf8')
-        self.assertIn('<title>E-biblio</title>', html)
-        self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
+    def test_all_books_context_data(self):
+        response = self.client.get(
+            reverse('store:all_books')
+        )
+        self.assertInHTML(
+            '<title>Ebiblio | All Books</title>',
+            response.content.decode()
+        )
+    
+    def test_add_update_delete_review(self):
+        """ tests ajax call to add, update and delete review"""
+        response = self.client.post(
+            reverse('store:handle_review'),
+            {
+                'product_id': 1,
+                'rating': 3,
+                'review': 'test review',
+                'action': 'post'
+            },
+            xhr=True
+        )
+        self.assertEqual(
+            response.json(),
+            {
+                'msg': 'Post created',
+                'rating': '3',
+                'review': 'test review'
+            }
+        )
+        self.assertEqual(len(Review.objects.all()), 1)
+        # test update 
+        response = self.client.post(
+            reverse('store:handle_review'),
+            {
+                'product_id': 1,
+                'rating': 5,
+                'review': 'test review update',
+                'action': 'update'
+            },
+            xhr=True
+        )
+        self.assertEqual(
+            response.json(),
+            {
+                'msg': 'Post updated',
+                'rating': '5',
+                'review': 'test review update'
+            }
+        )
+        # test delete
+        response = self.client.post(
+            reverse('store:delete_review'),
+            {
+                'product_id': 1,
+                'action': 'post'
+            },
+            xhr=True
+        )
+        self.assertEqual(
+            response.json(),
+            {
+                'msg': 'Deleted Succesfully',
+            }
+        )
+        self.assertEqual(len(Review.objects.all()), 0)
+
+    def test_add_review_not_first(self):
+        self.product.rating_score = 5
+        self.product.rating_count = 1
+        self.product.save()
+
+        response = self.client.post(
+            reverse('store:handle_review'),
+            {
+                'product_id': self.product.id,
+                'rating': 3,
+                'review': 'test review',
+                'action': 'post'
+            },
+            xhr=True
+        )
+        self.assertEqual(
+            response.json(),
+            {
+                'msg': 'Post created',
+                'rating': '3',
+                'review': 'test review'
+            }
+        )
+
+    def test_search(self):
+        """test search view"""
+        response = self.client.post(
+            reverse('store:search'),
+            {
+                'term': 'django',
+            },
+        )
+        self.assertInHTML(
+            '''<span class="badge badge-danger badge-danger-2
+              rounded-pill px-4 py-2 font-weight-light">Django</span>''',
+            response.content.decode()
+        )
+        response = self.client.post(
+            reverse('store:search'),
+            {
+                'term': '',
+            },
+        )
+        self.assertInHTML(
+            '''<span class="badge badge-danger badge-danger-2
+              rounded-pill px-4 py-2 font-weight-light"></span>''',
+            response.content.decode()
+        )
+        response = self.client.post(
+            reverse('store:search'),
+            {
+                'term': 'jsdf',
+            },
+        )
+        self.assertInHTML(
+            '''<span class="badge badge-danger badge-danger-2
+              rounded-pill px-4 py-2 font-weight-light">Jsdf</span>''',
+            response.content.decode()
+        )
+        response = self.client.get(reverse('store:search'))
         self.assertEqual(response.status_code, 200)
 
     
