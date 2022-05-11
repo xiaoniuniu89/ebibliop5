@@ -31,10 +31,8 @@ class Basket():
         self.save()
 
     def add_promo(self, promo):
-        print(self.promo)
         self.promo = self.session['promo_key'] = promo
         self.save()
-        print(self.promo)
 
 
     def delete(self, product):

@@ -1,41 +1,38 @@
 from django.contrib.auth.models import User
 from django.http import HttpRequest
 
-from django.test import Client, RequestFactory, TestCase
+from django.test import Client, RequestFactory, TestCase, override_settings
 from django.urls import reverse
 
 from store.models import Category, Product
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 
+small_gif = (
+    b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
+    b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'
+    b'\x02\x4c\x01\x00\x3b'
+)
+
+@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
 class TestBasketViews(TestCase):
     def setUp(self):
         self.client = Client()
         User.objects.create(username='admin')
         Category.objects.create(name='test', slug='test')
-        Product.objects.create(
-            category_id=1,
-            title='test book',
-            created_by_id=1,
-            slug='test-book',
-            price='9.99',
-            image='test'
+        self.product = Product.objects.create(
+            title='django for life',
+            slug='django-for-life', price='9.99',
+            image=SimpleUploadedFile('small.gif', small_gif, content_type='image/gif'),
+            pdf='django.pdf',
+            author='admin',
+            in_stock=True,
+            description='book for test',
+            rating_count=0,
+            rating_score=0,
+            category=Category.objects.all()[0]
         )
-        Product.objects.create(
-            category_id=1,
-            title='test book two',
-            created_by_id=1,
-            slug='test-book-two',
-            price='9.99',
-            image='test'
-        )
-        self.client.post(
-            reverse('basket:basket_add'),
-            {
-                'productId': 1,
-                'action': 'post'
-            },
-            xhr=True
-        )
+        
 
     def test_basket_url(self):
         """ test baslet response """
@@ -44,29 +41,38 @@ class TestBasketViews(TestCase):
 
     def test_basket_add_duplicate(self):
         """ test adding items to basket - 1 from setup and 1 sent here"""
-        response = self.client.post(
+        self.client.post(
             reverse('basket:basket_add'),
             {
-                'productId': 1,
+                'productId': self.product.id,
                 'action': 'post'
             },
             xhr=True
         )
         # product id already in bag
-        self.assertEqual(response.json(), {'qty': 1})
 
-    def test_basket_add_new(self):
-        """ test adding items to basket - 1 from setup and 1 sent here"""
         response = self.client.post(
             reverse('basket:basket_add'),
             {
-                'productId': 2,
+                'productId': self.product.id,
+                'action': 'post'
+            },
+            xhr=True
+        )
+        self.assertEqual(response.json(), {'qty': 1})
+
+    def test_basket_add(self):
+        """ test adding items to basket """
+        response = self.client.post(
+            reverse('basket:basket_add'),
+            {
+                'productId': self.product.id,
                 'action': 'post'
             },
             xhr=True
         )
         # 1 from set up and 1 just added
-        self.assertEqual(response.json(), {'qty': 2})
+        self.assertEqual(response.json(), {'qty': 1})
 
     def test_basket_delete(self):
         """ test basket delete """
@@ -78,7 +84,7 @@ class TestBasketViews(TestCase):
             },
             xhr=True
         )
-        self.assertEqual(response.json(), {'qty': 0, 'subtotal': 0})
+        self.assertEqual(response.json(), {'qty': 0, 'subtotal': '0'})
 
 
 
