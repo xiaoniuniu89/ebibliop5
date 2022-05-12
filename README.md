@@ -8,7 +8,7 @@
   - <a href="#color">Color</a>
   - <a href="#wireframes">Wireframes</a>
 - <a href="#features">Features</a>
-  - <a href="">feature</a>
+  - <a href="#cta">CTA</a>
   - <a href="">feature</a>
   - <a href="">feature</a>
   - <a href="">feature</a>
@@ -45,6 +45,11 @@
 <section id="ux">
 
 # UX Design
+
+I tried my best to avoid feature creep, stick to wireframes and features I planned before coding, and use Bootstrap which I have not done before on a personal project. I also tried to use the existing example code as a jumping off point wherever possible and not to "reinvent the wheel" for every design decision.
+
+A full list of credits can be found at the bottom of this document as well as scattered throughout the codebase in the comments.
+
 
 ## User Stories <p id="user-stories"></p>
 
@@ -127,101 +132,102 @@ Root Colors:
 ## Wireframes <p id="wireframes"></p>
 
 Wireframes for the app 
-- <a href="assets/wireframes/desktop-tablet.pdf">Desktop & Tablet View</a>
-- <a href="assets/wireframes/phone.pdf">Phone View</a>
+- <a href="">Desktop & Tablet View</a>
+- <a href="">Phone View</a>
 
 </section>
 
 <section id="features">
 
 # Features
-There were so many features I wanted to implement in this app, but due to time constraints and my own limitations in making apps, I focused on the MVP as the first release. The features for this release will focus entirely on the sourcebook. I will not add any additional features.  
+My last project suffered a lot from feature creep, and as a result I tried my best to only impliment features I decided on before coding one line of the site. 
 
+I was tempted from time to time to add a new cool feature, for example, a customer wishlist, commenting on reviews, user book club groups, but by sticking to my original plan I believe the website is a lot stronger and I was able to finish it in roughly a month which is the time limit I gave myself. 
 
-<img src="assets/images/features.png">
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652347638/p5/Screenshot_from_2022-05-12_10-26-18_lmncuh.png">
 
 <br>
 
-In my research, I found a couple of apps that do the same thing as my app, but they are visually, extremely lackluster. I wanted to make my app thematic. It should feel as if it is part of the game. I was very careful in every step of making the app to make sure it was as immersive as possible.
 
-The layout is very simple. I wanted to experiment with tabs for this app, so I made the app all on one page. This means less time wasted trying to load pages and trying to find information. 
-  ## Existing Features <p id="general-features"></p>
+# Existing Features <p id="general-features"></p>
 
-  ## Background Image <p id="background"></p>
+## CTA <p id="cta"></p>
 
-  <img src="assets/images/background.jpg">
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652347438/p5/Screenshot_from_2022-05-12_10-23-25_g467y0.png">
 
-  The background image is perfect for this app. It is reminiscent of an old map and will be very thematic to most RPG games. It is a nice contrast to the overall black and white colors present elsewhere.
+The call to action is quite simple. I used a picture full of bright oranges that influenced the rest of the site colors a lot. The aim is to make the user feel a sense of freedom by using ebooks.
 
-
-  ## Logo <p id="logo"></p>
-
-  <img src="assets/images/logo.png">
-
-  The logo text was a very important consideration, because I wanted the text to look somewhat like the logo of the <a href="https://www.wordmillgames.com/mythic-rpg.html"> source book</a>.
-
-  ## How to section <p id="how-to"></p>
-
-  ### Button
-  <img src="assets/images/how-to-btn.png">
-
-  ### Modal
-  <img src="assets/images/how-to-modal.png">
+The cta text is a simple piece of text describing the site, encouraging customers to buy something by providing a promo code, and a call to action to sign up.
 
 
-  All of the text explaining how to use the app is found in a modal window that the user can open without going to a new page. Overall I wanted it to feel like a rulebook, as many users of this app would be familiar with having 1-2 rulebooks open at all times to play a game. 
+## Logo <p id="logo"></p>
 
-  It will darken the background to create contrast with the app and it has its own unique scrollbar which I feel will not distract from the aesthetics of the app.
+<img src="assets/images/logo.png">
 
-  This gave me a lot of freedom to write as much content as I wanted for the how-to-use section without cluttering up the site and affecting the user experience. unfortunately, the how to section is to cramped on mobile view, so at smaller screen widths, the iframes are replaced with clickable links and some of the less important paragraphs will not be displayed.
-  
-   The app can be quite complicated to use, so I am very pleased with the how-to section and how in-depth it went with explaining everything and giving examples of use. 
+The logo text was a very important consideration, because I wanted the text to look somewhat like the logo of the <a href="https://www.wordmillgames.com/mythic-rpg.html"> source book</a>.
 
-  
+## How to section <p id="how-to"></p>
 
-  ## Emulator <p id="emulator"></p>
+### Button
+<img src="assets/images/how-to-btn.png">
 
-  <img src="assets/images/emulator.png">
-
-  ### Tabs
-
-  <image src="assets/images/tabs.png">
-
-  The three tabs each display different content. The active tab is also a brighter color to remind users where they are. 
-
-  ## Oracle Tab <p id="oracle"></p>
-
-  ### Chaos Number
-
-  <img src="assets/images/chaos.png">
-
-  The chaos number starts at 5. It can go as low as 1 and as high as 9. The chaos number represents how in control the players are of the adventure. When it reaches level 9 a color animation will make the chaos number flash a blood red to highlight how out of control the players are of the adventure. 
-
-  ### Fate Buttons
-
-  <img src="assets/images/fate-btns.png">
-
-  The three buttons at the bottom of the oracle tab are the main ways users interact with mythic. 
-
-  The start scene button is used whenever the user starts a new scene/chapter. The higher the chaos number the higher the chance of something random happening at the start of a scene. 
-
- The question button lets users ask Mythic yes/no questions. When clicked users are prompted to select the odds of their question being yes. The higher the chaos number, the higher the chance the question will be yes. There is also the possibility of a random event happening here. It is  
- referred to as the Fate chart in the source material. 
-
- <img src="assets/images/fate-chart.png">
-
- The event button generates two random keywords that the user will interpret to give direction to the story or to flesh out a yes/no answer.
+### Modal
+<img src="assets/images/how-to-modal.png">
 
 
- <img src="assets/images/event-keywords.png">
+All of the text explaining how to use the app is found in a modal window that the user can open without going to a new page. Overall I wanted it to feel like a rulebook, as many users of this app would be familiar with having 1-2 rulebooks open at all times to play a game. 
 
- each random keyword is stored in an array containing 100 words. In the source material, a user accesses these by rolling percentile dice. 
+It will darken the background to create contrast with the app and it has its own unique scrollbar which I feel will not distract from the aesthetics of the app.
+
+This gave me a lot of freedom to write as much content as I wanted for the how-to-use section without cluttering up the site and affecting the user experience. unfortunately, the how to section is to cramped on mobile view, so at smaller screen widths, the iframes are replaced with clickable links and some of the less important paragraphs will not be displayed.
+
+  The app can be quite complicated to use, so I am very pleased with the how-to section and how in-depth it went with explaining everything and giving examples of use. 
 
 
 
- <img src="assets/images/display-ex.png">
+## Emulator <p id="emulator"></p>
 
- When an answer is displayed - the emulator window will display a blur effect animation with the text in the center of the window. 
+<img src="assets/images/emulator.png">
+
+### Tabs
+
+<image src="assets/images/tabs.png">
+
+The three tabs each display different content. The active tab is also a brighter color to remind users where they are. 
+
+## Oracle Tab <p id="oracle"></p>
+
+### Chaos Number
+
+<img src="assets/images/chaos.png">
+
+The chaos number starts at 5. It can go as low as 1 and as high as 9. The chaos number represents how in control the players are of the adventure. When it reaches level 9 a color animation will make the chaos number flash a blood red to highlight how out of control the players are of the adventure. 
+
+### Fate Buttons
+
+<img src="assets/images/fate-btns.png">
+
+The three buttons at the bottom of the oracle tab are the main ways users interact with mythic. 
+
+The start scene button is used whenever the user starts a new scene/chapter. The higher the chaos number the higher the chance of something random happening at the start of a scene. 
+
+The question button lets users ask Mythic yes/no questions. When clicked users are prompted to select the odds of their question being yes. The higher the chaos number, the higher the chance the question will be yes. There is also the possibility of a random event happening here. It is  
+referred to as the Fate chart in the source material. 
+
+<img src="assets/images/fate-chart.png">
+
+The event button generates two random keywords that the user will interpret to give direction to the story or to flesh out a yes/no answer.
+
+
+<img src="assets/images/event-keywords.png">
+
+each random keyword is stored in an array containing 100 words. In the source material, a user accesses these by rolling percentile dice. 
+
+
+
+<img src="assets/images/display-ex.png">
+
+When an answer is displayed - the emulator window will display a blur effect animation with the text in the center of the window. 
 
 ## Journal Tab <p id="journal"></p>
 
