@@ -174,6 +174,9 @@ Nav - admin
 
 ## Footer <p id="footer"></p>
 
+The footer contains links to important site links as well as privacy and cookie policies. It also features a contact form so as to be accessible from all pages..
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652349070/p5/Screenshot_from_2022-05-12_10-50-35_vjp5vr.png">
 
 ## CTA <p id="cta"></p>
 
