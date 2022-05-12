@@ -13,6 +13,7 @@
   - <a href="#cta">CTA</a>
   - <a href="#popular">Popular Books</a>
   - <a href="#categories">Category Pages</a>
+  - <a href="#product">Product Page</a>
   - <a href="dashboard">Dashboard</a>
   - <a href="">feature</a>
   - <a href="">feature</a>
@@ -203,6 +204,24 @@ The category pages allow the user to browse books by category. They are paginate
 
 <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652392971/p5/Screenshot_from_2022-05-12_23-02-04_ihhjqs.png">
 
+
+## Product Page <p id="product"></p>
+
+The product detail page has a lot of functionality.
+
+Users can add the book to their basket. The book features a rating out of 5 stars based on user reviews, if you are admin there is a link to edit the book information.
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394656/p5/Screenshot_from_2022-05-12_23-26-37_tjy1ki.png">
+
+the page also features a review section. Users can add a rating and review, update and delete it. the reviews are handled by an ajax request and do not require page refresh to view.
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394761/p5/Screenshot_from_2022-05-12_23-27-00_rdocv7.png">
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394802/p5/Screenshot_from_2022-05-12_23-27-09_mm09kf.png">
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394846/p5/Screenshot_from_2022-05-12_23-27-28_qgb5l0.png">
+
+
 ### Dashboard <p id="dashboard"></p>
 
 The user dashboard is for all non staff users as staff and admin both use the built in django admin panel.
@@ -228,19 +247,7 @@ The billing modal allow the user to update their billing information
 <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394141/p5/Screenshot_from_2022-05-12_23-11-16_dmdqb0.png">
 
 
-All of the text explaining how to use the app is found in a modal window that the user can open without going to a new page. Overall I wanted it to feel like a rulebook, as many users of this app would be familiar with having 1-2 rulebooks open at all times to play a game. 
 
-It will darken the background to create contrast with the app and it has its own unique scrollbar which I feel will not distract from the aesthetics of the app.
-
-This gave me a lot of freedom to write as much content as I wanted for the how-to-use section without cluttering up the site and affecting the user experience. unfortunately, the how to section is to cramped on mobile view, so at smaller screen widths, the iframes are replaced with clickable links and some of the less important paragraphs will not be displayed.
-
-  The app can be quite complicated to use, so I am very pleased with the how-to section and how in-depth it went with explaining everything and giving examples of use. 
-
-
-
-## Emulator <p id="emulator"></p>
-
-<img src="assets/images/emulator.png">
 
 ### Tabs
 
