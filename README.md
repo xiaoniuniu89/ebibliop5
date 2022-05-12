@@ -105,18 +105,21 @@
 
   
 
-  ## Typography <p id="typography"></p>
-  - <a href="https://fonts.google.com/specimen/Cinzel+Decorative?query=cinze">Cinzel Decorative</a> - Thematic font for Logo and any other headings and buttons.
-  - <a href="https://fonts.google.com/specimen/Raleway?query=ralewa">Raleway</a> - text compliments Cinzel very well. Used mostly for About section.
-  - <a href="https://fonts.google.com/specimen/Eater?query=Eater">Eater</a> - Any text generated in the oracle uses this text. I wanted the feeling that the answers were coming from another realm or a magic mirror - something like that.
+## Typography <p id="typography"></p>
 
-  ## Color <p id="color"></p>
-  Color is kept mostly black and white except for the background image which I think has a kind of pirate map/adventure map coffee stain to it. 
-  The main colors are:
-  - Black - Emulator Window
-  - Whitesmoke - text. I wanted to have a bone-white kind of color to any text in the emulator. As if the user was casting old runes.
-  - #e9e9e9 - how to section background-color - I like this because it makes the how to section look like a rule book! 
-  - Background image has a stained coffee kind of color to it.
+- <a href="https://fonts.google.com/specimen/Roboto#about">Roboto</a> - Used for headings.
+
+- <a href="https://fonts.google.com/specimen/Roboto+Slab#about">Roboto Slab</a> - text compliments Roboto very well. Used mostly for p tags.
+
+## Color <p id="color"></p>
+
+Colors were based off the CTA image on the landing page and the other colors were chosen with help from <a href='http://colormind.io/' target='_blank'>colormind ai</a>
+
+Root Colors:
+- Black - Emulator Window
+- Whitesmoke - text. I wanted to have a bone-white kind of color to any text in the emulator. As if the user was casting old runes.
+- #e9e9e9 - how to section background-color - I like this because it makes the how to section look like a rule book! 
+- Background image has a stained coffee kind of color to it.
 
 ## Wireframes <p id="wireframes"></p>
 
