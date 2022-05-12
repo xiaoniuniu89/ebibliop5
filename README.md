@@ -8,6 +8,8 @@
   - <a href="#color">Color</a>
   - <a href="#wireframes">Wireframes</a>
 - <a href="#features">Features</a>
+  - <a href="#navbar">Navbar</a>
+  - <a href="#footer">Footer</a>
   - <a href="#cta">CTA</a>
   - <a href="">feature</a>
   - <a href="">feature</a>
@@ -140,9 +142,9 @@ Wireframes for the app
 <section id="features">
 
 # Features
-My last project suffered a lot from feature creep, and as a result I tried my best to only impliment features I decided on before coding one line of the site. 
+My last project suffered a lot from feature creep, and as a result, I tried my best to only implement the features I decided on in the planning stages of the project.
 
-I was tempted from time to time to add a new cool feature, for example, a customer wishlist, commenting on reviews, user book club groups, but by sticking to my original plan I believe the website is a lot stronger and I was able to finish it in roughly a month which is the time limit I gave myself. 
+I was tempted from time to time to add a new cool feature, for example, a customer wishlist, commenting on reviews, or user book club groups, but by sticking to my original plan I believe the website is a lot stronger and I was able to finish it in roughly a month which is the time limit I gave myself.
 
 <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652347638/p5/Screenshot_from_2022-05-12_10-26-18_lmncuh.png">
 
@@ -151,11 +153,34 @@ I was tempted from time to time to add a new cool feature, for example, a custom
 
 # Existing Features <p id="general-features"></p>
 
+## Navbar <p id="navbar"></p>
+There are four different versions of the navbar depending on the users role, customer, admin or staff, logged in status.
+
+It features a basket icon to keep track of purchases, a searchbar, links to all the pages in the site. 
+
+The admin/staff navbar in particular makes use of nested dropdown menus.
+
+Nav - not logged in
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652348738/p5/Screenshot_from_2022-05-12_10-40-30_lshsnk.png">
+
+Nav - customer
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652348798/p5/Screenshot_from_2022-05-12_10-44-24_wsxos4.png">
+
+Nav - staff
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652348854/p5/Screenshot_from_2022-05-12_10-41-32_madrm8.png">
+
+Nav - admin
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652348942/p5/Screenshot_from_2022-05-12_10-40-47_bqgbn1.png">
+
+## Footer <p id="footer"></p>
+
+
 ## CTA <p id="cta"></p>
 
 <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652347438/p5/Screenshot_from_2022-05-12_10-23-25_g467y0.png">
 
-The call to action is quite simple. I used a picture full of bright oranges that influenced the rest of the site colors a lot. The aim is to make the user feel a sense of freedom by using ebooks.
+The call to action is quite simple. I used a picture full of bright oranges that influenced the rest of the site's colors a lot. The aim is to make the user feel a sense of freedom by using ebooks.
+
 
 The cta text is a simple piece of text describing the site, encouraging customers to buy something by providing a promo code, and a call to action to sign up.
 
