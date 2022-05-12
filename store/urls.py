@@ -7,7 +7,6 @@ from .views import (
     search,
     handle_review,
     delete_review,
-    handle_404,
 )
 
 app_name = 'store'
@@ -20,5 +19,4 @@ urlpatterns = [
     path('browse/all/', AllBooks.as_view(), name='all_books'),
     path('browse/<slug:category_slug>/', category_list, name='category_list'),
     path('search/', search, name='search'),
-    path('404/', handle_404, name='404'),
 ]

@@ -42,7 +42,7 @@ admin.site.site_title = "Admin"
 
 # error handle pages
 # page not found
-# handler404 = 'store.views.handle_404'
+handler404 = 'store.views.handle_404'
 # server error
 handler500 = 'store.views.handle_500'
 # permission error

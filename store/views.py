@@ -164,7 +164,7 @@ def search(request):
         )
 
 
-def handle_404(request):
+def handle_404(request, exception):
     """custom 404 page"""
     return render(request, '404.html')
 
@@ -175,7 +175,7 @@ def handle_500(request):
 
 
 def handle_403(request, exception):
-    """custom 403 page"""
+    """custom 403 forbidden page"""
     return render(request, '403.html')
 
 
