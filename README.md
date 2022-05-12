@@ -116,10 +116,13 @@
 Colors were based off the CTA image on the landing page and the other colors were chosen with help from <a href='http://colormind.io/' target='_blank'>colormind ai</a>
 
 Root Colors:
-- Black - Emulator Window
-- Whitesmoke - text. I wanted to have a bone-white kind of color to any text in the emulator. As if the user was casting old runes.
-- #e9e9e9 - how to section background-color - I like this because it makes the how to section look like a rule book! 
-- Background image has a stained coffee kind of color to it.
+
+  - <span style="color: rgb(227, 178, 60);">orange</span>: rgb(227, 178, 60);
+  - <span style="color: rgb(207, 162, 55)">orange-hover</span>: rgb(207, 162, 55);
+  - white: white;
+  - <span style="color: rgb(124, 132, 131)">grey</span>: rgb(124, 132, 131);
+  - <span style="color: rgb(45, 49, 66)">blue</span>: rgb(45, 49, 66);
+  - <span style="color: rgb(155, 106, 108)">rose</span>: rgb(155, 106, 108);
 
 ## Wireframes <p id="wireframes"></p>
 
