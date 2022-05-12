@@ -11,7 +11,9 @@
   - <a href="#navbar">Navbar</a>
   - <a href="#footer">Footer</a>
   - <a href="#cta">CTA</a>
-  - <a href="">feature</a>
+  - <a href="#popular">Popular Books</a>
+  - <a href="#categories">Category Pages</a>
+  - <a href="dashboard">Dashboard</a>
   - <a href="">feature</a>
   - <a href="">feature</a>
   - <a href="">feature</a>
@@ -188,19 +190,42 @@ The call to action is quite simple. I used a picture full of bright oranges that
 The cta text is a simple piece of text describing the site, encouraging customers to buy something by providing a promo code, and a call to action to sign up.
 
 
-## Logo <p id="logo"></p>
+## Popular Books <p id="popular"></p>
 
-<img src="assets/images/logo.png">
+The landing page also features a selection of the 8 most popular books on the site by rating score"
 
-The logo text was a very important consideration, because I wanted the text to look somewhat like the logo of the <a href="https://www.wordmillgames.com/mythic-rpg.html"> source book</a>.
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652392495/p5/Screenshot_from_2022-05-12_22-53-28_mc6m5b.png">
 
-## How to section <p id="how-to"></p>
 
-### Button
-<img src="assets/images/how-to-btn.png">
+## Category Pages <p id="categories"></p>
 
-### Modal
-<img src="assets/images/how-to-modal.png">
+The category pages allow the user to browse books by category. They are paginated in blocks of 12 books.
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652392971/p5/Screenshot_from_2022-05-12_23-02-04_ihhjqs.png">
+
+### Dashboard <p id="dashboard"></p>
+
+The user dashboard is for all non staff users as staff and admin both use the built in django admin panel.
+
+From here users can access the pdf links of all purchases.
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652393779/p5/Screenshot_from_2022-05-12_23-10-33_rtj5sl.png">
+
+There is a list of past orders with links to a pdf of the order invoice
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652393904/p5/Screenshot_from_2022-05-12_23-10-38_lvubeu.png">
+
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652393854/p5/Screenshot_from_2022-05-12_23-10-46_oheg2j.png">
+
+There is also a list of all the users past reviews is also in the dashboard.
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394000/p5/Screenshot_from_2022-05-12_23-10-59_eyqjy7.png">
+
+The billing modal allow the user to update their billing information
+
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394141/p5/Screenshot_from_2022-05-12_23-11-16_dmdqb0.png">
 
 
 All of the text explaining how to use the app is found in a modal window that the user can open without going to a new page. Overall I wanted it to feel like a rulebook, as many users of this app would be familiar with having 1-2 rulebooks open at all times to play a game. 
