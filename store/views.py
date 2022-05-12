@@ -163,3 +163,22 @@ def search(request):
             'store/search.html'
         )
 
+
+def handle_404(request):
+    """custom 404 page"""
+    return render(request, '404.html')
+
+
+def handle_500(request):
+    """custom server error page"""
+    return render(request, '500.html')
+
+
+def handle_403(request, exception):
+    """custom 403 page"""
+    return render(request, '403.html')
+
+
+def handle_400(request, exception):
+    """custom 400 bad request page"""
+    return render(request, '400.html')
