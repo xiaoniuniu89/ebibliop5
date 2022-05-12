@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Roboto:wght@300&display=swap');
 
 :root {
     --orange: rgb(227, 178, 60);
@@ -11,10 +11,14 @@
 
 
 body {
-    font-family: 'Alegreya Sans', sans-serif;
     margin-bottom: 250px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Roboto Slab', serif;
 	  color: var(--grey);
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Roboto', sans-serif;
+  
 }
 
 html {
