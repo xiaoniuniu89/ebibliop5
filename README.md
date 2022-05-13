@@ -15,10 +15,9 @@
   - <a href="#categories">Category Pages</a>
   - <a href="#product">Product Page</a>
   - <a href="dashboard">Dashboard</a>
-  - <a href="">feature</a>
-  - <a href="">feature</a>
-  - <a href="">feature</a>
-  - <a href="">feature</a>
+  - <a href="basket">Basket</a>
+  - <a href="checkout">Checkout</a>
+  - <a href="newsletter">Newsletter</a>
   - <a href="#features-left">Features Left to Impliment</a>
 - <a href="#tech">Technologies Used</a>
 - <a href="#test">Testing</a>
@@ -224,7 +223,7 @@ the page also features a review section. Users can add a rating and review, upda
 <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394846/p5/Screenshot_from_2022-05-12_23-27-28_qgb5l0.png">
 
 
-### Dashboard <p id="dashboard"></p>
+## Dashboard <p id="dashboard"></p>
 
 The user dashboard is for all non staff users as staff and admin both use the built in django admin panel.
 
@@ -239,7 +238,7 @@ There is a list of past orders with links to a pdf of the order invoice
 
 <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652393854/p5/Screenshot_from_2022-05-12_23-10-46_oheg2j.png">
 
-There is also a list of all the users past reviews is also in the dashboard.
+There is also a list of all the users' past reviews is also in the dashboard.
 
 <img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652394000/p5/Screenshot_from_2022-05-12_23-10-59_eyqjy7.png">
 
@@ -251,97 +250,53 @@ The billing modal allow the user to update their billing information
 
 
 
-### Tabs
+## Basket Summary <p id="basket"></p>
 
-<image src="assets/images/tabs.png">
+The basket summary page contains a list of all items in the users basket. Items can be removed from the basket and if it is empty, the user can not proceed to checkout as minimum purchase is 50 cent. Promo codes can also be applied here.
 
-The three tabs each display different content. The active tab is also a brighter color to remind users where they are. 
+<image src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652476651/p5/Screenshot_from_2022-05-13_22-17-01_zatn5t.png">
 
-## Oracle Tab <p id="oracle"></p>
-
-### Chaos Number
-
-<img src="assets/images/chaos.png">
-
-The chaos number starts at 5. It can go as low as 1 and as high as 9. The chaos number represents how in control the players are of the adventure. When it reaches level 9 a color animation will make the chaos number flash a blood red to highlight how out of control the players are of the adventure. 
-
-### Fate Buttons
-
-<img src="assets/images/fate-btns.png">
-
-The three buttons at the bottom of the oracle tab are the main ways users interact with mythic. 
-
-The start scene button is used whenever the user starts a new scene/chapter. The higher the chaos number the higher the chance of something random happening at the start of a scene. 
-
-The question button lets users ask Mythic yes/no questions. When clicked users are prompted to select the odds of their question being yes. The higher the chaos number, the higher the chance the question will be yes. There is also the possibility of a random event happening here. It is  
-referred to as the Fate chart in the source material. 
-
-<img src="assets/images/fate-chart.png">
-
-The event button generates two random keywords that the user will interpret to give direction to the story or to flesh out a yes/no answer.
+<image src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652476874/p5/Screenshot_from_2022-05-13_22-20-17_oe3qad.png">
 
 
-<img src="assets/images/event-keywords.png">
+## Checkout Page <p id="checkout"></p>
 
-each random keyword is stored in an array containing 100 words. In the source material, a user accesses these by rolling percentile dice. 
+The checkout page is a standard billing form with a stripe card element. On successful payment a webhook marks the order as payed and a confirmation email is sent.
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652477225/p5/Screenshot_from_2022-05-13_22-25-59_imeku5.png">
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652477273/p5/Screenshot_from_2022-05-13_22-26-27_wev39g.png">
+
+Declined payments are redirected back to the basket summary after giving the user reason for declined payment.
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652477439/p5/Screenshot_from_2022-05-13_22-30-11_qzqcuh.png">
 
 
+## Newsletter <p id="newletter"></p>
 
-<img src="assets/images/display-ex.png">
+I decided to make the admin panel a more integrated and useful part of the site. In one sense I felt like it would be great to design a custom admin dashboard but on the other, the admin panel is such a strong out of the box feature of django and it seemed a little redundant to reinvent the wheel so to speak. 
 
-When an answer is displayed - the emulator window will display a blur effect animation with the text in the center of the window. 
+The site makes use of signals for a few things, but a good example is the admin newsletter. Anybody in the subscription list will be sent a post save signal email.Neat and elegant solution.
 
-## Journal Tab <p id="journal"></p>
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652477742/p5/Screenshot_from_2022-05-13_22-00-15_o3llud.png">
 
- <img src="assets/images/journal-tab.png"></section>
-
- The journal tab is a place the user can chronicle their adventure. 
-
-<img src="assets/images/add-scene.png">
-
-users can add a scene box. It has space for a title and for the body of the scene text also. It is scrollable so a user can make it as short or long as desired. 
-
-## Lists Tab <p id="lists"></p>
-
- <img src="assets/images/lists-tab.png">
-
- The lists tab is a place to keep track of any non-playable characters/groups and 
-threads(plot points) that are relevant to the adventure.
-
- <img src="assets/images/lists-ex.png">
-
- The input from both lists will be stored in an array that the oracle will randomly select from in some cases of random events. If they are empty nothing will be selected. 
-
-## Footer <p id="footer"></p>
-
- <img src="assets/images/footer.png">
-
- The footer is extremely simple. It has links to some social media sites about me. 
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652477787/p5/Screenshot_from_2022-05-13_22-01-28_sugmjy.png">
 
 ## Features to Impliment <p id="features-left"></p>
 
- ### NPC Generator 
- A feature to generate non-playable characters with names and backstories. This is so the user will not have to pause the game and think of one by themselves. 
+### Wishlist
+This was a feature I almost included in the project but I decided to leave it out as it was not part of my original plans/user stories. My last project had a lot of feature creep and it was a goal not to repeat that for this project.
 
- ### Encounter Generator 
- A feature to generate encounters for the players. This would be an extension of the random event and event button. Ideally, encounters should be fleshed out more so the players do not need to interpret an answer.
+### Book Club 
+I would like to set up django channels and a forum to allow users to set up and host book club meetings. 
 
- ### Scene/Mission Generator 
- A feature to auto-generate the scene action for the players so they have a goal without the need for planning.
+### Instant Chat 
+A bot or real person to be available to answer customer questions in real time.
 
- ### Monster Stats 
- This would involve a database of monsters and their stats from some of the more popular RPG systems like dungeons and dragons and pathfinder. 
+### Subscription based model of payment 
+A monthly subscription for access to all books would be a great idea. 
 
-### Music 
-Music and background sounds - A simple music player to provide more atmosphere. 
-
-### 3D dice 
-This would be useful for players who want to play but don't have access to dice
-
-### Mythic Variations 1 & 2 
-There are another 2 books in the Mythic GM series that provide more options to players for using mythic. It would be great to implement them into this app. 
-
- </section>
+</section>
 
 <section id="tech">
 
