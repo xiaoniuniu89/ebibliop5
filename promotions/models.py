@@ -40,3 +40,6 @@ class NewsLetter(models.Model):
 class Subscriber(models.Model):
     """ class to collect newletter subscriber emails"""
     email = models.EmailField()
+
+    def __str__(self):
+        return self.email
