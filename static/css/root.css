@@ -105,7 +105,7 @@ footer {
   color: var(--white);
 }
 
-footer .btn-link, a {
+footer a, .btn-link {
   color: var(--white)!important;
   text-decoration:none!important;
 }
