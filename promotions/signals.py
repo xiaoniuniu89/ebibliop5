@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 
-from .models import NewsLetter
+from .models import NewsLetter, Subscriber
 
 
 @receiver(post_save, sender=NewsLetter)
@@ -14,8 +14,8 @@ def send_newsletter(sender, instance, **kwargs):
     """
     Send newsletter to users on the site.
     """
-    users = User.objects.exclude(username='admin')
-    users = [user.email for user in users]
+    users = Subscriber.objects.all()
+    users = [email for email in users]
     message = instance
     message = render_to_string("newsletter.html", {'message': message})
     mail = EmailMessage(

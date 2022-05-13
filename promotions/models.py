@@ -36,3 +36,7 @@ class NewsLetter(models.Model):
 
     def __str__(self):
         return f'newsletter from {self.user} on {self.date_created}'
+
+class Subscriber(models.Model):
+    """ class to collect newletter subscriber emails"""
+    email = models.EmailField()
