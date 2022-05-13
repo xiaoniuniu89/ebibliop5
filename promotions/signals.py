@@ -15,7 +15,9 @@ def send_newsletter(sender, instance, **kwargs):
     Send newsletter to users on the site.
     """
     users = Subscriber.objects.all()
-    users = [email for email in users]
+    print(users)
+    users = [user.email for user in users]
+    print(users)
     message = instance
     message = render_to_string("newsletter.html", {'message': message})
     mail = EmailMessage(
