@@ -11,7 +11,7 @@
 
 
 body {
-    margin-bottom: 250px;
+    margin-bottom: 300px;
     font-family: 'Roboto Slab', serif;
 	  color: var(--grey);
 }
@@ -99,20 +99,21 @@ nav a:hover {
 /* Sticky footer style and color
 -------------------------------------------------- */
 footer {
-  padding-top: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: var(--rose);
   color: var(--white);
 }
 
-footer a {
-  color: var(--white);
-  text-decoration:none;
+footer .btn-link, a {
+  color: var(--white)!important;
+  text-decoration:none!important;
 }
 
 footer a:hover, footer a:focus {
   color: var(--grey);
   text-decoration:none;
-  border-bottom:1px dotted var(--grey);
+  border-bottom: 1px dotted black;
 }
 
 footer .form-control {
