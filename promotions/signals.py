@@ -16,15 +16,16 @@ def send_newsletter(sender, instance, **kwargs):
     """
     users = Subscriber.objects.all()
     print(users)
-    users = [user.email for user in users]
-    print(users)
-    message = instance
-    message = render_to_string("newsletter.html", {'message': message})
-    mail = EmailMessage(
-        subject="E-biblio Newsletter",
-        body=message,
-        from_email=settings.EMAIL_HOST_USER,
-        to=users,
-    )
-    mail.content_subtype = "html"
-    return mail.send()
+    emails = [user.email for user in users]
+    for email in emails:
+        message = instance
+        email_id = Subscriber.objects.get(email=email)
+        message = render_to_string("newsletter.html", {'message': message, 'email': email_id})
+        mail = EmailMessage(
+            subject="E-biblio Newsletter",
+            body=message,
+            from_email=settings.EMAIL_HOST_USER,
+            to=users,
+        )
+        mail.content_subtype = "html"
+        return mail.send()

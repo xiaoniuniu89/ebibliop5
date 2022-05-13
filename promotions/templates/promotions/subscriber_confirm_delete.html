@@ -1,0 +1,17 @@
+{% extends base.html %}
+{% block content %}
+
+<div class="container col-12 col-md-6 py-5 all-auth-container mt-5">
+    <form method="post">{% csrf_token %}
+    
+    
+    
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    
+    
+    
+        <input class='btn btn-primary' type="submit" value="Confirm">
+    </form>
+</div>
+
+{% endblock %}

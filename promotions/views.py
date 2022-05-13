@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.views.decorators.http import require_POST
-
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 from .models import Promo, Subscriber
 from .forms import PromoForm
 from django.http import JsonResponse
@@ -34,3 +35,8 @@ def subscribe(request):
         )
         response = JsonResponse({'msg': 'email subscribed!'})
         return response
+
+class unsubscribe(DeleteView):
+    """ view to handle the unsubscribing from newsletter """
+    model = Subscriber
+    success_url = reverse_lazy('promotions:unsubscribe_success')
