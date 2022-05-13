@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Message, Profile
+from promotions.models import Subscriber
 from orders.models import Order
 from store.models import Review
 
@@ -43,8 +44,6 @@ def update_billing(request):
         profile.save()
         response = JsonResponse({'msg': 'updated succesfully'})
         return response
-
-
 
 
 def send_message(request):

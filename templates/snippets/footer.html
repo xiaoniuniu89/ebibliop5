@@ -51,7 +51,7 @@
                     <div class="card-body">
                          <form>
                             <fieldset class="form-group">
-                                <input type="email" class="form-control" id="email-input" placeholder="Enter email"/>
+                                <input type="email" class="form-control" id="email-input-sub" placeholder="Enter email" required/>
                             </fieldset>
                             <fieldset class="form-group text-xs-right">
                                 <button type="button" id='email-btn' class="btn btn-secondary-outline btn-small">Send</button>
@@ -72,10 +72,10 @@
       <div class="card-body">
         <form>
             <fieldset class="form-group">
-                <input type="email" class="form-control" id="email-input" placeholder="Enter email"/>
+                <input type="email" class="form-control" id="email-input" placeholder="Enter email" required/>
             </fieldset>
             <fieldset class="form-group">
-                <textarea class="form-control" id="message-input" placeholder="Message"></textarea>
+                <textarea class="form-control" id="message-input" placeholder="Message" required></textarea>
             </fieldset>
             <fieldset class="form-group text-xs-right">
                 <button type="button" id='msg-btn' class="btn btn-secondary-outline btn-lg">Send</button>
@@ -95,6 +95,35 @@
     <script src="{% static 'footer.js' %}"></script>
 
     <script>
+
+        $(document).on('click', '#email-btn', function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "promotions:subscribe" %}',
+                data: {
+                    email: $('#email-input-sub').val(),
+                    csrfmiddlewaretoken: "{{csrf_token}}",
+                    action: 'post'
+                },
+                success: function(json){
+                $('#email-input-sub').val(''),
+                document.querySelector('.msg-wrapper').innerHTML = `
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p class="text-center">${json.msg}</p>
+                </div>
+
+                `
+                $('#email-input').val('')
+                $('#message-input').val('')
+                setTimeout(function () {
+                    $(".alert").alert('close')
+                }, 3000);
+
+                },
+                error: function(xhr, errmsg, err){}
+            })
+        })
 
         let userEmail = '{{request.user.email}}'
 
