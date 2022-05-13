@@ -17,6 +17,7 @@ class Profile(models.Model):
     address_line_one = models.CharField(max_length=150, blank=True)
     address_line_two = models.CharField(max_length=150, blank=True)
     city = models.CharField(max_length=150, blank=True)
+    billing_email = models.EmailField(default='')
 
     # for admin page
 

@@ -33,7 +33,7 @@ def update_billing(request):
         post_code = request.POST.get('postCode')
         user.first_name = first_name
         user.last_name = last_name
-        user.email = email
+        profile.billing_email = email
         profile.address_line_one = address1
         profile.address_line_two = address2
         profile.country = country

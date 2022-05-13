@@ -25,8 +25,8 @@
 
     <div class="mb-3">
         <label for="email">Email <span class="text-muted">(required)</span></label>
-        {% if billing.user.email %}
-            <input type="email" class="form-control" value={{billing.user.email}} id="email" required>
+        {% if billing.billing_email %}
+            <input type="email" class="form-control" value={{billing.billing_email}} id="email" required>
         {% else %}
             <input type="email" class="form-control"  id="email" placeholder="you@example.com" required>
         {% endif %}
