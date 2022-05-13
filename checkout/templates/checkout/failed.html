@@ -15,6 +15,7 @@
                                 {% if request.user.is_authenticated %}
                                 <a href="{% url "dashboard:dashboard" %}">See orders</a>
                                 {% endif %}
+                                {{msg}}
                             </div>       
                         </div>
                     </div>

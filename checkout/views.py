@@ -14,6 +14,9 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+
+from orders.models import Order
 
 
 if os.path.isfile('env.py'):
@@ -63,7 +66,14 @@ def checkout_complete(request):
 
 def checkout_failed(request):
     """ handle failed payments """
-    return render(request, 'checkout/error.html')
+    if request.POST.get('action') == 'post':
+        order_key = request.POST.get('order_key')
+        order = Order.objects.get(order_key=order_key)
+        order.delete()
+        msg = request.POST.get('error')
+        response = JsonResponse({'msg': msg})
+        return response
+
 
 
 

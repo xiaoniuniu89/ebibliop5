@@ -81,9 +81,27 @@ $.ajax({
     }
   }).then(function(result) {
     if (result.error) {
+      $.ajax({
+            type: 'POST',
+            url: checkoutFailedUrl,
+            data: {
+                order_key: clientSecret,
+                csrfmiddlewaretoken: CSRF_TOKEN,
+                action: 'post',
+                error: result.error.message
+
+            },
+            success: function(json){
+                alert(json.msg)
+                window.location.replace('/checkout/checkout-failed')
+
+            },
+            error: function(xhr, errmsg, err){}
+        })
       // Show error to your customer (for example, insufficient funds)
       console.log(result.error.message);
-      window.location.replace('/checkout/error')
+      
+      // window.location.replace('/checkout/error')
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
