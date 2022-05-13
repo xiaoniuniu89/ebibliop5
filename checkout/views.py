@@ -7,7 +7,7 @@ if os.path.isfile('env.py'):
 import stripe
 
 from basket.basket import Basket
-from orders.views import payment_confirmation
+from orders.views import payment_confirmation, payment_failed
 from promotions.forms import PromoForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -61,6 +61,11 @@ def checkout_complete(request):
     basket.clear()
     return render(request, 'checkout/checkout_complete.html', {'title': 'Checkout Complete'})
 
+def checkout_failed(request):
+    """ handle failed payments """
+    return render(request, 'checkout/error.html')
+
+
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -83,6 +88,7 @@ def stripe_webhook(request):
 
     else:
         print(f'Unhandled event type {event.type}')
+        payment_failed(event.data.object.client_secret, event.type)
 
     return HttpResponse(status=200)
 

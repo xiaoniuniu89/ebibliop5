@@ -83,6 +83,7 @@ $.ajax({
     if (result.error) {
       // Show error to your customer (for example, insufficient funds)
       console.log(result.error.message);
+      window.location.replace('/checkout/error')
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
