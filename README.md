@@ -177,9 +177,11 @@ Nav - admin
 
 ## Footer <p id="footer"></p>
 
-The footer contains links to important site links as well as privacy and cookie policies. It also features a contact form so as to be accessible from all pages..
+The footer contains links to important site links as well as privacy and cookie policies. It also features a collapsable accordian containing the contact us form and the subscribe to newletter form.
 
-<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652349070/p5/Screenshot_from_2022-05-12_10-50-35_vjp5vr.png">
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652476290/p5/Screenshot_from_2022-05-13_21-55-11_1_nyzb9i.png">
+
+<img src="https://res.cloudinary.com/daniel-callaghan/image/upload/v1652476432/p5/Screenshot_from_2022-05-13_22-13-17_jmevas.png">
 
 ## CTA <p id="cta"></p>
 
