@@ -71,7 +71,7 @@ def payment_confirmation(data):
     order_items = OrderItem.objects.filter(order=order)
     order_items_url = [item.product.pdf.url for item in order_items]
     subject, from_email, to = 'Your E-biblio books', settings.EMAIL_HOST_USER, order.email
-    text_message = f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items_url)} Enjoy 20% off your next purchase with the discount code EBIBLIO20.'
+    text_message = f'Hi there, {order.full_name}. Your payment with E-biblio was successful. Here are your books, {"".join(order_items_url)} Enjoy 30% off your next purchase with the discount code EBIBLIO30.'
     html_message = get_template(("email.html")).render({
         'order': order,
         'order_items': order_items
