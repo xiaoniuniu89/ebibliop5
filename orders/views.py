@@ -80,20 +80,6 @@ def payment_confirmation(data):
     message.attach_alternative(html_message, "text/html")
     message.send()
 
-def payment_failed(data, error):
-    """ post webhook payment failed view """
-    order = Order.objects.get(order_key=data)
-    order_items = OrderItem.objects.filter(order=order)
-    subject, from_email, to = 'Your E-biblio order', settings.EMAIL_HOST_USER, order.email
-    text_message = f'Hi there, {order.full_name}. Your payment with E-biblio was not successful. Error: {error}'
-    html_message = get_template(("error_email.html")).render({
-        'order': order,
-        'order_items': order_items,
-        'error': error
-    })
-    message = EmailMultiAlternatives(subject, text_message, from_email, [to])
-    message.attach_alternative(html_message, "text/html")
-    message.send()
 
 class GenerateInvoice(UserPassesTestMixin, View):
     def get(self, request, pk, *args, **kwargs):

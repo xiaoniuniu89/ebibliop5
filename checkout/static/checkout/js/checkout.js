@@ -70,7 +70,6 @@ $.ajax({
         name: `${fName} ${lName}`,
         email: email,
         address: {
-          // country: country,
           line1: addOne,
           line2: addTwo,
           state: state,
@@ -92,9 +91,8 @@ $.ajax({
 
             },
             success: function(json){
-                alert(json.msg)
-                window.location.replace('/checkout/checkout-failed')
-
+              document.querySelector('.error-msg').innerHTML = `${json.msg}`
+              $('#error-modal').modal('show')
             },
             error: function(xhr, errmsg, err){}
         })
@@ -120,3 +118,6 @@ $.ajax({
 });
 });
 
+document.querySelector('#error-close').addEventListener('click', () => {
+  window.location.replace(basketUrl)
+})

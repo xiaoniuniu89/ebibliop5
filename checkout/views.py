@@ -7,7 +7,7 @@ if os.path.isfile('env.py'):
 import stripe
 
 from basket.basket import Basket
-from orders.views import payment_confirmation, payment_failed
+from orders.views import payment_confirmation
 from promotions.forms import PromoForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -25,7 +25,6 @@ if os.path.isfile('env.py'):
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 
-# @login_required
 def checkout(request):
     """ view to create a checkout intent on stripe """
     basket = Basket(request)
@@ -75,8 +74,6 @@ def checkout_failed(request):
         return response
 
 
-
-
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -88,17 +85,14 @@ def stripe_webhook(request):
         )
     except ValueError as e:
         print(e)
-        print('here')
         return HttpResponse(status=400)
     
     # Handle the event
     if event.type == 'payment_intent.succeeded':
-        print('hello from event')
         payment_confirmation(event.data.object.client_secret)
 
     else:
         print(f'Unhandled event type {event.type}')
-        payment_failed(event.data.object.client_secret, event.type)
 
     return HttpResponse(status=200)
 
