@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from django.http import HttpRequest
-
 from django.test import Client, RequestFactory, TestCase, override_settings
 from django.urls import reverse
-
 from store.models import Category, Product
 from django.core.files.uploadedfile import SimpleUploadedFile
-
+from django.utils import timezone
+import datetime
+from promotions.models import Promo
 
 small_gif = (
     b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
@@ -22,7 +22,7 @@ class TestBasketViews(TestCase):
         Category.objects.create(name='test', slug='test')
         self.product = Product.objects.create(
             title='django for life',
-            slug='django-for-life', price='9.99',
+            slug='django-for-life', price='10',
             image=SimpleUploadedFile('small.gif', small_gif, content_type='image/gif'),
             pdf='django.pdf',
             author='admin',
@@ -32,6 +32,10 @@ class TestBasketViews(TestCase):
             rating_score=0,
             category=Category.objects.all()[0]
         )
+        tz = timezone.get_current_timezone()
+        Promo.objects.create(
+            code='DJANGO', valid_from=datetime.datetime.now().replace(tzinfo=tz),
+            valid_to=datetime.datetime.now().replace(tzinfo=tz), discount=50, active=True)
         
 
     def test_basket_url(self):
@@ -71,8 +75,23 @@ class TestBasketViews(TestCase):
             },
             xhr=True
         )
-        # 1 from set up and 1 just added
         self.assertEqual(response.json(), {'qty': 1})
+        response = self.client.post(
+            reverse('promotions:add_promo'),
+            {
+                'promo_code': 'DJANGO',
+                'action': 'post'
+            },
+            xhr=True
+        )
+        self.assertEqual(
+            response.json(),
+            {
+                'code': 50,
+                'discount': '5.00',
+                'total': '5.00'
+            }
+        )
 
     def test_basket_delete(self):
         """ test basket delete """
