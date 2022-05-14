@@ -92,7 +92,22 @@ class TestBasketViews(TestCase):
                 'total': '5.00'
             }
         )
-        
+        def test_add_order_view(self):
+            response = self.client.post(
+                reverse('orders:add_order'),
+                {
+                    'order_key': '1234',
+                    'name': 'John Doe',
+                    'email': 'test@mail.com',
+                    'address1': 'fake street',
+                    'address2': 'fake rd',
+                    'city': 'foo',
+                    'country': 'mars',
+                    'postcode': '123',
+                    'promo': '5.00',
+                    'basket_total': '5.00'
+                }
+            )
 
     def test_basket_delete(self):
         """ test basket delete """
