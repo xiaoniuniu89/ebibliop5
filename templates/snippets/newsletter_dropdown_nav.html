@@ -1,0 +1,11 @@
+{% block newsletter_dropdown_nav %}
+
+<li><a class="dropdown-item dropdown-toggle" href="#">Newsletter</a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'admin:promotions_newsletter_add' %}">Add newsletter</a></li>
+        <li><a class="dropdown-item" href="{% url 'admin:promotions_newsletter_changelist' %}">All newsletter</a></li>
+        <li><a class="dropdown-item" href="{% url 'admin:promotions_subscriber_add' %}">Add subscribers</a></li>
+        <li><a class="dropdown-item" href="{% url 'admin:promotions_subscriber_changelist' %}">Edit subscribers</a></li>
+    </ul>
+</li>
+{% endblock %}

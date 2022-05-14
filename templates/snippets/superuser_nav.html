@@ -9,7 +9,7 @@
     {% include 'snippets/products_dropdown_nav.html' %}
     {% include 'snippets/orders_dropdown_nav.html' %}
     {% include 'snippets/promotions_dropdown_nav.html' %}
-    <li><a class="dropdown-item" href="{% url 'admin:promotions_newsletter_add' %}">Newsletter</a></li>
+    {% include 'snippets/newsletter_dropdown_nav.html' %}
     <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
 
 
