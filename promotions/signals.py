@@ -27,10 +27,10 @@ def send_newsletter(sender, instance, **kwargs):
             subject="E-biblio Newsletter",
             body=message,
             from_email=settings.EMAIL_HOST_USER,
-            to=users,
+            to=[email, ],
         )
         mail.content_subtype = "html"
-        return mail.send()
+        mail.send()
 
 @receiver(pre_save, sender=Subscriber)
 def create_slug(sender, instance, **kwargs):
