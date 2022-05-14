@@ -4,6 +4,8 @@ from django.core.validators import (
     MinValueValidator,
     MaxValueValidator
 )
+import uuid
+
 
 class Promo(models.Model):
     """ Class for making promotional coupon codes """
@@ -40,6 +42,8 @@ class NewsLetter(models.Model):
 class Subscriber(models.Model):
     """ class to collect newletter subscriber emails"""
     email = models.EmailField()
+    slug = models.SlugField(max_length=255)
+    slug_end = models.UUIDField(default=uuid.uuid4)
 
     def __str__(self):
         return self.email

@@ -6,7 +6,11 @@ class NewsletterAdmin(SummernoteModelAdmin):
     fields = ['message']
     summernote_fields = ('message',)
 
-admin.site.register(Promo)
-admin.site.register(Subscriber)
-admin.site.register(NewsLetter, NewsletterAdmin)
 
+class SubAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('email', 'slug_end')}
+
+
+admin.site.register(Promo)
+admin.site.register(Subscriber, SubAdmin)
+admin.site.register(NewsLetter, NewsletterAdmin)
