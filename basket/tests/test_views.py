@@ -92,6 +92,7 @@ class TestBasketViews(TestCase):
                 'total': '5.00'
             }
         )
+        
 
     def test_basket_delete(self):
         """ test basket delete """
