@@ -376,10 +376,9 @@ The JS can only be validated by direct input which causes some unused variable e
 
 
 
+## Python
 
-
-
-
+I used <a href='https://pypi.org/project/autopep8/'>Auto pep8</a> to fix validation errors with any of the python files I, myself wrote. I then went through each file and manually inputed them into <a href='http://pep8online.com/'>pep8 online</a>. There are no errors in any of my custom written python code, although there would be in any of the files set up by django, eg. SETTINGS.py. 
 
 
 
