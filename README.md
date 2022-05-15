@@ -298,6 +298,31 @@ A monthly subscription for access to all books would be a great idea.
 
 </section>
 
+<section id="testing">
+
+## Code Validation <p id="validation"></p>
+
+### HTML
+
+HTML was validated through <a href='https://validator.w3.org/#validate_by_input' target='_blank'>The W3C Markup Validator</a>, through the direct input method. There are no errors in the HTML.
+
+- <a href='https://validator.w3.org/nu/?doc=https%3A%2F%2Fe-biblio.herokuapp.com%2F' target='_blank'>Landing</a>
+
+- <a href='https://validator.w3.org/nu/?doc=https%3A%2F%2Fe-biblio.herokuapp.com%2Fshop%2Fhow-to-build-your-brand-with-instagram-images-5f705bd2-1657-4966-aa6f-975c57fce585%2F' target='_blank'>Product Detail Page</a>
+
+- <a href='https://validator.w3.org/nu/?doc=https%3A%2F%2Fe-biblio.herokuapp.com%2Fbrowse%2Fmotivation%2F' target='_blank'>Category</a>
+
+- <a href='https://validator.w3.org/nu/?doc=https%3A%2F%2Fe-biblio.herokuapp.com%2Fbasket%2F' target='_blank'>Basket</a>
+
+
+
+
+
+
+
+</section>
+
+
 <section id="tech">
 
 # Technologies Used 
@@ -312,7 +337,7 @@ A monthly subscription for access to all books would be a great idea.
 
 - Languages Used to make the site
 
-[Jquery](https://jquery.com/) | [django](https://www.djangoproject.com/) | [coverage](https://coverage.readthedocs.io/en/6.3.2/) 
+[Jquery](https://jquery.com/) | [django](https://www.djangoproject.com/)  
 
 - libraries and framework used to make the site
 

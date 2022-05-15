@@ -23,7 +23,6 @@ stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 def checkout(request):
     """ view to create a checkout intent on stripe """
     basket = Basket(request)
-    promo_form = PromoForm()
     total = str(basket.get_total_price_after_discount()).replace('.', '')
     total = int(total)
     if total < 50:
@@ -46,7 +45,6 @@ def checkout(request):
         'checkout/checkout.html',
         {
             'client_secret': intent.client_secret,
-            'promo_form': promo_form,
             'intent': intent,
             'title': 'Checkout'
         })
