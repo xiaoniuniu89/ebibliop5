@@ -346,7 +346,7 @@ Testing can be found [here](TESTING.md)
 
 # Deployment <p id="deployment"></p>
 
-The site is deployed on [Heroku](https://www.heroku.com/). The link is here:
+The site is deployed on [Heroku](https://www.heroku.com/). The link is here: https://e-biblio.herokuapp.com/
 
 
 Steps to deploy the site on Heroku:
@@ -355,7 +355,10 @@ Steps to deploy the site on Heroku:
   - pip3 freeze > requirements.txt
 
 - create a Procfile in the same directory as manage.py and paste in the following:
-  - foo
+  - web: gunicorn ebiblio.wsgi
+
+- create a runtime.txt file and add the following:
+  - python-3.8.13
 
 - in settings.py add Heroku to allowed hosts
   
@@ -371,25 +374,37 @@ Steps to deploy the site on Heroku:
   - EMAIL_PASS - the app uses google, steps to set up app passwords found [here](https://support.google.com/accounts/answer/185833?hl=en)
   - EMAIL_USER - Email account address
   - SECRET_KEY - can be anything
-
-- go to the deploy tab and choose GitHub as deploy method
-- search for the repo and connect
-- click deploy branch
-- if the build fails in the top right corner click the 'more' button and check logs to get an indication of the problem
+  - Stripe variables: Create or log into your stripe account and in the developer section find the following variables.
+    - STRIPE_ENDPOINT_SECRET - your stripe endpoint secret
+    - STRIPE_PUBLISH_KEY - your stripe publishable key
+    - STRIPE_SECRET_KEY - your stripe secret key
+  - For AWS services you will need the following. Log into aws or create an account.
+    - AWS_ACCESS_KEY_ID - your access key
+    - AWS_SECRET_ACCESS_KEY - secret aws access key
+    - AWS_STORAGE_BUCKET_NAME - an s3 storage bucket
+    - a full walkthrough can be found [here](https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html)
+- Install the Heroku CLI
+- in the terminal type: heroku git:remote -a yourappname
+- save and commit to git then type: git push heroku main to start building
+- More details can be found [here](https://devcenter.heroku.com/articles/git)
+- if the build fails in heroku dashboard of your app, in the top right corner click the 'more' button and check logs to get an indication of the problem
+- In  stripe you will also need to set up a webhook.
+    - click webhooks, add
+    - select listen for intent.payment_succeded in the dropdown
+    - add your website url + /webhook
 - Click the view app button to see the app
 
 
 How to fork the repository
 - Go to [github.com](https://www.github.com) and log in.
-- Click 
+- Search Ebibliop5 or go to https://github.com/xiaoniuniu89/ebibliop5
 - in the top right of the page click the "fork" button
 - you will now have a copy of the repository in your GitHub account.
 
 How to clone the repository
 - Go to [github.com](https://www.github.com)
 - Log in to account
-- Click repositories
-- Click 
+- navigate to https://github.com/xiaoniuniu89/ebibliop5
 - Click the green code button that says Clone or download 
 - to copy from HTTPS copy URL link "HTTPS". 
 - open terminal
@@ -398,19 +413,23 @@ How to clone the repository
 - Press enter and the clone will be created
 - To install the dependencies required to run the app, in the terminal type: pip3 install -r requirements.txt
 - create a .env file in the root directory and in it, import os
-- add the following environment variables in the .env file:
-  - os.environ["SECRET_KEY"] = <'yourrandomsecretkeyhere'>
-  - os.environ["EMAIL_USER"] = <'youremailaddresshere'>
-  - os.environ["EMAIL_PASS"] = <'emaipassword'>
+- add the following environment variables in the .env file, refer to deployment to heroku section above for advice on obtaining the values for these environment variables:
+  - os.environ["SECRET_KEY"] =
+  - os.environ["EMAIL_USER"] =
+  - os.environ["EMAIL_PASS"] =
+  - os.environ["AWS_ACCESS_KEY_ID"] =
+  - os.environ["AWS_SECRET_ACCESS_KEY"] =
+  - os.environ["AWS_STORAGE_BUCKET_NAME"] =
+  - os.environ['DEVELOPMENT'] = 'DEVELOPMENT'
+  - os.environ['STRIPE_PUBLISH_KEY'] =
+  - os.environ['STRIPE_SECRET_KEY'] =
+  - os.environ['STRIPE_ENDPOINT_SECRET'] =
   - for the database there are two options:
     - 1) In settings.py use the commented out sql lite database
     - 2) os.environ["DATABASE_URL"] = <'postgresdatabaseurlhere'>
-  - os.environ["CLOUDINARY_URL"] = <'yourcloudinaryurlhere'>
 - create a superuser in the terminal by typing: python3 manage.py createsuperuser
 - run the server by typing: python3 manage.py runserver
 - use the superuser credentials to log into the site
-
-
 
 More detailed instructions can be found [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository-to-github-desktop)
 
