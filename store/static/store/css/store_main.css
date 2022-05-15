@@ -133,11 +133,11 @@ a:hover {
 
 
 
-@media screen and (max-width: 765px) {
+/* @media screen and (max-width: 765px) {
   .cta {
     min-height: none;
   }
-}
+} */
 
 
 @media screen and (max-width: 575px) {
@@ -157,6 +157,10 @@ a:hover {
   }
   .badge-danger-2 {
     margin-left: 0!important;
+  }
+  .img-container {
+    padding-top: 5em;
+    padding-bottom: 1em;
   }
 }
 
@@ -195,7 +199,6 @@ a:hover {
 .product_item .cp_img img {
     transition: all 0.2s ease-in-out;
     border-radius: 6px;
-    /* min-height: 360px!important; */
 }
 
 .product_item .cp_img .hover {
