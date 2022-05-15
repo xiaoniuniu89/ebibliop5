@@ -49,8 +49,8 @@
       const elem = document.getElementById('save-review-btn');
     $(document).on('click', '#save-review-btn', function(e){
         if(!$("input[type='radio'][name='rating']:checked").val()){
-          $('#val-stars').removeClass('d-none')
-          document.querySelector(".rat-one").checked = true
+          $('#val-stars').removeClass('d-none');
+          document.querySelector(".rat-one").checked = true;
         } else {
             let action = elem.getAttribute('data-action');
 
@@ -71,27 +71,27 @@
                 <p class="text-center">${json.msg}</p>
                 </div>
 
-                `
+                `;
                 setTimeout(function () {
-                    $(".alert").alert('close')
+                    $(".alert").alert('close');
                 }, 3000);
                 let action = elem.getAttribute('data-action');
                 
                 if(action == 'post'){
-                  elem.setAttribute('data-action', 'update')
+                  elem.setAttribute('data-action', 'update');
                 }
                 action = elem.getAttribute('data-action');
-                let user = '{{request.user.username}}'
-                let review = json.review
-                let rating = json.rating
-                addReview(user, review, rating)
+                let user = '{{request.user.username}}';
+                let review = json.review;
+                let rating = json.rating;
+                addReview(user, review, rating);
                 
             },
             error: function(xhr, errmsg, err){}
-        })
+        });
         }
         
-    })
+    });
     
 </script>
 {% endblock %}

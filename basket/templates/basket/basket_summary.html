@@ -88,19 +88,19 @@
         success: function (json) {
           $('.product-item[data-index="' + prodid + '"]').remove();
           document.getElementById("subtotal").innerHTML = json.subtotal;
-          document.getElementById("basket-qty").innerHTML = json.qty
+          document.getElementById("basket-qty").innerHTML = json.qty;
           if(document.getElementById("subtotal").innerHTML == '0.00') {
             document.querySelector(".check-shop-btn-wrapper").innerHTML = `
             <a class='btn btn-info' href="/#books">Shop for Books</a>
-            `
+            `;
             document.querySelector(".min-msg").innerHTML = `
             The minimum purchase is 50 cent. Start adding items to your basket to continue to checkout!
-            `
+            `;
           }
         },
         error: function (xhr, errmsg, err) {}
       });
-    })
+    });
 
 
     $(document).on('click', '#promo-btn', function(e){
@@ -114,15 +114,15 @@
                 action: 'post'
             },
             success: function(json){
-            document.getElementById("subtotal").innerHTML = json.total
+            document.getElementById("subtotal").innerHTML = json.total;
             document.querySelector('.msg-wrapper').innerHTML = `
               <div class="alert alert-success alert-dismissible fade show" role="alert">
               <p class="text-center">Promo code applied</p>
               </div>
 
-              `
+              `;
               setTimeout(function () {
-                  $(".alert").alert('close')
+                  $(".alert").alert('close');
               }, 3000);
             },
             error: function(xhr, errmsg, err){
@@ -131,13 +131,13 @@
               <p class="text-center">Promo code invalid</p>
               </div>
 
-              `
+              `;
               setTimeout(function () {
-                  $(".alert").alert('close')
+                  $(".alert").alert('close');
               }, 3000);
             }
-        })
-    })
+        });
+    });
 
     </script>
    

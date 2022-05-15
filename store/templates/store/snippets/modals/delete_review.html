@@ -38,22 +38,22 @@
                 <p class="text-center">${json.msg}</p>
                 </div>
 
-                `
+                `;
                 setTimeout(function () {
-                    $(".alert").alert('close')
+                    $(".alert").alert('close');
                 }, 3000);
-            deleteReview()
+            deleteReview();
             if($("input[type='radio'][name='rating']:checked").length == 1)
               {
-                $("input[type='radio'][name='rating']:checked")[0].checked = false
+                $("input[type='radio'][name='rating']:checked")[0].checked = false;
               }
-            $('#review-content').val('')
+            $('#review-content').val('');
         },
         error: function(xhr, errmsg, err){}
-    })
+    });
         
         
-  })
+  });
     
 </script>
 {% endblock %}

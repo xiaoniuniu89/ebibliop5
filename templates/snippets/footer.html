@@ -111,21 +111,19 @@
                 document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p class="text-center">${json.msg}</p>
-                </div>
-
-                `
-                $('#email-input').val('')
-                $('#message-input').val('')
+                </div>`;
+                $('#email-input').val('');
+                $('#message-input').val('');
                 setTimeout(function () {
-                    $(".alert").alert('close')
+                    $(".alert").alert('close');
                 }, 3000);
 
                 },
                 error: function(xhr, errmsg, err){}
-            })
-        })
+            });
+        });
 
-        let userEmail = '{{request.user.email}}'
+        let userEmail = '{{request.user.email}}';
 
         $(document).on('click', '#msg-btn', function(e){
             e.preventDefault();
@@ -144,17 +142,17 @@
                 <p class="text-center">${json.msg}</p>
                 </div>
 
-                `
-                $('#email-input').val('')
-                $('#message-input').val('')
+                `;
+                $('#email-input').val('');
+                $('#message-input').val('');
                 setTimeout(function () {
-                    $(".alert").alert('close')
+                    $(".alert").alert('close');
                 }, 3000);
 
                 },
                 error: function(xhr, errmsg, err){}
-            })
-        })
+            });
+        });
     </script>
 {% endblock %}
 
