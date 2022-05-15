@@ -8,6 +8,7 @@ from django.views.generic import ListView
 
 from .models import Category, Product, Review
 
+
 def landing(request):
     """ render store landing page """
     products = Product.products.all()[0:8]

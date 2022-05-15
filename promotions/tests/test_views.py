@@ -4,7 +4,9 @@ from django.urls import reverse
 from promotions.models import Subscriber, NewsLetter
 
 
-@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
+@override_settings(
+    STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
+)
 class TestViewResponses(TestCase):
     """Tests for promotions views"""
 

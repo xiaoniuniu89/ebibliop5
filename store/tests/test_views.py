@@ -9,7 +9,6 @@ from django.urls import path
 from store.models import Category, Product, Review
 
 
-
 small_gif = (
     b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
     b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'
@@ -38,7 +37,9 @@ handler400 = response_error_handler
 handler403 = response_error_handler
 
 
-@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
+@override_settings(
+    STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
+)
 class TestViewResponses(TestCase):
     """Tests for store views"""
 

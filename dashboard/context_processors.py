@@ -2,6 +2,7 @@ from orders.models import OrderItem
 
 from .models import Profile
 
+
 def purchases(request):
     if request.user.is_authenticated:
         c_purchases = OrderItem.objects.all().filter(
@@ -10,9 +11,9 @@ def purchases(request):
         c_purchases = None
     return ({'purchases': c_purchases})
 
+
 def billing_info(request):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)
         return ({'billing': profile})
     return ({'billing': None})
-

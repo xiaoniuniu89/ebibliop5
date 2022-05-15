@@ -7,14 +7,15 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 
 import os
-if os.path.isfile('env.py'):
-    import env
 import json
 import stripe
 
 from basket.basket import Basket
 from orders.views import payment_confirmation
 from orders.models import Order
+
+if os.path.isfile('env.py'):
+    import env
 
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 

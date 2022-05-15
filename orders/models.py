@@ -1,12 +1,9 @@
-from decimal import Decimal
-
 from django.db import models
 
 from django.contrib.auth.models import User
 
 from store.models import Product
 
-from promotions.models import Promo
 
 class Order(models.Model):
     user = models.ForeignKey(
@@ -24,7 +21,11 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=5, decimal_places=2)
     order_key = models.CharField(max_length=200)
     billing_status = models.BooleanField(default=False)
-    promo_total = models.DecimalField(default=0.0, blank=True, decimal_places=2, max_digits=5)
+    promo_total = models.DecimalField(
+        default=0.0, blank=True,
+        decimal_places=2,
+        max_digits=5
+    )
 
     class Meta:
         ordering = ('-created',)

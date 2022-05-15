@@ -76,8 +76,10 @@ class Basket():
 
     def get_discount(self):
         if self.promo:
-            return round((self.promo / Decimal(100))
-                         * self.get_total_price(), 2)
+            return round(
+                (
+                    self.promo / Decimal(100)
+                ) * self.get_total_price(), 2)
         return Decimal(0)
 
     def get_total_price_after_discount(self):
