@@ -389,14 +389,105 @@ Automated testing was done using the Django built in testing and with a library 
 
 Coverage provides a handy report and html file containing all code covered by tests.
 
-The HTML can be found [here](htmlcov/index.html)
+The HTML can be found in htmlcov/index.html
 
 
 
 Coverage Report
+
 <img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652631045/p5/Screenshot_from_2022-05-15_17-07-36_yxbtyz.png'/>
+
 <img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652631105/p5/Screenshot_from_2022-05-15_17-07-42_ovzwvt.png'/>
 
+
+# Manual Testing
+
+For the purposes of manual testing I will test the user stories.
+
+- As a user, I can create an account to access the site for easier checkout in the future.
+  - User clicks sign-up
+  - User enters details and checks email confirmation
+  - User follows email confirmation link and can now use their details to sign in.
+
+- As a user, I can reset my password in case I lose it
+  - User clicks login
+  - User clicks forgot password
+  - User enters email and checks email
+  - User follows password reset link and changes password
+
+- As a user, I can use Google to sign up to the site so I can create an account easier.
+  - User clicks login
+  - User clicks Google button
+  - User is redirected to google login
+
+- As a user, there is convenient access to a contact form or email for the bookshop incase I have a complaint or problem with my experience on the site.
+  - User clicks contact us link in the footer.
+  - User fills in details
+  - Admin is notified of contact message by email
+
+- As the owner of the site I can make and apply promotions easily to offer discounts to my customers.
+  - Admin clicks navbar link admin/promo/add promo
+  - Admin fills in form
+  - Promo is created
+
+- As a user I can add items to a cart without receiving any annoying popups or prompts to keep shopping or checkout
+  - User adds item to cart in product page
+  - A flash message appears and fades away at 3 seconds.
+
+- As a user I can pay by card in a secure manner to protect my sensitive information.
+  - User clicks proceed to checkout from basket summary.
+  - User can fill out billing details and pay by card at the end of form.
+
+- As a user I want to have access to a download link as soon as I pay for my books.
+  - User pays with card
+  - User is redirected to success page.
+    - If logged in success page will have link to Dashboard containing books. Will also receive email with links.
+    - If not logged in user will receive an email with download links to book. 
+
+- As a user, I can checkout as a guest, so I can buy books without setting up an account.
+  - User adds books to basket
+  - User clicks proceed to checkeout from basket summary
+  - User pays with card
+  - User gets an email with download links to purchases.
+
+- As a user, i want to receive a confirmation email that contains a link to download my book, so I can have access to the book I just bought as well as a receipt.
+  - When user completes purchase an email is sent automatically to their inbox.
+
+- As a user, I can leave comments on products to give a detailed review and leave future customers more well-informed.
+  - User navigates to product page.
+  - If logged in User can leave review of a book.
+
+- As a user, I can log into my account, see and have access to download my purchases on my dashboard.
+  - user logs in
+  - User goes to dashboard
+  - User has access to all purchases from here.
+
+- As a user, I can browse books by topic as I would in a real bookstore to narrow in on what I like to read faster.
+  - In navbar, User clicks "Browse Selection"
+  - A list of all categories of book will appear in a dropdown.
+
+- As a user, I can receive notifications of promotions by email to keep up to date with promotions I might like in the store.
+  - User clicks subscribe to our newsletter link in footer and fills in details.
+  - Admin logs into admin panel and creates a new newsletter.
+  - User receives newsletter in their email inbox.
+
+- As a user I can search for a book by title or author to find books I am interested in faster.
+  - User clicks search bar in navbar
+  - User enters term
+  - User is redirected to a page with their search results
+
+- As a user, I can leave a rating on books to let future customers be more informed.
+  - From product page, User clicks add review
+  - User can leave a rating out of 5 stars here
+
+- As the owner of the site I can make staff level permission to update content so I can delegate work.
+  - In the admin panel, the admin superuser navigates to Users in the sidebar
+  - Admin selects the user they would like to promote and adds to user gorup staff.
+
+- As a staff/admin I can easily upload new items including the image and pdf to the site in a user friendly admin page so I can complete the task easily.
+  - Admin or staff click admin in navbar
+  - Navigate to promo or add product
+  - From here can easily upload a new promo or product to the site
 
 
 
