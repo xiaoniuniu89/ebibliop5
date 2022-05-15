@@ -300,11 +300,11 @@ A monthly subscription for access to all books would be a great idea.
 
 <section id="testing">
 
-## Code Validation <p id="validation"></p>
+# Code Validation <p id="validation"></p>
 
-### HTML
+## HTML
 
-HTML was validated through <a href='https://validator.w3.org/#validate_by_input' target='_blank'>The W3C Markup Validator</a>, through the direct input method. There are no errors in the HTML.
+HTML was validated through <a href='https://validator.w3.org/#validate_by_input' target='_blank'>The W3C Markup Validator</a>. There are no errors in the HTML.
 
 - <a href='https://validator.w3.org/nu/?doc=https%3A%2F%2Fe-biblio.herokuapp.com%2F' target='_blank'>Landing</a>
 
@@ -328,6 +328,22 @@ HTML was validated through <a href='https://validator.w3.org/#validate_by_input'
 - User Dashboard 
 
 <img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652624446/p5/Screenshot_from_2022-05-15_15-20-15_anog7u.png'/>
+
+## CSS
+
+The css was validated through the <a href='https://jigsaw.w3.org/css-validator/'>W3 Jigsaw</a> validator. There are no errors in the css.
+
+- <a href='https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fe-biblio.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#warnings' target='_blank'>Landing</a>
+
+- <a href='https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fe-biblio.herokuapp.com%2Fshop%2Fhow-to-build-your-brand-with-instagram-images-5f705bd2-1657-4966-aa6f-975c57fce585%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en' target='_blank'>Product Detail</a>
+
+- <a href='https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fe-biblio.herokuapp.com%2Fbasket%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en' target='_blank'>Basket</a>
+
+Table of individual CSS files by direct input method in Jigsaw Validator. 
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652626097/p5/Screenshot_from_2022-05-15_15-47-38_aciiod.png'/>
+
+
 
 
 
