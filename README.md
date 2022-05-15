@@ -7,6 +7,7 @@
   - <a href="#typography">Typography</a>
   - <a href="#color">Color</a>
   - <a href="#wireframes">Wireframes</a>
+  - <a href="#database">Database Schema</a>
 - <a href="#features">Features</a>
   - <a href="#navbar">Navbar</a>
   - <a href="#footer">Footer</a>
@@ -136,6 +137,10 @@ Root Colors:
 Wireframes for the app 
 - <a href="">Desktop & Tablet View</a>
 - <a href="">Phone View</a>
+
+## Database Schema <p id="database"></p>
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652643705/p5/drawSQL-export-2022-05-15_20_40_nc6gt3.png'/>
 
 </section>
 
