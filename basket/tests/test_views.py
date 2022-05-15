@@ -41,7 +41,7 @@ class TestBasketViews(TestCase):
             rating_score=0,
             category=Category.objects.all()[0])
         tz = timezone.get_current_timezone()
-        Promo.objects.create(
+        self.promo = Promo.objects.create(
             code='DJANGO', valid_from=datetime.datetime.now().replace(
                 tzinfo=tz), valid_to=datetime.datetime.now().replace(
                 tzinfo=tz), discount=50, active=True)
@@ -129,3 +129,11 @@ class TestBasketViews(TestCase):
             xhr=True
         )
         self.assertEqual(response.json(), {'qty': 0, 'subtotal': '0'})
+
+    def test_str(self):
+        """ test model __str__ """
+        data = self.promo
+        self.assertEqual(
+            str(data),
+            'DJANGO'
+        )

@@ -44,3 +44,11 @@ class TestViewResponses(TransactionTestCase):
 
         )
         self.assertEqual(response.json(), {'msg': 'updated succesfully'})
+
+    def test_profile_str(self):
+        """ test profile __str__"""
+        data = self.profile
+        self.assertEqual(
+            str(data),
+            "bob's profile"
+        )

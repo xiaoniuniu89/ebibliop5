@@ -19,8 +19,12 @@
   - <a href="checkout">Checkout</a>
   - <a href="newsletter">Newsletter</a>
   - <a href="#features-left">Features Left to Impliment</a>
+- <a href="#testing">Testing</a>
+  - <a href="#validation">Code Validation</a>
+  - <a href="#automated">Automated Testing</a>
+  - <a href="#manual">Manual Testing</a>
+  - <a href="#browser">Browser Testing</a>
 - <a href="#tech">Technologies Used</a>
-- <a href="#test">Testing</a>
 - <a href="#deployment">Deployment</a>
 - <a href="#credits">Credits</a>
 
@@ -375,10 +379,23 @@ The JS can only be validated by direct input which causes some unused variable e
 <img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652628906/p5/Screenshot_from_2022-05-15_16-34-26_yk5o4d.png'/>
 
 
-
 ## Python
 
-I used <a href='https://pypi.org/project/autopep8/'>Auto pep8</a> to fix validation errors with any of the python files I, myself wrote. I then went through each file and manually inputed them into <a href='http://pep8online.com/'>pep8 online</a>. There are no errors in any of my custom written python code, although there would be in any of the files set up by django, eg. SETTINGS.py. 
+I used <a href='https://pypi.org/project/autopep8/'>Auto pep8</a> to fix validation errors with any of the python files I, myself wrote. I then went through each file and manually inputed them into <a href='http://pep8online.com/'>pep8 online</a>. There are no errors in any of my custom written python code, although there would be in some of the files set up by django, eg. SETTINGS.py.
+
+# Automated Testing
+
+Automated testing was done using the Django built in testing and with a library called <a href='https://coverage.readthedocs.io/en/6.3.3/'>coverage</a> to help pinpoint some areas of code that were not being reached by my tests.
+
+Coverage provides a handy report and html file containing all code covered by tests.
+
+The HTML can be found [here](htmlcov/index.html)
+
+
+
+Coverage Report
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652631045/p5/Screenshot_from_2022-05-15_17-07-36_yxbtyz.png'/>
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652631105/p5/Screenshot_from_2022-05-15_17-07-42_ovzwvt.png'/>
 
 
 

@@ -1,3 +1,4 @@
+import datetime
 from django.test import TestCase, Client, override_settings
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -18,7 +19,7 @@ class TestViewResponses(TestCase):
             email='email1@mail.com',
             slug_end='8692a064-cc49-4a74-84d2-bd2b287dfe37'
         )
-        NewsLetter.objects.create(
+        self.news = NewsLetter.objects.create(
             user=User.objects.all()[0],
             message='test message',
         )
@@ -50,3 +51,16 @@ class TestViewResponses(TestCase):
             message='test two'
         )
         self.assertEqual(NewsLetter.objects.all().count(), 2)
+
+    def test_str(self):
+        """ test model __str__ """
+        data = self.news
+        self.assertEqual(
+            str(data),
+            f'newsletter from admin on {datetime.date.today()}'
+        )
+        data = self.sub1
+        self.assertEqual(
+            str(data),
+            'email1@mail.com'
+        )
