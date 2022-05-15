@@ -9,8 +9,8 @@ from .basket import Basket
 
 
 def basket_summary(request):
-    basket = Basket(request)
     """ returns a summary of items in users basket"""
+    basket = Basket(request)
     return render(request, 'basket/basket_summary.html', {'basket': basket})
 
 
