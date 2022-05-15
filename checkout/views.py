@@ -1,26 +1,20 @@
-import os
-import json
 from django.http.response import HttpResponse
-if os.path.isfile('env.py'):
-    import env
-
-import stripe
-
-from basket.basket import Basket
-from orders.views import payment_confirmation
-from promotions.forms import PromoForm
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 
-from orders.models import Order
-
-
+import os
 if os.path.isfile('env.py'):
     import env
+import json
+import stripe
+
+from basket.basket import Basket
+from orders.views import payment_confirmation
+from orders.models import Order
 
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
@@ -39,13 +33,13 @@ def checkout(request):
     else:
         user_id = User.objects.get(username="guest_checkout").id
     intent = stripe.PaymentIntent.create(
-            amount=total,
-            currency='eur',
-            automatic_payment_methods={
-                'enabled': True,
-            },
-            metadata={'userid': user_id}
-        )
+        amount=total,
+        currency='eur',
+        automatic_payment_methods={
+            'enabled': True,
+        },
+        metadata={'userid': user_id}
+    )
     return render(
         request,
         'checkout/checkout.html',
@@ -61,7 +55,10 @@ def checkout_complete(request):
     """ redirect page after successful order """
     basket = Basket(request)
     basket.clear()
-    return render(request, 'checkout/checkout_complete.html', {'title': 'Checkout Complete'})
+    return render(request,
+                  'checkout/checkout_complete.html',
+                  {'title': 'Checkout Complete'})
+
 
 def checkout_failed(request):
     """ handle failed payments """
@@ -86,7 +83,7 @@ def stripe_webhook(request):
     except ValueError as e:
         print(e)
         return HttpResponse(status=400)
-    
+
     # Handle the event
     if event.type == 'payment_intent.succeeded':
         payment_confirmation(event.data.object.client_secret)
@@ -95,4 +92,3 @@ def stripe_webhook(request):
         print(f'Unhandled event type {event.type}')
 
     return HttpResponse(status=200)
-

@@ -1,6 +1,6 @@
 from decimal import Decimal
 from store.models import Product
-from promotions.models import Promo
+
 
 class Basket():
     """
@@ -34,7 +34,6 @@ class Basket():
         self.promo = self.session['promo_key'] = promo
         self.save()
 
-
     def delete(self, product):
         """
         Delete item from session data
@@ -44,9 +43,8 @@ class Basket():
             del self.basket[product_id]
             self.save()
 
-
     def clear(self):
-        # delete all contents in basket - remove from session
+        """delete all contents in basket - remove from session"""
         del self.session['session_key']
         del self.session['promo_key']
         self.save()
@@ -56,7 +54,6 @@ class Basket():
         Get the basket data and count the qty of items
         """
         return len(self.basket)
-
 
     def __iter__(self):
         """
@@ -79,7 +76,8 @@ class Basket():
 
     def get_discount(self):
         if self.promo:
-            return round((self.promo / Decimal(100)) * self.get_total_price(), 2)
+            return round((self.promo / Decimal(100))
+                         * self.get_total_price(), 2)
         return Decimal(0)
 
     def get_total_price_after_discount(self):
@@ -87,4 +85,3 @@ class Basket():
 
     def save(self):
         self.session.modified = True
-

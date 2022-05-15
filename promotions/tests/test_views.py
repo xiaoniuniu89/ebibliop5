@@ -2,14 +2,12 @@ from django.test import TestCase, Client, override_settings
 from django.contrib.auth.models import User
 from django.urls import reverse
 from promotions.models import Subscriber, NewsLetter
-from django.utils import timezone
-import datetime
 
-# Create your tests here.
 
 @override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
 class TestViewResponses(TestCase):
     """Tests for promotions views"""
+
     def setUp(self):
         """ set up test variables"""
         self.client = Client()
@@ -22,7 +20,6 @@ class TestViewResponses(TestCase):
             user=User.objects.all()[0],
             message='test message',
         )
-
 
     def test_add_subscriber(self):
         """test add subscriber to newletter"""
@@ -51,4 +48,3 @@ class TestViewResponses(TestCase):
             message='test two'
         )
         self.assertEqual(NewsLetter.objects.all().count(), 2)
-        

@@ -1,14 +1,14 @@
 from django.contrib.auth.models import User
-from django.http import HttpRequest, HttpResponse
-from django.conf import settings
+from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied, SuspiciousOperation
 from django.test import Client, RequestFactory, TestCase, override_settings
 from django.urls import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
-from store.models import Category, Product, Review
-from store.views import landing
 from django.urls import path
-from importlib import import_module
+
+from store.models import Category, Product, Review
+
+
 
 small_gif = (
     b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
@@ -16,12 +16,14 @@ small_gif = (
     b'\x02\x4c\x01\x00\x3b'
 )
 
+
 def response_error_handler(request, exception=None):
     return HttpResponse('Error handler content', status=403)
 
 
 def permission_denied_view(request):
     raise PermissionDenied
+
 
 def bad_request_view(request):
     raise SuspiciousOperation
@@ -35,9 +37,11 @@ urlpatterns = [
 handler400 = response_error_handler
 handler403 = response_error_handler
 
+
 @override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
 class TestViewResponses(TestCase):
     """Tests for store views"""
+
     def setUp(self):
         """ set up test variables"""
         self.client = Client()
@@ -52,12 +56,14 @@ class TestViewResponses(TestCase):
             title='django beginners',
             slug='django-beginners',
             price='9.99',
-            image=SimpleUploadedFile('small.gif', small_gif, content_type='image/gif'),
+            image=SimpleUploadedFile(
+                'small.gif',
+                small_gif,
+                content_type='image/gif'),
             pdf='django',
             rating_count=0,
-            rating_score=0
-        )
-    
+            rating_score=0)
+
     def test_url_allowed_hosts(self):
         """
         Test allowed hosts
@@ -71,7 +77,7 @@ class TestViewResponses(TestCase):
         """
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-    
+
     def test_404(self):
         """ test 404 response uses 404.html """
         self.client.get('/1234/4321')
@@ -111,7 +117,7 @@ class TestViewResponses(TestCase):
             '<title>Ebiblio | All Books</title>',
             response.content.decode()
         )
-    
+
     def test_add_update_delete_review(self):
         """ tests ajax call to add, update and delete review"""
         response = self.client.post(
@@ -133,7 +139,7 @@ class TestViewResponses(TestCase):
             }
         )
         self.assertEqual(len(Review.objects.all()), 1)
-        # test update 
+        # test update
         response = self.client.post(
             reverse('store:handle_review'),
             {
@@ -230,6 +236,3 @@ class TestViewResponses(TestCase):
         )
         response = self.client.get(reverse('store:search'))
         self.assertEqual(response.status_code, 200)
-
-    
-        

@@ -1,33 +1,35 @@
+import random
+
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from .models import Category, Product, Review
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-from django.views.generic import ListView, View
-from django.http import JsonResponse
-import random
+from django.views.generic import ListView
+
+from .models import Category, Product, Review
 
 def landing(request):
     """ render store landing page """
     products = Product.products.all()[0:8]
-    return render(request, 'store/landing.html', {'products': products, 'title': 'Home'})
+    return render(request, 'store/landing.html',
+                  {'products': products, 'title': 'Home'})
 
 
 class AllBooks(ListView):
     """
-    Render all books 
+    Render all books
     """
     queryset = Product.products.all()
     context_object_name = 'products'
     paginate_by = 12
     template_name = ('store/category.html')
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = 'All Books'
         return context
-    
-    
+
+
 def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
@@ -52,17 +54,22 @@ def product_detail(request, slug):
         user_review = None
     except TypeError:
         user_review = None
-    return render(
-        request,
-        'store/detail.html',
-        {'product': product, 'reviews': reviews, 'user_review': user_review, 'full_star': full_star, 'half_star': half_star, 'title': product.title})
+    return render(request,
+                  'store/detail.html',
+                  {'product': product,
+                   'reviews': reviews,
+                   'user_review': user_review,
+                   'full_star': full_star,
+                   'half_star': half_star,
+                   'title': product.title})
+
 
 def handle_review(request):
     """ Ajax call to handle creating and updating a review """
     if request.POST.get('action') == 'post':
         product_id = request.POST.get('product_id')
         product = Product.objects.get(pk=product_id)
-        
+
         user = User.objects.get(id=request.user.id)
         rating = request.POST.get('rating')
         review = request.POST.get('review').strip()
@@ -82,9 +89,10 @@ def handle_review(request):
             product.rating_score = int(rating)
         product.save()
         msg = 'Post created'
-        response = JsonResponse({'rating': rating, 'review': review, 'msg': msg})
+        response = JsonResponse(
+            {'rating': rating, 'review': review, 'msg': msg})
         return response
-    
+
     if request.POST.get('action') == 'update':
         product_id = request.POST.get('product_id')
         product = Product.objects.get(pk=product_id)
@@ -100,8 +108,10 @@ def handle_review(request):
         instance.save()
         msg = 'Post updated'
 
-        response = JsonResponse({'rating': rating, 'review': review, 'msg': msg})
+        response = JsonResponse(
+            {'rating': rating, 'review': review, 'msg': msg})
         return response
+
 
 def delete_review(request):
     """ Ajax Call to delete users review """
@@ -132,7 +142,7 @@ def search(request):
     """ returns search results for a book from search bar in nav"""
     if request.method == 'POST':
         term = request.POST['term'].lstrip().rstrip().split(
-                " ")[0]
+            " ")[0]
         products = Product.objects.filter(
             Q(title__icontains=term) |
             Q(author__icontains=term)
@@ -151,12 +161,12 @@ def search(request):
                 products = random.sample(list(Product.objects.all()), 8)
             except ValueError:
                 products = Product.objects.all()
-        return render(
-            request,
-            'store/search.html',
-            {'term': term, 'products': products, 'result': result, 'title': f'search {term}'}
-
-        )
+        return render(request,
+                      'store/search.html',
+                      {'term': term,
+                       'products': products,
+                       'result': result,
+                       'title': f'search {term}'})
     else:
         return render(
             request,

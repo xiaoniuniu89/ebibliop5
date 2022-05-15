@@ -11,9 +11,25 @@ from .views import (
 app_name = 'checkout'
 
 urlpatterns = [
-    path('', checkout, name='checkout'),
-    path('checkout-complete/', checkout_complete, name='checkout_complete'),
-    path('checkout-failed/', TemplateView.as_view(template_name='checkout/failed.html'), name='checkout_failed'),
-    path('error/', checkout_failed, name='checkout_failed'),
-    path('webhook/', stripe_webhook, name='webhook'),
+    path(
+        '',
+        checkout,
+        name='checkout'),
+    path(
+        'checkout-complete/',
+        checkout_complete,
+        name='checkout_complete'),
+    path(
+        'checkout-failed/',
+        TemplateView.as_view(
+            template_name='checkout/failed.html'),
+        name='checkout_failed'),
+    path(
+        'error/',
+        checkout_failed,
+        name='checkout_failed'),
+    path(
+        'webhook/',
+        stripe_webhook,
+        name='webhook'),
 ]

@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import CASCADE
 from django_countries.fields import CountryField
-
 
 
 # extends user model
@@ -28,9 +26,10 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user}\'s profile'
 
+
 class Message(models.Model):
     """
-    A class to handle user submissions 
+    A class to handle user submissions
     of the contact us form in the footer
     """
 
@@ -42,6 +41,6 @@ class Message(models.Model):
         """ Meta data for messages """
         verbose_name_plural = 'Messages'
         ordering = ('-date_posted',)
-    
+
     def __str__(self):
         return f'Message from {self.email}'

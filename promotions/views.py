@@ -1,16 +1,17 @@
-from django.shortcuts import render, redirect
-from django.utils import timezone
-from django.views.decorators.http import require_POST
-from django.urls import reverse_lazy
-from django.views.generic import DeleteView
-from .models import Promo, Subscriber
-from .forms import PromoForm
-from django.http import JsonResponse
-from basket.basket import Basket
 import stripe
 import os
 
+from django.http import JsonResponse
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
+
+from basket.basket import Basket
+
+from .models import Promo, Subscriber
+
+
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+
 
 def promo(request):
     basket = Basket(request)
@@ -20,8 +21,10 @@ def promo(request):
         basket.add_promo(promo_code.discount)
         discount = basket.get_discount()
         total = basket.get_total_price_after_discount()
-        response = JsonResponse({'code': basket.promo, 'discount': discount, 'total': total})
+        response = JsonResponse(
+            {'code': basket.promo, 'discount': discount, 'total': total})
         return response
+
 
 def subscribe(request):
     """ view to handle the subscribe form in the footer """
@@ -35,6 +38,7 @@ def subscribe(request):
         )
         response = JsonResponse({'msg': 'email subscribed!'})
         return response
+
 
 class unsubscribe(DeleteView):
     """ view to handle the unsubscribing from newsletter """

@@ -1,15 +1,18 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.http import JsonResponse
-from .basket import Basket
+
 from store.models import Product
 
+from .basket import Basket
+
 # Create your views here.
+
 
 def basket_summary(request):
     basket = Basket(request)
     """ returns a summary of items in users basket"""
     return render(request, 'basket/basket_summary.html', {'basket': basket})
+
 
 def basket_add(request):
     """ ajax request to add items to basket """
@@ -21,6 +24,7 @@ def basket_add(request):
         basketqty = basket.__len__()
         response = JsonResponse({'qty': basketqty})
         return response
+
 
 def basket_delete(request):
     basket = Basket(request)

@@ -1,22 +1,21 @@
-from django.shortcuts import render
-from django.http import JsonResponse
 import os
-from basket.basket import Basket
-from .models import Order, OrderItem
-from django.core.mail import send_mail
+
+from django.http import JsonResponse
 from django.conf import settings
-from django.template import Context
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from django.contrib.auth.models import User
 from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.mixins import UserPassesTestMixin
+from basket.basket import Basket
+
+from .models import Order, OrderItem
 from .utils import render_to_pdf
 
 # Create your views here.
+
+
 def add_order(request):
     basket = Basket(request)
     if request.POST.get('action') == 'post':
@@ -86,11 +85,10 @@ class GenerateInvoice(UserPassesTestMixin, View):
         """ view to generate a pdf invoice of customer orders """
         order = Order.objects.get(pk=pk)
         order_items = OrderItem.objects.filter(order=order)
-        pdf = render_to_pdf('orders/invoice.html', {'order': order, 'order_items': order_items})
+        pdf = render_to_pdf('orders/invoice.html',
+                            {'order': order, 'order_items': order_items})
         return HttpResponse(pdf, content_type='application/pdf')
 
     def test_func(self):
         pk = self.kwargs['pk']
         return self.request.user == Order.objects.get(pk=pk).user
-
-

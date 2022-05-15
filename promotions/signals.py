@@ -2,9 +2,7 @@ from django.core.mail import EmailMessage
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.template.loader import render_to_string
-from django.contrib.auth.models import User
 from django.conf import settings
-
 
 from .models import NewsLetter, Subscriber
 
@@ -31,6 +29,7 @@ def send_newsletter(sender, instance, **kwargs):
         )
         mail.content_subtype = "html"
         mail.send()
+
 
 @receiver(pre_save, sender=Subscriber)
 def create_slug(sender, instance, **kwargs):

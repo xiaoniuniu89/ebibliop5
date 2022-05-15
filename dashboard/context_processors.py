@@ -1,6 +1,6 @@
 from orders.models import OrderItem
+
 from .models import Profile
-from django.contrib.auth.models import User
 
 def purchases(request):
     if request.user.is_authenticated:

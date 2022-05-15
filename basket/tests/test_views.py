@@ -1,11 +1,13 @@
+import datetime
+
 from django.contrib.auth.models import User
-from django.http import HttpRequest
-from django.test import Client, RequestFactory, TestCase, override_settings
+from django.test import Client, TestCase, override_settings
 from django.urls import reverse
-from store.models import Category, Product
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils import timezone
-import datetime
+
+from store.models import Category, Product
+
 from promotions.models import Promo
 
 small_gif = (
@@ -14,7 +16,10 @@ small_gif = (
     b'\x02\x4c\x01\x00\x3b'
 )
 
-@override_settings(STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage')
+
+@override_settings(
+    STATICFILES_STORAGE='django.contrib.staticfiles.storage.StaticFilesStorage'
+)
 class TestBasketViews(TestCase):
     def setUp(self):
         self.client = Client()
@@ -22,21 +27,24 @@ class TestBasketViews(TestCase):
         Category.objects.create(name='test', slug='test')
         self.product = Product.objects.create(
             title='django for life',
-            slug='django-for-life', price='10',
-            image=SimpleUploadedFile('small.gif', small_gif, content_type='image/gif'),
+            slug='django-for-life',
+            price='10',
+            image=SimpleUploadedFile(
+                'small.gif',
+                small_gif,
+                content_type='image/gif'),
             pdf='django.pdf',
             author='admin',
             in_stock=True,
             description='book for test',
             rating_count=0,
             rating_score=0,
-            category=Category.objects.all()[0]
-        )
+            category=Category.objects.all()[0])
         tz = timezone.get_current_timezone()
         Promo.objects.create(
-            code='DJANGO', valid_from=datetime.datetime.now().replace(tzinfo=tz),
-            valid_to=datetime.datetime.now().replace(tzinfo=tz), discount=50, active=True)
-        
+            code='DJANGO', valid_from=datetime.datetime.now().replace(
+                tzinfo=tz), valid_to=datetime.datetime.now().replace(
+                tzinfo=tz), discount=50, active=True)
 
     def test_basket_url(self):
         """ test baslet response """
@@ -92,6 +100,7 @@ class TestBasketViews(TestCase):
                 'total': '5.00'
             }
         )
+
         def test_add_order_view(self):
             response = self.client.post(
                 reverse('orders:add_order'),
@@ -120,8 +129,3 @@ class TestBasketViews(TestCase):
             xhr=True
         )
         self.assertEqual(response.json(), {'qty': 0, 'subtotal': '0'})
-
-
-
-
-

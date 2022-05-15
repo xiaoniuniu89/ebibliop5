@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Message, Profile
-from promotions.models import Subscriber
+
 from orders.models import Order
 from store.models import Review
+
+from .models import Message, Profile
 
 
 @login_required
@@ -17,7 +18,9 @@ def dashboard(request):
         return redirect("admin:index")
     orders = Order.objects.filter(user=request.user)
     reviews = Review.objects.filter(user=request.user)
-    return render(request, 'dashboard/dashboard.html', {'orders': orders, 'reviews': reviews, 'title': 'Dashboard'})
+    return render(request, 'dashboard/dashboard.html',
+                  {'orders': orders, 'reviews': reviews, 'title': 'Dashboard'})
+
 
 def update_billing(request):
     """ view to handle updatig billing info in dashboard """

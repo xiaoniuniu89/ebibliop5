@@ -4,10 +4,12 @@ from promotions.models import Promo
 from orders.models import Order
 import uuid
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

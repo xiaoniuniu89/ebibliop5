@@ -1,11 +1,12 @@
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.dispatch import receiver
-from .models import Profile, Message
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.conf import settings
+
+from .models import Profile, Message
 
 
 @receiver(post_save, sender=User)
@@ -21,7 +22,9 @@ def create_profile(sender, instance, created, **kwargs):
 def send_mail(sender, instance, **kwargs):
     """ sends admin an email when a user fills out contact us form """
     message = instance
-    message = render_to_string("contact_us_notification_email.html", {'message': message})
+    message = render_to_string(
+        "contact_us_notification_email.html", {
+            'message': message})
     mail = EmailMessage(
         subject='New contact us message',
         body=message,
