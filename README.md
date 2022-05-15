@@ -369,7 +369,6 @@ Steps to deploy the site on Heroku:
 - name your app and choose the region you live in
 - in the resources tab of your app dashboard add the Postgres database resource
 - in the settings tab click reveal config vars and add the following
-  - aws
   - DATABASE_URL (added automatically)
   - EMAIL_PASS - the app uses google, steps to set up app passwords found [here](https://support.google.com/accounts/answer/185833?hl=en)
   - EMAIL_USER - Email account address
@@ -432,4 +431,48 @@ How to clone the repository
 - use the superuser credentials to log into the site
 
 More detailed instructions can be found [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository-to-github-desktop)
+
+
+# Credits <p id="credits"></p>
+
+## Media
+
+### Images
+
+CTA image: https://unsplash.com/photos/VEoUWF2iQlQ
+
+404 image: https://unsplash.com/photos/Guo9gNFpwgw
+
+### Books
+
+All books, including their pdf and covers were gotten from the following website:
+
+https://www.idplr.com/141-ebooks
+
+
+They are all from the free ebooks section
+
+## Code
+
+I had a lot of help from tutorials and bootstrap examples throughout this project. 
+
+- [very academy](https://www.youtube.com/watch?v=UqSJCVePEWU&list=PLOLrQ9Pn6caxY4Q1U9RjO1bulQp5NDYS_)
+  - This is a brilliant walkthrough of a bookstore. It was full of help on how to make a django site more dynamic and I learned how to make ajax calls from this tutorial, a lot about database design and setting up stripe webhooks. 
+- [Corey Schafer](https://www.youtube.com/watch?v=kt3ZtW9MXhw&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&index=16)
+  - A great walkthrough of django basics that I still go back to. I used his walkthrough to help me set up my AWS bucket.
+- [star rating](https://bbbootstrap.com/snippets/star-rating-pure-css-19646372)
+  - A great bootstrap example I was able to work into my project.
+- [Bootstrap Examples](https://getbootstrap.com/docs/5.2/examples/checkout/)
+  - I used a lot of the examples on the bootstrap site, a good example is this checkout page I modified for my purposes.
+- [bootstrap snippets](https://snippets.wrappixel.com/bootstrap-basic-feature/)
+  - A great site full of snippets to give inspiration and borrow from and work into your own project. Borrowed heavily for CTA.
+- [Image resize](https://blog.soards.me/posts/resize-image-on-save-in-django-before-sending-to-amazon-s3/)
+  - Solution to resize images before uploading to S# bucket
+
+
+## Aknowledgements
+- My mentor Precious who is always so patient and full of great ideas and can always find a way to break my site and help me find bugs.
+- My wife CC for testing the site and listening to my blah blah blah about the technical aspects of the site.
+
+
 
