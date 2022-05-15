@@ -343,6 +343,39 @@ Table of individual CSS files by direct input method in Jigsaw Validator.
 
 <img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652626097/p5/Screenshot_from_2022-05-15_15-47-38_aciiod.png'/>
 
+## Javascript
+
+Javascript was tested using <a href='https://jshint.com/'>JS Hint</a>. To accommodate the Jquery and ES6 used on the site you must click configuration in the top right of JS Hint landing page and add these to the config. 
+
+The JS can only be validated by direct input which causes some unused variable errors. This only arises because the templates are very compartmentalized. A variable may be declared in one snippet and referenced in a different JS file. An example of this is getting the CSRF token or Stripe client secret. The variable is accessed in the django template and set as a js variable. Then in a seperate js file the variable may be used. Testing the JS file will say the variable does not exist when in fact it does exist, and can be referenced from the django template.
+
+- navbar.js
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652627287/p5/Screenshot_from_2022-05-15_16-05-36_xdintr.png'/>
+
+- footer.js
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652627367/p5/Screenshot_from_2022-05-15_16-06-44_bistha.png'/>
+
+- store/landing.js
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652627645/p5/Screenshot_from_2022-05-15_16-13-34_qvzkqn.png'/>
+
+- store/review.js
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652628399/p5/Screenshot_from_2022-05-15_16-25-36_o30l65.png'/>
+
+- dashboard/user_dashboard.js
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652628664/p5/Screenshot_from_2022-05-15_16-30-04_pemgbr.png'/>
+
+
+- checkout/checkout.js
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652628906/p5/Screenshot_from_2022-05-15_16-34-26_yk5o4d.png'/>
+
+
+
 
 
 

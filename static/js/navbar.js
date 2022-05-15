@@ -3,9 +3,13 @@
  * Copyright 2017.
  * Licensed under the GPL license
  */
-document.querySelector('nav').classList.add('fixed-top')
-document.querySelector('body').style.paddingTop = '75px'
 
+//give fixed nav
+document.querySelector('nav').classList.add('fixed-top');
+// avoid nav obscuring content
+document.querySelector('body').style.paddingTop = '75px';
+
+// js to handle nested dropdown items in the admin and staff navbars.
 $( document ).ready( function () {
     $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
         var $el = $( this );

@@ -15,6 +15,7 @@ base: {
 }
 };
 
+// mount card element
 var card = elements.create("card", { hidePostalCode: true, style: style });
 card.mount("#card-element");
 
@@ -32,8 +33,8 @@ var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
   ev.preventDefault();
-  elem.classList.add('d-none')
-  document.querySelector('.loader').classList.remove('d-none')
+  elem.classList.add('d-none');
+  document.querySelector('.loader').classList.remove('d-none');
 
 var fName = document.getElementById("firstName").value;
 var lName = document.getElementById("lastName").value;
@@ -44,6 +45,7 @@ var country = document.getElementById("country").value;
 var city = document.getElementById("state").value;
 var postCode = document.getElementById("post-code").value;
 
+// before proccess payment, create a new order object
 $.ajax({
     type: "POST",
     url: addOrderUrl,
@@ -60,9 +62,9 @@ $.ajax({
       country: country
     },
     success: function (json) {
-      console.log(json.success)
+      console.log(json.success);
 
-  
+  // proccess payment
   stripe.confirmCardPayment(clientSecret, {
     payment_method: {
       card: card,
@@ -91,11 +93,11 @@ $.ajax({
 
             },
             success: function(json){
-              document.querySelector('.error-msg').innerHTML = `${json.msg}`
-              $('#error-modal').modal('show')
+              document.querySelector('.error-msg').innerHTML = `${json.msg}`;
+              $('#error-modal').modal('show');
             },
             error: function(xhr, errmsg, err){}
-        })
+        });
       // Show error to your customer (for example, insufficient funds)
       console.log(result.error.message);
       
@@ -103,8 +105,8 @@ $.ajax({
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
-        console.log('payment processed')
-        window.location.replace(checkoutCompleteUrl)
+        console.log('payment processed');
+        window.location.replace(checkoutCompleteUrl);
         // Show a success message to your customer
         // There's a risk of the customer closing the window before callback
         // execution. Set up a webhook or plugin to listen for the
@@ -118,6 +120,7 @@ $.ajax({
 });
 });
 
+// when error modal is closed bring customer back to basket summary
 document.querySelector('#error-close').addEventListener('click', () => {
-  window.location.replace(basketUrl)
-})
+  window.location.replace(basketUrl);
+});
