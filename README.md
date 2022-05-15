@@ -315,6 +315,21 @@ HTML was validated through <a href='https://validator.w3.org/#validate_by_input'
 - <a href='https://validator.w3.org/nu/?doc=https%3A%2F%2Fe-biblio.herokuapp.com%2Fbasket%2F' target='_blank'>Basket</a>
 
 
+- checkout
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652623960/p5/Screenshot_from_2022-05-15_15-11-38_fdkr0b.png'/>
+
+- checkout complete 
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652624207/p5/Screenshot_from_2022-05-15_15-16-16_jqkjob.png'/>
+
+- <a href='https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fe-biblio.herokuapp.com%2Fcheckout%2F404' target='_blank'>Error - eg: 404</a>
+
+- User Dashboard 
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652624446/p5/Screenshot_from_2022-05-15_15-20-15_anog7u.png'/>
+
+
 
 
 
