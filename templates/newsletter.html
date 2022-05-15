@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
-<title></title>
+<title>Newsletter</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<style type="text/css">
+<style>
 
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin-inline: auto; text-align: center;}
+    table, td { margin-inline: auto; }
     img { -ms-interpolation-mode: bicubic; }
 
     img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
-    table { border-collapse: collapse !important; }
+    table { border-collapse: collapse !important; margin-inline: auto; }
     body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
 
 
@@ -38,20 +38,20 @@
     }
     div[style*="margin: 16px 0;"] { margin: 0 !important; }
 </style>
-<body style="margin: 0 !important; padding: 0 !important; background-color: #eeeeee;" bgcolor="#eeeeee">
+<body style="margin: 0 !important; padding: 0 !important; background-color: #eeeeee;">
 
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<table>
     <tr>
-        <td align="center" style="background-color: #eeeeee;" bgcolor="#eeeeee">
+        <td style="background-color: #eeeeee;">
         
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-            <tr>
-                <td align="left" valign="top" style="font-size:0; padding: 35px;" bgcolor="orange">
+        <table style="max-width:600px;">
+            <tr style='background-color: orange;'>
+                <td style="font-size:0; padding: 35px;" >
                
                 <div style="display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;">
-                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
+                    <table style="max-width:300px;">
                         <tr>
-                            <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
+                            <td style="font-family: Open Sans,  Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;" class="mobile-center">
                                 <h1 style="font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;">E-biblio</h1>
                             </td>
                         </tr>
@@ -63,14 +63,14 @@
                 </td>
             </tr>
             <tr>
-                <td align="center" style="padding: 35px 35px 20px 35px; background-color: #ffffff;" bgcolor="#ffffff">
-                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                <td style="padding: 35px 35px 20px 35px; background-color: #ffffff;" >
+                <table style="max-width:600px;">
                     <tr>
-                        <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
+                        <td style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
                             <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">
                                 Hey Bibliophiles!
                             </h2>
-                            <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: black;">
+                            <p style="font-size: 16px; text-align: center; font-weight: 400; line-height: 24px; color: black;">
                                 {{message.message|safe}}
                             </p>
                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: black;">
@@ -79,14 +79,9 @@
                         </td>
                     </tr>
                     
-                        </td>
-                    </tr>
                 </table>
-                </td>
-            </tr>
+ 
         </table>
-        </td>
-    </tr>
 </table>
     
 </body>

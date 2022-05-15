@@ -43,8 +43,6 @@
                 
                 {% endif %}
 
-            </div>
-           
             {% else %}
 
                 {% include 'snippets/user_nav.html' %}
@@ -59,7 +57,7 @@
             <button id='search-btn' class="btn btn-success my-2 my-sm-0 d-none d-md-block" type="submit">Search</button>
         </form>
 
-        <a type="button" role="button" href="{% url "basket:basket_summary" %}"
+        <a role="button" href="{% url "basket:basket_summary" %}"
             class="btn btn-primary ml-lg-2">
 
             {% with total_qty=basket|length %}

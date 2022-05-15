@@ -6,7 +6,6 @@
         <th scope="col">Order #</th>
         <th scope="col">Date</th>
         <th scope="col">Status</th>
-        {% comment %} <th scope="col">Invoice</th> {% endcomment %}
       </tr>
     </thead>
     <tbody>
@@ -19,7 +18,6 @@
         {% else %}
         <td class="text-left">Unpaid</td>
         {% endif %}
-        {% comment %} <td class="text-left"><a href="{% url 'orders:invoice' order.id %}" target="_blank"><i class="fas fa-download"></i></a></td> {% endcomment %}
       </tr>
       {% endfor %}
     </tbody>

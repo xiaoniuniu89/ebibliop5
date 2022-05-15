@@ -19,7 +19,7 @@
       {% with product=item.product %}
       <div data-index="{{product.id}}" class="row mb-4 border product-item">
         <div class="col-md-3 col-lg-2 order-md-first bg-light">
-          <img class="img-fluid mx-auto d-none d-md-block" width="120px" alt="Responsive image" src="{{ product.image.url }}">
+          <img class="img-fluid mx-auto d-none d-md-block" width="120" alt="{{product.title}} book cover" src="{{ product.image.url }}">
         </div>
         <div class="col-md-9 col-lg-10 ps-md-3 ps-lg-10">
           <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-reset">
@@ -54,7 +54,7 @@
             <div class="input-group">
               <input type="text" id='promo-code-input' class="form-control" placeholder="Promo code">
               <div class="input-group-append">
-                <button type="submit" id='promo-btn' class="btn btn-secondary" required>Redeem</button>
+                <button type="submit" id='promo-btn' class="btn btn-secondary">Redeem</button>
               </div>
             </div>
           </form>

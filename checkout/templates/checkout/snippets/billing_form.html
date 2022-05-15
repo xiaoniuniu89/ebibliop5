@@ -56,7 +56,7 @@
     <div class="row pb-3">
         <div class="col-md-12">
             <label for="country" class="form-label">Country</label>
-             <select class="form-control" id="country" required>
+             <select class="form-control" id="country">
             {% if billing.country %}
                 <option value="{{billing.country.code}}">{{billing.country.name}}</option>
             {% for country in countries %}
@@ -84,13 +84,12 @@
                 {% else %}
                     <input type="text" class="form-control " id="state" placeholder="city or country" required>
                 {% endif %}
-            </select>
             <div class="invalid-feedback">
                 Please provide a valid state.
             </div>
             </div>
             <div class="col-md-6 pb-2">
-            <label for="postcode" class="form-label">Zip/Postcode</label>
+            <label for="post-code" class="form-label">Zip/Postcode</label>
             {% if billing.postcode %}
                 <input type="text" class="form-control" id="post-code" value="{{billing.postcode}}" required>
             {% else %}

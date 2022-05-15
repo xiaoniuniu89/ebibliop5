@@ -9,7 +9,7 @@ const addReview = (user, review, rating) => {
     document.querySelector('.temp-review-wrapper').innerHTML = `
 <div class="media row  text-muted py-3 col-12 bg-light border-top">
     <strong class="d-block text-gray-dark">@${user} - </strong>
-    <i class="fas fa-star mx-1 "><p class="c-rate">${rating}</p></i>
+    <i class="fas fa-star mx-1 "><span class="c-rate">${rating}</span></i>
     <div class="edit-delete-comment">
         <i data-toggle="modal" data-target="#review-modal" id="edit-review-btn" class="fas px-2 fa-edit"></i>
         <i data-toggle="modal" data-target="#delete-review-modal" id="delete-review-btn" class="fas fa-trash-alt"></i>
@@ -29,7 +29,7 @@ const updateReview = (user, review, rating) => {
     document.querySelector('.temp-review-wrapper').innerHTML = `
 <div class="media row  text-muted py-3 col-12 bg-light border-top">
     <strong class="d-block text-gray-dark">@${user} - </strong>
-    <i class="fas fa-star mx-1 "><p class="c-rate">${rating}</p></i>
+    <i class="fas fa-star mx-1 "><span class="c-rate">${rating}</span></i>
     <div class="edit-delete-comment">
         <i data-toggle="modal" data-target="#update-review-modal" id="edit-review-btn" class="fas px-2 fa-edit"></i>
         <i data-toggle="modal" data-target="#delete-review-modal" id="delete-review-btn" class="fas fa-trash-alt"></i>
