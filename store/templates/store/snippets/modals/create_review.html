@@ -66,6 +66,7 @@
                 action: action
             },
             success: function(json){
+              $('#val-stars').addClass('d-none');
               document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p class="text-center">${json.msg}</p>
