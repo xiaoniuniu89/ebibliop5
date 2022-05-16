@@ -505,6 +505,8 @@ I had a lot of help from tutorials and bootstrap examples throughout this projec
   - I used a lot of the examples on the bootstrap site, a good example is this checkout page I modified for my purposes.
 - [bootstrap snippets](https://snippets.wrappixel.com/bootstrap-basic-feature/)
   - A great site full of snippets to give inspiration and borrow from and work into your own project. Borrowed heavily for CTA.
+  -[bbbootstrap](https://bbbootstrap.com/)
+    - [order confirmation email](https://bbbootstrap.com/snippets/order-confirmation-email-template-19073214)
 - [Image resize](https://blog.soards.me/posts/resize-image-on-save-in-django-before-sending-to-amazon-s3/)
   - Solution to resize images before uploading to S# bucket
 
