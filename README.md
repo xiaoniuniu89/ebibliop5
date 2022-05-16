@@ -6,6 +6,7 @@
   - <a a href="#user-stories">User Stories</a>
   - <a href="#typography">Typography</a>
   - <a href="#color">Color</a>
+  - <a href="#seo">SEO</a>
   - <a href="#wireframes">Wireframes</a>
   - <a href="#database">Database Schema</a>
 - <a href="#features">Features</a>
@@ -131,6 +132,12 @@ Root Colors:
   - <span style="color: rgb(124, 132, 131)">grey</span>: rgb(124, 132, 131);
   - <span style="color: rgb(45, 49, 66)">blue</span>: rgb(45, 49, 66);
   - <span style="color: rgb(155, 106, 108)">rose</span>: rgb(155, 106, 108);
+
+## SEO <p id="seo"></p>
+I used google and the "what other peopole searched for" section, along with https://www.wordtracker.com/ to Narrow down a list of long and short tail keywords for SEO considerations.
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652694902/p5/Screenshot_from_2022-05-16_09-31-46_y396nf.png'/>
+
 
 ## Wireframes <p id="wireframes"></p>
 
