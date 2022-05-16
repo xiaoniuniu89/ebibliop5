@@ -6,7 +6,6 @@
   - <a a href="#user-stories">User Stories</a>
   - <a href="#typography">Typography</a>
   - <a href="#color">Color</a>
-  - <a href="#seo">SEO</a>
   - <a href="#wireframes">Wireframes</a>
   - <a href="#database">Database Schema</a>
 - <a href="#features">Features</a>
@@ -21,6 +20,10 @@
   - <a href="checkout">Checkout</a>
   - <a href="newsletter">Newsletter</a>
   - <a href="#features-left">Features Left to Impliment</a>
+- <a href="#web-marketing">Web Marketing</a>
+  - <a href="#seo">SEO</a>
+  - <a href="#social-media">Social Media Marketing</a>
+  - <a href="#email-marketing">Email Marketing</a>
 - <a href="#testing">Testing</a>
 - <a href="#tech">Technologies Used</a>
 - <a href="#deployment">Deployment</a>
@@ -30,7 +33,11 @@
 <section id="about">
 
 # About E-biblio
-  E-biblio is an online e-book store specializing in motivational, self-improvement, business and marketing books.
+  E-biblio is an online e-book store specializing in motivational, self-improvement, business and marketing E-books.
+
+  It is a Business to Customer e-commerce application. As such, there are promo codes to encourage users to buy and the checkout process is very streamlined and easy to use. You do not need an account to checkout on E-biblio as it makes use of cookies to track the contents of your basket. It uses a single payment model for checkout.
+
+  As it is selling digital products, users are given instant access to their purchases after a succesful payment. Logged in users will have access through their Dashboard. Non logged in users will have access through an email.
 
   E-biblio is primarily for two groups of people:
 
@@ -132,9 +139,6 @@ Root Colors:
   - <span style="color: rgb(124, 132, 131)">grey</span>: rgb(124, 132, 131);
   - <span style="color: rgb(45, 49, 66)">blue</span>: rgb(45, 49, 66);
   - <span style="color: rgb(155, 106, 108)">rose</span>: rgb(155, 106, 108);
-
-## SEO <p id="seo"></p>
-I used google and the "what other peopole searched for" section, along with https://www.wordtracker.com/ to Narrow down a list of long and short tail keywords for SEO considerations.
 
 <img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652694902/p5/Screenshot_from_2022-05-16_09-31-46_y396nf.png'/>
 
@@ -306,6 +310,25 @@ A bot or real person to be available to answer customer questions in real time.
 
 ### Subscription based model of payment 
 A monthly subscription for access to all books would be a great idea. 
+
+</section>
+<section id="web-marketing"> 
+
+# Web Marketing
+
+## SEO <p id="seo"></p>
+I used google and the "what other peopole searched for" section, along with https://www.wordtracker.com/ to Narrow down a list of long and short tail keywords for SEO considerations.
+
+## Social Media <p id="social-media"></p>
+The site has a dedicated Facebook business page to help promote the site.
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652696292/p5/Screenshot_from_2022-05-16_11-16-42_jruhse.png'/>
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652696316/p5/Screenshot_from_2022-05-16_11-16-52_qv6eu9.png'>
+
+## SEO <p id="email-marketing"></p>
+Users can sign up to the email newsletter from the footer of the website and their is a convenient unsubscribe link at the bottom of each email sent by admin.
+
 
 </section>
 
