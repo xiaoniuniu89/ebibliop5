@@ -37,7 +37,8 @@ def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     if request.user.is_authenticated:
-        if OrderItem.objects.filter(customer=request.user, product=product).exists():
+        if OrderItem.objects.filter(
+            customer=request.user, product=product).exists():
             can_review = True
         else:
             can_review = False

@@ -98,6 +98,8 @@
 
         $(document).on('click', '#email-btn', function(e){
             e.preventDefault();
+            if($('#email-input-sub').val().indexOf('@') !== -1
+            && $('#email-input-sub').val().indexOf('.') !== -1){
             $.ajax({
                 type: 'POST',
                 url: '{% url "promotions:subscribe" %}',
@@ -121,12 +123,23 @@
                 },
                 error: function(xhr, errmsg, err){}
             });
+            } else {
+               document.querySelector('.msg-wrapper').innerHTML =  `
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p class="text-center">That is not a valid email</p>
+                </div>`;
+            }
+            
         });
+    
 
         let userEmail = '{{request.user.email}}';
 
         $(document).on('click', '#msg-btn', function(e){
             e.preventDefault();
+            if($('#email-input').val().indexOf('@') !== -1
+            && $('#email-input').val().indexOf('.') !== -1
+             {
             $.ajax({
                 type: 'POST',
                 url: '{% url "dashboard:send_message" %}',
@@ -152,6 +165,10 @@
                 },
                 error: function(xhr, errmsg, err){}
             });
+            }
+            else {
+                alert('sorry')
+            }
         });
     </script>
 {% endblock %}
