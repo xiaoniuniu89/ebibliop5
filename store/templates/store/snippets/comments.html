@@ -15,10 +15,8 @@
     {% if user_review %}
         <button type="button" disabled id="add-review-modal-btn" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
     {% else %}
-        {% if user.is_authenticated %}
+        {% if can_review %}
             <button type="button" id="add-review-modal-btn" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
-        {% else %}
-            <a class="btn add-review-btn btn-info btn-sm" href="{% url 'account_login' %}">Login to add a review</a>
         {% endif %}
     {% endif %}
     </div>

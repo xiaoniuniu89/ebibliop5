@@ -6,6 +6,8 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.views.generic import ListView
 
+from orders.models import OrderItem
+
 from .models import Category, Product, Review
 
 
@@ -34,6 +36,13 @@ class AllBooks(ListView):
 def product_detail(request, slug):
     """ render product detail page """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
+    if request.user.is_authenticated:
+        if OrderItem.objects.filter(customer=request.user, product=product).exists():
+            can_review = True
+        else:
+            can_review = False
+    else:
+        can_review = False
     if product.get_rating():
         rating = product.get_rating()
         full_star, half_star = rating
@@ -62,7 +71,8 @@ def product_detail(request, slug):
                    'user_review': user_review,
                    'full_star': full_star,
                    'half_star': half_star,
-                   'title': product.title})
+                   'title': product.title,
+                   'can_review': can_review})
 
 
 def handle_review(request):
