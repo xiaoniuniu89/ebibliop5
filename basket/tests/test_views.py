@@ -71,7 +71,8 @@ class TestBasketViews(TestCase):
             },
             xhr=True
         )
-        self.assertEqual(response.json(), {'qty': 1})
+        self.assertEqual(
+            response.json(), {'msg': 'Book already in basket', 'qty': 1})
 
     def test_basket_add(self):
         """ test adding items to basket """
@@ -83,7 +84,8 @@ class TestBasketViews(TestCase):
             },
             xhr=True
         )
-        self.assertEqual(response.json(), {'qty': 1})
+        self.assertEqual(
+            response.json(), {'msg': 'Added to basket', 'qty': 1})
         response = self.client.post(
             reverse('promotions:add_promo'),
             {
