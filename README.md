@@ -380,6 +380,10 @@ Testing can be found [here](TESTING.md)
 [Balsamiq](https://balsamiq.com/)
 - to make wireframes
 
+[DrawSQL](https://drawsql.app/home)
+- to make database design
+
+
 # Deployment <p id="deployment"></p>
 
 The site is deployed on [Heroku](https://www.heroku.com/). The link is here: https://e-biblio.herokuapp.com/
