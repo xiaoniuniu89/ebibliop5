@@ -135,8 +135,9 @@ Root Colors:
 ## Wireframes <p id="wireframes"></p>
 
 Wireframes for the app 
-- <a href="">Desktop & Tablet View</a>
-- <a href="">Phone View</a>
+- [Desktop](wireframes-desk.pdf)
+- [Mobile](wireframes-mob.pdf)
+
 
 ## Database Schema <p id="database"></p>
 

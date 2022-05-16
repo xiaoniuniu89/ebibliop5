@@ -20,6 +20,7 @@
             </div>
                 
         </li>
+        <!-- show login/sign-up if not logged in  -->
         {% if not user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link nav-pad" href="{% url 'account_login' %}">Login</a>
@@ -50,7 +51,7 @@
              {% endif %}
             {% endif %}
         </ul>
-        
+        <!-- searchbar -->
         <form method='POST' action="{% url 'store:search' %}" class="form-inline my-2 my-lg-0">
             {% csrf_token %}
             <input class="form-control mr-sm-2" type="search" placeholder="Search books" name='term' required aria-label="Search">
