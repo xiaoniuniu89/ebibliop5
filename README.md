@@ -140,8 +140,6 @@ Root Colors:
   - <span style="color: rgb(45, 49, 66)">blue</span>: rgb(45, 49, 66);
   - <span style="color: rgb(155, 106, 108)">rose</span>: rgb(155, 106, 108);
 
-<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652694902/p5/Screenshot_from_2022-05-16_09-31-46_y396nf.png'/>
-
 
 ## Wireframes <p id="wireframes"></p>
 
@@ -319,6 +317,8 @@ A monthly subscription for access to all books would be a great idea.
 ## SEO <p id="seo"></p>
 I used google and the "what other peopole searched for" section, along with https://www.wordtracker.com/ to Narrow down a list of long and short tail keywords for SEO considerations.
 
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652694902/p5/Screenshot_from_2022-05-16_09-31-46_y396nf.png'/>
+
 ## Social Media <p id="social-media"></p>
 The site has a dedicated Facebook business page to help promote the site.
 
@@ -326,9 +326,8 @@ The site has a dedicated Facebook business page to help promote the site.
 
 <img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652696316/p5/Screenshot_from_2022-05-16_11-16-52_qv6eu9.png'>
 
-## SEO <p id="email-marketing"></p>
-Users can sign up to the email newsletter from the footer of the website and their is a convenient unsubscribe link at the bottom of each email sent by admin.
-
+## Email Marketing <p id="email-marketing"></p>
+Users can sign up to the email newsletter from the footer of the website and their is a convenient unsubscribe link at the bottom of each email sent by admin. Admin can create a newletter from the admin panel and when it is saved a post_save django signal seds the mail to everyone in the subscribed list.
 
 </section>
 
