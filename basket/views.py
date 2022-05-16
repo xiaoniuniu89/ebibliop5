@@ -20,10 +20,17 @@ def basket_add(request):
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('productId'))
         product = get_object_or_404(Product, id=product_id)
-        basket.add(product=product)
-        basketqty = basket.__len__()
-        response = JsonResponse({'qty': basketqty})
-        return response
+        if str(product.id) in basket.basket:
+            basketqty = basket.__len__()
+            msg = 'Book already in basket'
+            response = JsonResponse({'qty': basketqty, 'msg': msg})
+            return response
+        else:
+            basket.add(product=product)
+            basketqty = basket.__len__()
+            msg = 'Added to basket'
+            response = JsonResponse({'qty': basketqty, 'msg': msg})
+            return response
 
 
 def basket_delete(request):

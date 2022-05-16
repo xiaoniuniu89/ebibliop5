@@ -7,6 +7,9 @@
 {% block content %}
 
 
+{% if product.id|slugify in basket.basket %}
+    jsad
+{% endif %}
 
 <div class="container">
     <main class="pt-5">
@@ -80,7 +83,7 @@
                 document.getElementById('basket-qty').innerHTML = json.qty
                 document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <p class="text-center">Added to basket</p>
+                <p class="text-center">${json.msg}</p>
                 </div>
 
                 `
