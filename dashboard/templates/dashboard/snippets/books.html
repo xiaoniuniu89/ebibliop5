@@ -10,9 +10,13 @@
                     <div class="cp_img">
                         <img src="{{item.product.image.url}}"  alt="{{item.product.title}} book cover" class="img-fluid">
                     </div>
+                    
                 </div>
             </div>
         </a>
+        <div class='d-flex justify-content-center pt-2'>
+            <a class='text-center btn btn-sm btn-info' href={% url 'store:product_detail' item.product.slug %}>leave a review</a>
+        </div>
         </div>
     {% endfor %}
     {% else %}

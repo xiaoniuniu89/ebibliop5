@@ -20,13 +20,26 @@ def promo(request):
         # get the promo name and use to
         # get promo from the database
         promo_code = request.POST.get('promo_code')
-        promo_code = Promo.objects.get(code=promo_code)
-        basket.add_promo(promo_code.discount)
-        discount = basket.get_discount()
-        # update basket total price
-        total = basket.get_total_price_after_discount()
+        if Promo.objects.filter(code=promo_code).exists():
+            promo_code = Promo.objects.get(code=promo_code)
+            basket.add_promo(promo_code.discount)
+            discount = basket.get_discount()
+            # update basket total price
+            total = basket.get_total_price_after_discount()
+            msg = 'Promo code applied'
+            response = JsonResponse(
+                {
+                    'code': basket.promo,
+                    'discount': discount,
+                    'total': total,
+                    'msg': msg
+                })
+            return response
+        # response for invalid promo code
+        msg = 'Promo Code Invalid'
+        total = total = basket.get_total_price()
         response = JsonResponse(
-            {'code': basket.promo, 'discount': discount, 'total': total})
+                {'msg': msg, 'total': total})
         return response
 
 
