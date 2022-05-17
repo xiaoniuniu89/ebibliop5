@@ -3,7 +3,7 @@ from django.test import Client, TransactionTestCase, override_settings
 from django.urls import reverse
 from dashboard.models import Profile
 
-
+# for making product
 small_gif = (
     b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
     b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'

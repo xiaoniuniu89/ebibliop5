@@ -126,12 +126,14 @@
       
 
 <script>
+    // get form details and send info to view to update billing info
     $(document).on('click', '#update-billing-info-btn', function(e){
         e.preventDefault();
         $.ajax({
             type: 'POST',
             url: '{% url "dashboard:update_billing_info" %}',
             data: {
+                // get variables
                 firstName: $('#first-name').val(),
                 lastName: $('#last-name').val(),
                 email: $('#email').val(),
@@ -144,12 +146,14 @@
                 action: 'post'
             },
             success: function(json){
+                // flash msg
                 document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p class="text-center">${json.msg}</p>
                 </div>
 
                 `
+                //close flash msg 
                 setTimeout(function () {
                     $(".alert").alert('close')
                 }, 3000);

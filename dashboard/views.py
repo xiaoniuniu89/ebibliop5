@@ -16,6 +16,7 @@ def dashboard(request):
         return redirect('admin:index')
     elif request.user.is_staff:
         return redirect("admin:index")
+    # get any orders and reviews belonging to the user
     orders = Order.objects.filter(user=request.user)
     reviews = Review.objects.filter(user=request.user)
     return render(request, 'dashboard/dashboard.html',
@@ -27,6 +28,7 @@ def update_billing(request):
     if request.POST.get('action') == 'post':
         user = User.objects.get(id=request.user.id)
         profile = Profile.objects.get(user=user)
+        # get POST variables
         first_name = request.POST.get('firstName')
         last_name = request.POST.get('lastName')
         email = request.POST.get('email')
@@ -35,6 +37,7 @@ def update_billing(request):
         country = request.POST.get('country')
         city = request.POST.get('city')
         post_code = request.POST.get('postCode')
+        # update profile and user info
         user.first_name = first_name
         user.last_name = last_name
         profile.billing_email = email
