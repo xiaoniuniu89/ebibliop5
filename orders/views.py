@@ -1,5 +1,3 @@
-import os
-
 from django.http import JsonResponse
 from django.conf import settings
 from django.template.loader import get_template
@@ -13,16 +11,18 @@ from basket.basket import Basket
 from .models import Order, OrderItem
 from .utils import render_to_pdf
 
-# Create your views here.
-
 
 def add_order(request):
+    """ajax call to create an order before making payment"""
     basket = Basket(request)
     if request.POST.get('action') == 'post':
+        # if user is logged in use their profile 
         if request.user.is_authenticated:
             user_id = request.user.id
         else:
+            # if guest use the guest_checkout profile
             user_id = User.objects.get(username="guest_checkout").id
+        # get POST variables
         order_key = request.POST.get('order_key')
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -38,6 +38,7 @@ def add_order(request):
         if Order.objects.filter(order_key=order_key).exists():
             pass
         else:
+            # make one
             order = Order.objects.create(
                 user_id=user_id,
                 full_name=name,
@@ -53,6 +54,7 @@ def add_order(request):
             )
             order_id = order.pk
             for item in basket:
+                # make an order item for each item in order
                 OrderItem.objects.create(
                     order_id=order_id,
                     product=item['product'],
@@ -65,7 +67,9 @@ def add_order(request):
 
 def payment_confirmation(data):
     """ post webhook payment confirmation view """
+    # find order and update payment to True 
     Order.objects.filter(order_key=data).update(billing_status=True)
+    # find order items and send confirmation email containing links
     order = Order.objects.get(order_key=data)
     order_items = OrderItem.objects.filter(order=order)
     order_items_url = [item.product.pdf.url for item in order_items]
@@ -86,6 +90,8 @@ def payment_confirmation(data):
 
 
 class GenerateInvoice(UserPassesTestMixin, View):
+    """generate a pdf invoice of past orders"""
+
     def get(self, request, pk, *args, **kwargs):
         """ view to generate a pdf invoice of customer orders """
         order = Order.objects.get(pk=pk)
@@ -95,5 +101,6 @@ class GenerateInvoice(UserPassesTestMixin, View):
         return HttpResponse(pdf, content_type='application/pdf')
 
     def test_func(self):
+        # check the order customer is the request user
         pk = self.kwargs['pk']
         return self.request.user == Order.objects.get(pk=pk).user

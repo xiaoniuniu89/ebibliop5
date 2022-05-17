@@ -6,6 +6,7 @@ from store.models import Product
 
 
 class Order(models.Model):
+    """model for order objects"""
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
         related_name='order_user'
@@ -28,6 +29,7 @@ class Order(models.Model):
     )
 
     class Meta:
+        '''orders the promo'''
         ordering = ('-created',)
 
     def __str__(self):
@@ -35,6 +37,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """model to create order item"""
     order = models.ForeignKey(
         Order,
         on_delete=models.CASCADE,

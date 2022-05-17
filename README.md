@@ -511,6 +511,8 @@ I had a lot of help from tutorials and bootstrap examples throughout this projec
   - Solution to resize images before uploading to S# bucket
 - [Pagination](https://ordinarycoders.com/blog/article/django-pagination)
   - Bootstrap styled pagination walkthrough
+-[Invoice](https://raw.githubusercontent.com/sparksuite/simple-html-invoice-template/master/invoice.html)
+  - pdf invoice from user dashboard
 
 
 ## Aknowledgements
