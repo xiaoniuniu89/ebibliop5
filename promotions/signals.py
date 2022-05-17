@@ -16,6 +16,10 @@ def send_newsletter(sender, instance, **kwargs):
     emails = [user.email for user in users]
     for email in emails:
         message = instance
+        # do it one by one in for loop
+        # to avoid other users seeing email addresses
+        # also because we need to send a unique
+        # unsubscribe link to each user
         sub = Subscriber.objects.get(email=email)
         message = render_to_string(
             "newsletter.html",
