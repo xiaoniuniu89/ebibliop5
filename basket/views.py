@@ -18,8 +18,10 @@ def basket_add(request):
     """ ajax request to add items to basket """
     basket = Basket(request)
     if request.POST.get('action') == 'post':
+        # find product in database
         product_id = int(request.POST.get('productId'))
         product = get_object_or_404(Product, id=product_id)
+        # check if product already in basket 
         if str(product.id) in basket.basket:
             basketqty = basket.__len__()
             msg = 'Book already in basket'
@@ -34,6 +36,7 @@ def basket_add(request):
 
 
 def basket_delete(request):
+    """delete contents of baket after payment"""
     basket = Basket(request)
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('productId'))

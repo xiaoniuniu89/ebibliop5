@@ -31,6 +31,7 @@ class Basket():
         self.save()
 
     def add_promo(self, promo):
+        """ add promo code to basket"""
         self.promo = self.session['promo_key'] = promo
         self.save()
 
@@ -72,9 +73,15 @@ class Basket():
             yield item
 
     def get_total_price(self):
+        """total price without promo"""
         return sum(Decimal(item['price']) for item in self.basket.values())
 
     def get_discount(self):
+        """
+        check for promo and
+        multiply agains total to get
+        discount amount
+        """
         if self.promo:
             return round(
                 (
@@ -83,7 +90,9 @@ class Basket():
         return Decimal(0)
 
     def get_total_price_after_discount(self):
+        """take discount amount from total price"""
         return self.get_total_price() - self.get_discount()
 
     def save(self):
+        """updates session basket"""
         self.session.modified = True
