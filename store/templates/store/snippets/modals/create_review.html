@@ -39,8 +39,8 @@
 {% if user_review %}
 <script>
   // if user review rating score: check it in the modal
-    $("input[type='radio'][name='rating'][id='{{user_review.rating}}']").attr('checked', true)
-    $('#review-content').val('{{user_review.review}}')
+    $("input[type='radio'][name='rating'][id='{{user_review.rating}}']").attr('checked', true);
+    $('#review-content').val('{{user_review.review}}');
 
 </script>
 {% endif %}

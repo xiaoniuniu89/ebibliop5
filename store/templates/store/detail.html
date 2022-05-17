@@ -78,22 +78,22 @@
             },
             success: function(json){
                 // update basket qty
-                document.getElementById('basket-qty').innerHTML = json.qty
+                document.getElementById('basket-qty').innerHTML = json.qty;
                 // flash msg
                 document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p class="text-center">${json.msg}</p>
                 </div>
 
-                `
+                `;
                 // close flash msg
                 setTimeout(function () {
-                    $(".alert").alert('close')
+                    $(".alert").alert('close');
                 }, 3000);
             },
             error: function(xhr, errmsg, err){}
-        })
-    })
+        });
+    });
     
 </script>
 
