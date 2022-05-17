@@ -184,7 +184,7 @@ class TestViewResponses(TestCase):
 
     def test_add_review_not_first(self):
         """
-        checking that there is already 
+        checking that there is already
         a review from user
         """
         self.product.rating_score = 5

@@ -47,7 +47,7 @@ def product_detail(request, slug):
         # check if user is logged in
         if OrderItem.objects.filter(
             # check user has bought this book already
-            customer=request.user, product=product).exists():
+                customer=request.user, product=product).exists():
             can_review = True
         else:
             can_review = False
@@ -170,7 +170,8 @@ def delete_review(request):
 def category_list(request, category_slug):
     """ render list of books in a category """
     # help for this view from the following tutorial from very academy
-    # https://www.youtube.com/watch?v=UqSJCVePEWU beginning at 1hr and 59 minutes
+    # https://www.youtube.com/watch?v=UqSJCVePEWU beginning at 1hr and 59
+    # minutes
     category = get_object_or_404(Category, slug=category_slug)
     products = Product.objects.filter(category=category)
     return render(
