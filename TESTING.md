@@ -92,6 +92,9 @@ Coverage provides a handy report and html file containing all code covered by te
 
 The HTML can be found in htmlcov/index.html
 
+To run tests, in the termianl type: 
+- python3 manage.py test
+
 
 
 Coverage Report
