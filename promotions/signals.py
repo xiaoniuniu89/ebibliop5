@@ -34,6 +34,10 @@ def send_newsletter(sender, instance, **kwargs):
         mail.content_subtype = "html"
         try:
             mail.send()
+        # general exception needed to catch a
+        # invalid email not caught in form
+        # validation in footer - rare
+        # exception
         except Exception:
             pass
 
