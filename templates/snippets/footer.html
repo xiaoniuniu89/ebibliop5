@@ -95,11 +95,17 @@
     <script src="{% static 'js/footer.js' %}"></script>
 
     <script>
+        function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        return emailReg.test( $email );
+}
 
         $(document).on('click', '#email-btn', function(e){
             e.preventDefault();
-            if($('#email-input-sub').val().indexOf('@') !== -1
-            && $('#email-input-sub').val().indexOf('.') !== -1){
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if( validateEmail($('#email-input-sub').val())){
+            
+            
             $.ajax({
                 type: 'POST',
                 url: '{% url "promotions:subscribe" %}',
@@ -140,8 +146,7 @@
 
         $(document).on('click', '#msg-btn', function(e){
             e.preventDefault();
-            if($('#email-input').val().indexOf('@') !== -1
-            && $('#email-input').val().indexOf('.') !== -1)
+            if( validateEmail($('#email-input').val()))
              {
             $.ajax({
                 type: 'POST',

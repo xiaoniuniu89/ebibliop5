@@ -32,7 +32,10 @@ def send_newsletter(sender, instance, **kwargs):
             to=[email, ],
         )
         mail.content_subtype = "html"
-        mail.send()
+        try:
+            mail.send()
+        except Exception:
+            pass
 
 
 @receiver(pre_save, sender=Subscriber)
