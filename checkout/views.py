@@ -25,19 +25,25 @@ def checkout(request):
     basket = Basket(request)
     total = str(basket.get_total_price_after_discount()).replace('.', '')
     total = int(total)
+    # get total price and check if it is at least the stripe minimum
     if total < 50:
+        # if not, redirect to basket
         messages.warning(request, 'The minimum transaction is .50 cent')
         return HttpResponseRedirect('/basket/')
     if request.user.is_authenticated:
+        # check if user has profile / billing info
         user_id = request.user.id
     else:
+        # if not use guest checkout as proxy
         user_id = User.objects.get(username="guest_checkout").id
+    # create payment intent with stripe
     intent = stripe.PaymentIntent.create(
         amount=total,
         currency='eur',
         automatic_payment_methods={
             'enabled': True,
         },
+        # will use this later in webhook to update billing status
         metadata={'userid': user_id}
     )
     return render(
@@ -53,6 +59,7 @@ def checkout(request):
 def checkout_complete(request):
     """ redirect page after successful order """
     basket = Basket(request)
+    # empty basket
     basket.clear()
     return render(request,
                   'checkout/checkout_complete.html',
@@ -64,6 +71,7 @@ def checkout_failed(request):
     if request.POST.get('action') == 'post':
         order_key = request.POST.get('order_key')
         order = Order.objects.get(order_key=order_key)
+        # make sure to delete order
         order.delete()
         msg = request.POST.get('error')
         response = JsonResponse({'msg': msg})
@@ -72,6 +80,7 @@ def checkout_failed(request):
 
 @csrf_exempt
 def stripe_webhook(request):
+    """listens for payment_intent.succeeded"""
     payload = request.body
     event = None
 
