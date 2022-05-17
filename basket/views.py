@@ -21,7 +21,7 @@ def basket_add(request):
         # find product in database
         product_id = int(request.POST.get('productId'))
         product = get_object_or_404(Product, id=product_id)
-        # check if product already in basket 
+        # check if product already in basket
         if str(product.id) in basket.basket:
             basketqty = basket.__len__()
             msg = 'Book already in basket'

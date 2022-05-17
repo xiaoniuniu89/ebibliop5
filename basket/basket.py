@@ -1,6 +1,9 @@
 from decimal import Decimal
 from store.models import Product
 
+# a lot of help for the basket.py came from this tutorial:
+# https://www.youtube.com/watch?v=VOwfGW-ZTIY&list=PLOLrQ9Pn6caxY4Q1U9RjO1bulQp5NDYS_&index=2
+
 
 class Basket():
     """

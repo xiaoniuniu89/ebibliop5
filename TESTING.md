@@ -77,6 +77,13 @@ The JS can only be validated by direct input which causes some unused variable e
 
 I used <a href='https://pypi.org/project/autopep8/'>Auto pep8</a> to fix validation errors with any of the python files I, myself wrote. I then went through each file and manually inputed them into <a href='http://pep8online.com/'>pep8 online</a>. There are no errors in any of my custom written python code, although there would be in some of the files set up by django, eg. SETTINGS.py.
 
+- [store](https://youtu.be/WSpHSB5V7-0)
+- [promotions](https://youtu.be/Ncmuh-3Ib08)
+- [orders](https://youtu.be/bx4meVcUWDA)
+- [dashboard](https://youtu.be/YjdWUqPF6Bk)
+- [checkout](https://youtu.be/bKSyAsvHgTA)
+- [basket](https://youtu.be/PBagkZnhLhE)
+
 # Automated Testing <p id="automated"></p>
 
 Automated testing was done using the Django built in testing and with a library called <a href='https://coverage.readthedocs.io/en/6.3.3/'>coverage</a> to help pinpoint some areas of code that were not being reached by my tests.

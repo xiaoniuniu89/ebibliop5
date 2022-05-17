@@ -16,7 +16,7 @@ def add_order(request):
     """ajax call to create an order before making payment"""
     basket = Basket(request)
     if request.POST.get('action') == 'post':
-        # if user is logged in use their profile 
+        # if user is logged in use their profile
         if request.user.is_authenticated:
             user_id = request.user.id
         else:
@@ -67,7 +67,7 @@ def add_order(request):
 
 def payment_confirmation(data):
     """ post webhook payment confirmation view """
-    # find order and update payment to True 
+    # find order and update payment to True
     Order.objects.filter(order_key=data).update(billing_status=True)
     # find order items and send confirmation email containing links
     order = Order.objects.get(order_key=data)
