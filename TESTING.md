@@ -227,3 +227,7 @@ Safari
 - Login from the product page when clicking login to add review button brings you back to home page. This is because I want visitors to have access to as many pages as possible. A lot of pages have no @login_required decorators.
 
 - Nothing to stop users from using a promo code over and over.
+
+- If you try to log in using an email used through google all auth login, it does not work. Not sure how to resolve this.
+
+<img src='https://res.cloudinary.com/daniel-callaghan/image/upload/v1652812151/p5/Screenshot_from_2022-05-17_19-28-00_pdg1pm.png'/>
