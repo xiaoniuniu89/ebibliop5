@@ -509,6 +509,8 @@ I had a lot of help from tutorials and bootstrap examples throughout this projec
     - [order confirmation email](https://bbbootstrap.com/snippets/order-confirmation-email-template-19073214)
 - [Image resize](https://blog.soards.me/posts/resize-image-on-save-in-django-before-sending-to-amazon-s3/)
   - Solution to resize images before uploading to S# bucket
+- [Pagination](https://ordinarycoders.com/blog/article/django-pagination)
+  - Bootstrap styled pagination walkthrough
 
 
 ## Aknowledgements

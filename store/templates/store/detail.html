@@ -7,6 +7,7 @@
 {% block content %}
 
 <div class="container">
+    {% comment %} product information {% endcomment %}
     <main class="pt-5">
         <span class="badge badge-danger badge-danger-2 d-block d-md-inline-block d-lg-none rounded-pill px-3 py-2 mb-2 font-weight-light">{{product.title}}</span>
         <div class="row g-3">
@@ -63,6 +64,7 @@
 
 <script src="{% static 'store/js/review.js' %}"></script>
 <script>
+    // add product to basket
     $(document).on('click', '#add-btn', function(e){
         e.preventDefault();
         $.ajax({
@@ -75,13 +77,16 @@
                 action: 'post'
             },
             success: function(json){
+                // update basket qty
                 document.getElementById('basket-qty').innerHTML = json.qty
+                // flash msg
                 document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p class="text-center">${json.msg}</p>
                 </div>
 
                 `
+                // close flash msg
                 setTimeout(function () {
                     $(".alert").alert('close')
                 }, 3000);

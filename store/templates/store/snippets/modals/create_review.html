@@ -38,6 +38,7 @@
 </div>
 {% if user_review %}
 <script>
+  // if user review rating score: check it in the modal
     $("input[type='radio'][name='rating'][id='{{user_review.rating}}']").attr('checked', true)
     $('#review-content').val('{{user_review.review}}')
 
@@ -48,8 +49,11 @@
 <script>
       const elem = document.getElementById('save-review-btn');
     $(document).on('click', '#save-review-btn', function(e){
+      // check there is at least 1 star rating
         if(!$("input[type='radio'][name='rating']:checked").val()){
+          // if not then display warning
           $('#val-stars').removeClass('d-none');
+          //automatically check 1 star
           document.querySelector(".rat-one").checked = true;
         } else {
             let action = elem.getAttribute('data-action');
@@ -66,19 +70,24 @@
                 action: action
             },
             success: function(json){
+              // get rid of error msg if present
               $('#val-stars').addClass('d-none');
+              // flash msg
               document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p class="text-center">${json.msg}</p>
                 </div>
 
                 `;
+                // close flash msg
                 setTimeout(function () {
                     $(".alert").alert('close');
                 }, 3000);
                 let action = elem.getAttribute('data-action');
                 
                 if(action == 'post'){
+                  // set to update in case user updates their review
+                  // ajax will send action = update to the view to update
                   elem.setAttribute('data-action', 'update');
                 }
                 action = elem.getAttribute('data-action');

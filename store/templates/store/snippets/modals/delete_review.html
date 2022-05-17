@@ -22,7 +22,7 @@
 </div>
 <script>
 
-
+    // ajax call to delete review
     $(document).on('click', '#confirm-delete-btn', function(e){
         $.ajax({
         type: 'POST',
@@ -33,6 +33,7 @@
             action: 'post'
         },
         success: function(json){
+          // flash message
               document.querySelector('.msg-wrapper').innerHTML = `
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p class="text-center">${json.msg}</p>
@@ -43,6 +44,7 @@
                     $(".alert").alert('close');
                 }, 3000);
             deleteReview();
+            // remove star rating from add/update modal
             if($("input[type='radio'][name='rating']:checked").length == 1)
               {
                 $("input[type='radio'][name='rating']:checked")[0].checked = false;

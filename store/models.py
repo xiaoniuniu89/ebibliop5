@@ -1,10 +1,11 @@
-from .utils import image_resize
 import uuid
 
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse
 from django.contrib.auth.models import User
+
+from .utils import image_resize
 
 
 class ProductManager(models.Manager):
@@ -66,6 +67,7 @@ class Product(models.Model):
         return reverse("store:product_detail", args=[self.slug])
 
     def __str__(self):
+        """ return __str__ """
         return self.title
 
     def save(self, *args, **kwargs):

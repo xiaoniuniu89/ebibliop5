@@ -11,7 +11,7 @@
     <div class=" align-self-center "> <span class="badge badge-danger badge-danger-2  rounded-pill px-4 py-2 font-weight-light">{{term|title}}</span></div>
 
            
-        {% if result %}
+    {% if result %}
     <div class="row wrap-land clearfix">
 
         {% for book in products %}
@@ -35,6 +35,7 @@
             </a>
         </div>
         {% endfor %}
+        
         {% else %}
             <div class='my-5 row'>Sorry, we couldn't find anything matching your query! Here are some titles you might like.</div>
              <div class="row wrap-land clearfix">

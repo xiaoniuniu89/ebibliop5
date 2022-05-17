@@ -12,6 +12,7 @@
     </div>
     
     <div class="col-6 mt-2 ">
+        {% comment %} this div is for a user review that is already there on page load  {% endcomment %}
     {% if user_review %}
         <button type="button" disabled id="add-review-modal-btn" class="btn add-review-btn btn-info btn-sm" data-toggle="modal" data-target="#review-modal">Add review</button>
     {% else %}
@@ -21,6 +22,7 @@
     {% endif %}
     </div>
 </div>
+{% comment %} this div is for temporarly storing any add or updates to a user review  {% endcomment %}
     <div class="temp-review-wrapper"></div>
     {% if user_review %}
     <div id="user-review-info-wrapper">
@@ -40,6 +42,7 @@
     {% endif %}
 
     {% for review in reviews %}
+    {% comment %} all reviews excluding users which is always on top  {% endcomment %}
     <div class="media row text-muted pt-3">
         <strong class="d-block text-gray-dark">@{{review.user.username}} - </strong>
         <i class="fas fa-star mx-1 "><span class="c-rate">{{review.rating}}</span></i>

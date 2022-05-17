@@ -1,4 +1,6 @@
 @import url(//fonts.googleapis.com/css?family=Montserrat:300,500);
+
+/* start call to action section  */
 .cta {
   
   font-weight: 300;
@@ -65,10 +67,14 @@
   max-height: 600px;
 }
 
+/* end call to action  */
+
+/* for intersection observer  */
 nav {
   transition:  400ms ease-in-out;
 }
 
+/* start book card style  */
 
 a {
     color: var(--grey);
@@ -115,8 +121,9 @@ a:hover {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
+/* end book style  */
 
-
+/* checkout loader  */
 .loader {
   border: 1.1em solid #f3f3f3; /* Light grey */
   border-top: .8em solid #3498db; /* Blue */
@@ -131,15 +138,7 @@ a:hover {
   100% { transform: rotate(360deg); }
 }
 
-
-
-/* @media screen and (max-width: 765px) {
-  .cta {
-    min-height: none;
-  }
-} */
-
-
+/* media queries  */
 @media screen and (max-width: 575px) {
   .card {
     max-width: 300px;
@@ -168,7 +167,9 @@ a:hover {
 .product_item:hover .cp_img {
     top: -100px
 }
+/* end media query  */
 
+/* more book card style  */
 .product_item:hover .cp_img img {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)
 }
@@ -260,6 +261,7 @@ a:hover {
 }
 
 
+
 @-webkit-keyframes opacity {
     0% {
         opacity: 0;
@@ -286,3 +288,4 @@ a:hover {
     }
 }
 }
+/* end book card style  */

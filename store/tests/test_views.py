@@ -8,7 +8,7 @@ from django.urls import path
 
 from store.models import Category, Product, Review
 
-
+# for making product
 small_gif = (
     b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
     b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'
@@ -17,14 +17,17 @@ small_gif = (
 
 
 def response_error_handler(request, exception=None):
+    """ for raising error exceptions """
     return HttpResponse('Error handler content', status=403)
 
 
 def permission_denied_view(request):
+    """ mock 403 response"""
     raise PermissionDenied
 
 
 def bad_request_view(request):
+    """ raise bad request"""
     raise SuspiciousOperation
 
 
@@ -110,7 +113,10 @@ class TestViewResponses(TestCase):
             reverse('store:product_detail', args=['django-beginners']))
         self.assertEqual(response.status_code, 200)
 
-    def test_all_books_context_data(self):
+    def test_all_books(self):
+        """
+        test all books list page
+        """
         response = self.client.get(
             reverse('store:all_books')
         )
@@ -177,6 +183,10 @@ class TestViewResponses(TestCase):
         self.assertEqual(len(Review.objects.all()), 0)
 
     def test_add_review_not_first(self):
+        """
+        checking that there is already 
+        a review from user
+        """
         self.product.rating_score = 5
         self.product.rating_count = 1
         self.product.save()

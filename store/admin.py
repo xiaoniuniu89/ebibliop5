@@ -17,6 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
                     'in_stock', 'created', 'updated']
     list_filters = ['in_stock']
     list_editable = ['price', 'in_stock']
+    # make sure slug is unique by adding uuid to the end
     prepopulated_fields = {'slug': ('title', 'slug_end')}
 
 

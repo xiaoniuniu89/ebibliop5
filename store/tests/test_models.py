@@ -86,7 +86,7 @@ class TestProductModel(TestCase):
         self.assertEquals(data.get_rating(), (4, 0))
 
 
-class TestReviewgModel(TestCase):
+class TestReviewModel(TestCase):
     """Test the Review Model"""
 
     def setUp(self):
